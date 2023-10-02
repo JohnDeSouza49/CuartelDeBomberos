@@ -5,10 +5,24 @@
  */
 package Entidades;
 
+import java.sql.Date;
+
 /**
  *
  * @author Kanji
  */
 public class Bombero {
+    private int idBombero;
+    private String dni;
+    private String nombreApellido;
+    private Date fechaNac;
+    private String celular;
+    private int codigoBrigada;
     
+  
+    
+   
+
+    
+// Constructores, getters y setters
 }
