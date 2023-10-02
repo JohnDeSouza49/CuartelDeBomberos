@@ -4,18 +4,19 @@
  * and open the template in the editor.
  */
 package cuarteldebomberos;
-
-/**
- *
- * @author Kanji
- */
+import java.time.LocalDate;
+import AccesoADatos.Conexion;
+import java.sql.Connection;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 public class CuartelDeBomberos {
 
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
+        Connection con = Conexion.getConexion();
     }
     
 }
