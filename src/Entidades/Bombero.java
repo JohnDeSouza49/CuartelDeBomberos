@@ -11,17 +11,19 @@ public class Bombero {
     private String nombreApellido;
     private Date fechaNac;
     private String celular;
+    private String grupoSangineo;
     private int codigoBrigada;
     private boolean estado;
     public Bombero() {
     }
 
-    public Bombero(int idBombero, String dni, String nombreApellido, Date fechaNac, String celular, int codigoBrigada, boolean estado) {
+    public Bombero(int idBombero, String dni, String nombreApellido, Date fechaNac, String celular,String grupoSangineo, int codigoBrigada, boolean estado) {
         this.idBombero = idBombero;
         this.dni = dni;
         this.nombreApellido = nombreApellido;
         this.fechaNac = fechaNac;
         this.celular = celular;
+        this.grupoSangineo =grupoSangineo;
         this.codigoBrigada = codigoBrigada;
         this.estado = estado;
     }
@@ -41,6 +43,14 @@ public class Bombero {
         this.fechaNac = fechaNac;
         this.codigoBrigada = codigoBrigada;
         this.estado = estado;
+    }
+
+    public String getGrupoSangineo() {
+        return grupoSangineo;
+    }
+
+    public void setGrupoSangineo(String grupoSangineo) {
+        this.grupoSangineo = grupoSangineo;
     }
 
     public int getIdBombero() {
