@@ -4,6 +4,7 @@ package AccesoADatos;
 
 import Entidades.Bombero;
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -22,16 +23,18 @@ public class BomberoData {
 }
      public void guardarBombero(Bombero bombero) {
 
-        String sql = "INSERT INTO bombero (dni, nombreApellido, fechaNac, celular, codigoBrigada,estado) VALUES (?,?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO bombero (dni, nombreApellido, fechaNac, celular, codigoBrigada,estado,grupoSanguineo) VALUES (? ,?, ?, ?, ?, ?, ?)";
     
          try{    
          
           PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
-          ps.setString(1,bombero.getDni());
+          ps.setInt(1,bombero.getDni());
           ps.setString(2,bombero.getNombreApellido());
-          ps.setDate(3, (bombero.getFechaNac()));
-          ps.setString(4, bombero.getCelular());
+          ps.setDate(3, Date.valueOf(bombero.getFechaNac()));
+          ps.setInt(4, bombero.getCelular());
+          ps.setInt(5, bombero.getCodigoBrigada());
           ps.setBoolean(6, bombero.isEstado());
+          ps.setString(7, bombero.getGrupoSangineo());
           ps.executeUpdate();
             ResultSet rs = ps.getGeneratedKeys();
             if (rs.next()) {
@@ -42,6 +45,7 @@ public class BomberoData {
          }
            
 catch(SQLException ex){
+    JOptionPane.showMessageDialog(null, "hay un error al cargar el bombero");
     
                 }
 

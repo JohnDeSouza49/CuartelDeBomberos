@@ -2,22 +2,23 @@
 package Entidades;
 
 import java.sql.Date;
+import java.time.LocalDate;
 
 
 public class Bombero {
 
     private int idBombero;
-    private String dni;
+    private int dni;
     private String nombreApellido;
-    private Date fechaNac;
-    private String celular;
+    private LocalDate fechaNac;
+    private int celular;
     private String grupoSangineo;
     private int codigoBrigada;
     private boolean estado;
     public Bombero() {
     }
 
-    public Bombero(int idBombero, String dni, String nombreApellido, Date fechaNac, String celular,String grupoSangineo, int codigoBrigada, boolean estado) {
+    public Bombero(int idBombero, int dni, String nombreApellido, LocalDate fechaNac, int celular,String grupoSangineo, int codigoBrigada, boolean estado) {
         this.idBombero = idBombero;
         this.dni = dni;
         this.nombreApellido = nombreApellido;
@@ -28,7 +29,7 @@ public class Bombero {
         this.estado = estado;
     }
 
-    public Bombero(String dni, String nombreApellido, Date fechaNac, String celular, int codigoBrigada, boolean estado) {
+    public Bombero(int dni, String nombreApellido, LocalDate fechaNac, int celular, int codigoBrigada, boolean estado) {
         this.dni = dni;
         this.nombreApellido = nombreApellido;
         this.fechaNac = fechaNac;
@@ -37,13 +38,24 @@ public class Bombero {
         this.estado = estado;
     }
 
-    public Bombero(String dni, String nombreApellido, Date fechaNac, int codigoBrigada, boolean estado) {
+    public Bombero(int dni, String nombreApellido, LocalDate fechaNac, int codigoBrigada, boolean estado) {
         this.dni = dni;
         this.nombreApellido = nombreApellido;
         this.fechaNac = fechaNac;
         this.codigoBrigada = codigoBrigada;
         this.estado = estado;
     }
+
+    public Bombero(int dni, String nombreApellido, LocalDate fechaNac, int celular, String grupoSangineo, int codigoBrigada, boolean estado) {
+        this.dni = dni;
+        this.nombreApellido = nombreApellido;
+        this.fechaNac = fechaNac;
+        this.celular = celular;
+        this.grupoSangineo = grupoSangineo;
+        this.codigoBrigada = codigoBrigada;
+        this.estado = estado;
+    }
+    
 
     public String getGrupoSangineo() {
         return grupoSangineo;
@@ -61,11 +73,11 @@ public class Bombero {
         this.idBombero = idBombero;
     }
 
-    public String getDni() {
+    public int getDni() {
         return dni;
     }
 
-    public void setDni(String dni) {
+    public void setDni(int dni) {
         this.dni = dni;
     }
 
@@ -77,19 +89,19 @@ public class Bombero {
         this.nombreApellido = nombreApellido;
     }
 
-    public Date getFechaNac() {
+    public LocalDate getFechaNac() {
         return fechaNac;
     }
 
-    public void setFechaNac(Date fechaNac) {
+    public void setFechaNac(LocalDate fechaNac) {
         this.fechaNac = fechaNac;
     }
 
-    public String getCelular() {
+    public int getCelular() {
         return celular;
     }
 
-    public void setCelular(String celular) {
+    public void setCelular(int celular) {
         this.celular = celular;
     }
 

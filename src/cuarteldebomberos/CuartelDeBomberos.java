@@ -1,5 +1,6 @@
 
 package cuarteldebomberos;
+import AccesoADatos.BomberoData;
 import java.time.LocalDate;
 import AccesoADatos.Conexion;
 import Entidades.Bombero;
@@ -13,7 +14,10 @@ public class CuartelDeBomberos {
    
     public static void main(String[] args) {
         Connection con = Conexion.getConexion();
-    }
-    // Bombero bob = new Bombero ("24359684","Andres Gimenez",LocalDate.of(1980, Month.MARCH, 15),"1125897648",12,true);
-    }
-   
+    
+    Bombero bob = new Bombero(25896314, "Anibal Gimenez", LocalDate.of(1980, 3, 15), 1125896325, "AB RH+", 12, true);
+   BomberoData bd = new BomberoData();
+   bd.guardarBombero(bob);
+    } 
+}
+
