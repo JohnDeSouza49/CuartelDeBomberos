@@ -8,12 +8,12 @@ public class Cuartel {
 private int codigoCuartel;
 private String nombreCuartel;
 private String direccion;
-private double coordenadaX;
-private double coordenadaY;
-private String telefono;
+private int coordenadaX;
+private int coordenadaY;
+private int telefono;
 private String correoElectronico;
 
-    public Cuartel(int codigoCuartel, String nombreCuartel, String direccion, double coordenadaX, double coordenadaY, String telefono, String correoElectronico) {
+    public Cuartel(int codigoCuartel, String nombreCuartel, String direccion, int coordenadaX, int coordenadaY, int telefono, String correoElectronico) {
         this.codigoCuartel = codigoCuartel;
         this.nombreCuartel = nombreCuartel;
         this.direccion = direccion;
@@ -24,7 +24,7 @@ private String correoElectronico;
         
     }
 
-    public Cuartel(String nombreCuartel, String direccion, double coordenadaX, double coordenadaY, String telefono, String correoElectronico) {
+    public Cuartel(String nombreCuartel, String direccion, int coordenadaX, int coordenadaY, int telefono, String correoElectronico) {
         this.nombreCuartel = nombreCuartel;
         this.direccion = direccion;
         this.coordenadaX = coordenadaX;
@@ -61,27 +61,27 @@ private String correoElectronico;
         this.direccion = direccion;
     }
 
-    public double getCoordenadaX() {
+    public int getCoordenadaX() {
         return coordenadaX;
     }
 
-    public void setCoordenadaX(double coordenadaX) {
+    public void setCoordenadaX(int coordenadaX) {
         this.coordenadaX = coordenadaX;
     }
 
-    public double getCoordenadaY() {
+    public int getCoordenadaY() {
         return coordenadaY;
     }
 
-    public void setCoordenadaY(double coordenadaY) {
+    public void setCoordenadaY(int coordenadaY) {
         this.coordenadaY = coordenadaY;
     }
 
-    public String getTelefono() {
+    public int getTelefono() {
         return telefono;
     }
 
-    public void setTelefono(String telefono) {
+    public void setTelefono(int telefono) {
         this.telefono = telefono;
     }
 
