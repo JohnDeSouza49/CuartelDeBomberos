@@ -1,4 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
+<<<<<<< HEAD
+=======
+    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+        <group>
+            <file>file:/H:/CURSO%20PROGRAM/APLICACIONES/ProyectoFinal/CuartelDeBomberos/src/cuarteldebomberos/CuartelDeBomberos.java</file>
+            <file>file:/H:/CURSO%20PROGRAM/APLICACIONES/ProyectoFinal/CuartelDeBomberos/src/Entidades/Bombero.java</file>
+            <file>file:/H:/CURSO%20PROGRAM/APLICACIONES/ProyectoFinal/CuartelDeBomberos/src/AccesoADatos/Conexion.java</file>
+            <file>file:/H:/CURSO%20PROGRAM/APLICACIONES/ProyectoFinal/CuartelDeBomberos/src/AccesoADatos/BomberoData.java</file>
+        </group>
+    </open-files>
+>>>>>>> 589703f7b2a843f74fc8c5df87dbf03234587a75
 </project-private>

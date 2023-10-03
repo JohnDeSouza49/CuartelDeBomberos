@@ -12,30 +12,35 @@ public class Bombero {
     private Date fechaNac;
     private String celular;
     private int codigoBrigada;
-
+    private boolean estado;
     public Bombero() {
     }
 
-    public Bombero(int idBombero, String dni, String nombreApellido, Date fechaNac, String celular, int codigoBrigada) {
+    public Bombero(int idBombero, String dni, String nombreApellido, Date fechaNac, String celular, int codigoBrigada, boolean estado) {
         this.idBombero = idBombero;
         this.dni = dni;
         this.nombreApellido = nombreApellido;
         this.fechaNac = fechaNac;
         this.celular = celular;
         this.codigoBrigada = codigoBrigada;
+        this.estado = estado;
     }
 
-    public Bombero(int idBombero, String dni, String nombreApellido, int codigoBrigada) {
-        this.idBombero = idBombero;
-        this.dni = dni;
-        this.nombreApellido = nombreApellido;
-        this.codigoBrigada = codigoBrigada;
-    }
-
-    public Bombero(String dni, String nombreApellido, Date fechaNac) {
+    public Bombero(String dni, String nombreApellido, Date fechaNac, String celular, int codigoBrigada, boolean estado) {
         this.dni = dni;
         this.nombreApellido = nombreApellido;
         this.fechaNac = fechaNac;
+        this.celular = celular;
+        this.codigoBrigada = codigoBrigada;
+        this.estado = estado;
+    }
+
+    public Bombero(String dni, String nombreApellido, Date fechaNac, int codigoBrigada, boolean estado) {
+        this.dni = dni;
+        this.nombreApellido = nombreApellido;
+        this.fechaNac = fechaNac;
+        this.codigoBrigada = codigoBrigada;
+        this.estado = estado;
     }
 
     public int getIdBombero() {
@@ -86,8 +91,18 @@ public class Bombero {
         this.codigoBrigada = codigoBrigada;
     }
 
+    public boolean isEstado() {
+        return estado;
+    }
+
+    public void setEstado(boolean estado) {
+        this.estado = estado;
+    }
+
     @Override
     public String toString() {
-        return dni + ", " + nombreApellido;
+        return "Bombero{" + "idBombero=" + idBombero + ", dni=" + dni + ", nombreApellido=" + nombreApellido + ", fechaNac=" + fechaNac + ", celular=" + celular + ", codigoBrigada=" + codigoBrigada + ", estado=" + estado + '}';
     }
+
+   
 }
