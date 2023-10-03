@@ -17,6 +17,17 @@ public class Brigada {
         this.numeroCuartel = numeroCuartel;
     }
 
+    public Brigada(String nombreBrigada, String especialidad, boolean libre, int numeroCuartel) {
+        this.nombreBrigada = nombreBrigada;
+        this.especialidad = especialidad;
+        this.libre = libre;
+        this.numeroCuartel = numeroCuartel;
+    }
+
+    public Brigada() {
+    }
+    
+
     public int getCodigoBrigada() {
         return codigoBrigada;
     }

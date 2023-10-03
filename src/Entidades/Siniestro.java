@@ -27,6 +27,21 @@ public class Siniestro{
         this.brigadaId = brigadaId;
     }
 
+    public Siniestro(String Tipo, Date fechaSiniestro, double coordenadaX, double coordenadaY, String detalles, Date fechaResolucion, int calificacion, int brigadaId) {
+        this.Tipo = Tipo;
+        this.fechaSiniestro = fechaSiniestro;
+        this.coordenadaX = coordenadaX;
+        this.coordenadaY = coordenadaY;
+        this.detalles = detalles;
+        this.fechaResolucion = fechaResolucion;
+        this.calificacion = calificacion;
+        this.brigadaId = brigadaId;
+    }
+
+    public Siniestro() {
+    }
+    
+
     public int getCodigoSiniestro() {
         return codigoSiniestro;
     }

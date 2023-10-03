@@ -21,7 +21,21 @@ private String correoElectronico;
         this.coordenadaY = coordenadaY;
         this.telefono = telefono;
         this.correoElectronico = correoElectronico;
+        
     }
+
+    public Cuartel(String nombreCuartel, String direccion, double coordenadaX, double coordenadaY, String telefono, String correoElectronico) {
+        this.nombreCuartel = nombreCuartel;
+        this.direccion = direccion;
+        this.coordenadaX = coordenadaX;
+        this.coordenadaY = coordenadaY;
+        this.telefono = telefono;
+        this.correoElectronico = correoElectronico;
+    }
+
+    public Cuartel() {
+    }
+    
 
     public int getCodigoCuartel() {
         return codigoCuartel;
