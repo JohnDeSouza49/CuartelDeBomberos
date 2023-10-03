@@ -15,7 +15,7 @@ public class CuartelDeBomberos {
     public static void main(String[] args) {
         Connection con = Conexion.getConexion();
     
-    Bombero bob = new Bombero(25896314, "Anibal Gimenez", LocalDate.of(1980, 3, 15), 1125896325, "AB RH+", 12, true);
+    Bombero bob = new Bombero(25896314, "Anibal Gimenez", LocalDate.of(1980, 3, 15), 1125896325, "AB RH+", 1, true);
    BomberoData bd = new BomberoData();
    bd.guardarBombero(bob);
     } 
