@@ -10,5 +10,14 @@ package Entidades;
  * @author Kanji
  */
 public class Brigada {
+    private int codigoBrigada;
+    private String nombreBrigada;
+    private String especialidad;
+    private boolean libre;
+    private int numeroCuartel;
     
+    
+    
+    
+// Constructores, getters y setters
 }

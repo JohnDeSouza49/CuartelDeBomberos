@@ -11,4 +11,14 @@ package Entidades;
  */
 public class Cuartel {
     
+   
+private int codigoCuartel;
+private String nombreCuartel;
+private String direccion;
+private double coordenadaX;
+private double coordenadaY;
+private String telefono;
+private String correoElectronico;
+    
+    // Constructores, getters y setters
 }

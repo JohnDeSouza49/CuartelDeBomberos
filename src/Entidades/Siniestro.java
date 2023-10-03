@@ -5,10 +5,27 @@
  */
 package Entidades;
 
+import java.sql.Date;
+
 /**
  *
  * @author Kanji
  */
-public class Siniestro {
+public class Siniestro{
+    private int codigoSiniestro;
+    private String Tipo;
+    private Date fechaSiniestro;
+    private double coordenadaX;
+    private double coordenadaY;
+    private String detalles;
+    private Date fechaResolucion;
+    private int calificacion;       
+    private int brigadaId;
     
+   
+    
+    // Constructores, getters y setters
 }
+
+
+
