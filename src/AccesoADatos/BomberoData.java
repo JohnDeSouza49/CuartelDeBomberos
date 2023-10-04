@@ -75,7 +75,48 @@ catch(SQLException ex){
              
          
    }  
-     
-}
+      public void ActivarBombero( Bombero bombero){
+     String sql="UPDATE `bombero` set estado=1 where idBombero=?" ;
+     if(bombero.isEstado()==false){
+          try {
+             PreparedStatement ps= con.prepareStatement(sql);
+             ps.setInt(1, bombero.getIdBombero());
+            
+             int exito= ps.executeUpdate();
+                if (exito == 1) {
+                JOptionPane.showMessageDialog(null, "Bombero activo");
+            } else {
+                JOptionPane.showMessageDialog(null, "El bombero no existe o no se encuentra inactivo");
+            }
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla bombero " + ex.getMessage());
+        }
+        }else{
+              JOptionPane.showMessageDialog(null, "el bombero ya se encuentra activo");
+                }
+  
+      }
+      public void DesactivarBombero( Bombero bombero){
+     String sql="UPDATE `bombero` set estado=0 where idBombero=?" ;
+     if(bombero.isEstado()==true){
+          try {
+             PreparedStatement ps= con.prepareStatement(sql);
+             ps.setInt(1, bombero.getIdBombero());
+            
+             int exito= ps.executeUpdate();
+                if (exito == 1) {
+                JOptionPane.showMessageDialog(null, "Bombero inactivo");
+            } else {
+                JOptionPane.showMessageDialog(null, "El bombero no existe o no se encuentra inactivo");
+            }
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla bombero " + ex.getMessage());
+        }
+        }else{
+              JOptionPane.showMessageDialog(null, "el bombero ya se encuentra inactivo");
+                }
+  
+      }
+      
                
-                  
+}                
