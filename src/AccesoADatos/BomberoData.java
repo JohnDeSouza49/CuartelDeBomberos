@@ -9,6 +9,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 
 import javax.swing.JOptionPane;
@@ -50,8 +52,28 @@ catch(SQLException ex){
                 } 
 
 }
-   public void modificarBombero( Bombero bombero){
-       
+   public void modificarBomberoActivo( Bombero bombero){
+     String sql="UPDATE bombero SET dni=?, nombreApellido =?,fechaNac=?,celular=?,codigoBrigada=?,grupoSanguineo=? where idBombero=? and estado=1" ;
+         try {
+             PreparedStatement ps= con.prepareStatement(sql);
+             ps.setInt(1, bombero.getDni());
+             ps.setString(2, bombero.getNombreApellido());
+             ps.setDate(3, Date.valueOf(bombero.getFechaNac()));
+             ps.setInt(4, bombero.getCelular());
+             ps.setInt(5, bombero.getCodigoBrigada());
+             ps.setString(6, bombero.getGrupoSangineo());
+             ps.setInt(7, bombero.getIdBombero());
+             int exito= ps.executeUpdate();
+                if (exito == 1) {
+                JOptionPane.showMessageDialog(null, "Modificado Exitosamente.");
+            } else {
+                JOptionPane.showMessageDialog(null, "El bombero no existe o no se encuentra activo");
+            }
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla bombero " + ex.getMessage());
+        }
+             
+         
    }  
      
 }
