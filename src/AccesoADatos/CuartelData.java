@@ -35,25 +35,12 @@ public class CuartelData {
 
             ps.setString(1, cuartel.getNombreCuartel());
             ps.setString(2, cuartel.getDireccion());
-            try {
-                int coordenadaX = Integer.parseInt(cuartel.getCoordenadaX());
-                int coordenadaY = Integer.parseInt(cuartel.getCoordenadaY());
-                ps.setInt(3, coordenadaX);
-                ps.setInt(4, coordenadaY);
-
-               } catch (NumberFormatException e) {
-                JOptionPane.showMessageDialog(null, "debe ingresar numeros en las coordenadas");
-                return;
-            }
-            //try {
-              //  int telefono = Integer.parseInt(cuartel.getTelefono());
-               // ps.setInt(5, telefono);
-                //ps.setInt(5, cuartel.getTelefono());
-            //} catch (NumberFormatException e) {
-              //  JOptionPane.showMessageDialog(null, "debe ingresar numeros en el numero de telefono");
-               // return;
-            //}
-
+            // try {
+            //int coordenadaX = Integer.parseInt(cuartel.getCoordenadaX());
+            //int coordenadaY = Integer.parseInt(cuartel.getCoordenadaY());
+            ps.setInt(3, cuartel.getCoordenadaX());
+            ps.setInt(4, cuartel.getCoordenadaY());
+            ps.setInt(5, cuartel.getTelefono());
             ps.setString(6, cuartel.getCorreoElectronico());
             String correo = cuartel.getCorreoElectronico();
             String regex = "^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Z|a-z]{2,6}$";
@@ -62,6 +49,18 @@ public class CuartelData {
             if (!correo.contains("@") || !correo.contains(".")) {
                 JOptionPane.showMessageDialog(null, "Por favor, ingrese un correo electrónico válido.");
                 return;
+
+                // } catch (NumberFormatException e) {
+                //JOptionPane.showMessageDialog(null, "debe ingresar numeros en las coordenadas");
+                // return;
+                //}
+                //try {
+                //  int telefono = Integer.parseInt(cuartel.getTelefono());
+                //ps.setInt(5, cuartel.getTelefono());
+                //} catch (NumberFormatException e) {
+                //  JOptionPane.showMessageDialog(null, "debe ingresar numeros en el numero de telefono");
+                // return;
+                //}
             }
 
             ps.executeUpdate();
@@ -76,31 +75,29 @@ public class CuartelData {
         }
 
     }
-    public List <Cuartel> mostrarTodosCuarteles(){
+
+    public List<Cuartel> mostrarTodosCuarteles() {
         List<Cuartel> cuarteles = new ArrayList<>();
         Cuartel c = null;
-        String sql = "SELECT nombreCuartel, direccion, telefono, correo FROM cuartel"; 
+        String sql = "SELECT nombreCuartel, direccion, telefono, correo FROM cuartel";
         try {
-            
-          PreparedStatement ps = con.prepareStatement(sql);
+
+            PreparedStatement ps = con.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
-           c = new Cuartel();
-           c.setNombreCuartel(rs.getString("nombreCuartel"));
-           c.setDireccion(rs.getString("direccion"));
-           c.setTelefono(rs.getInt("telefono"));
-           c.setCorreoElectronico(rs.getString("correo"));
-            cuarteles.add(c);
-            ps.close ();
-        } 
-        }catch (SQLException ex) {
-           JOptionPane.showMessageDialog(null, "hay un error al conectar con la base de datos"+ ex.getMessage());
+                c = new Cuartel();
+                c.setNombreCuartel(rs.getString("nombreCuartel"));
+                c.setDireccion(rs.getString("direccion"));
+                c.setTelefono(rs.getInt("telefono"));
+                c.setCorreoElectronico(rs.getString("correo"));
+                cuarteles.add(c);
+                ps.close();
+            }
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "hay un error al conectar con la base de datos" + ex.getMessage());
         }
         return cuarteles;
-            
+
     }
 
 }
- 
-
-       
