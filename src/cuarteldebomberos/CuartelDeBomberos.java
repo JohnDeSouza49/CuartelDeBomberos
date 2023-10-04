@@ -22,11 +22,11 @@ public class CuartelDeBomberos {
         Connection con = Conexion.getConexion();
 
 //        Bombero bob = new Bombero(45866683, "Mariano Carbone", LocalDate.of(1985, 8, 22), 1125896325, "AB +", 1, true);
-       BomberoData bd = new BomberoData();
+       //BomberoData bd = new BomberoData();
        //bd.DesactivarBombero(bob);
         //bd.modificarBomberoActivo(bob);
        //bd.guardarBombero(bob);
-System.out.println(bd.listarBomberos());
+//System.out.println(bd.listarBomberos());
         //Bombero bob = new Bombero(25896314, "Anibal Gimenez", LocalDate.of(1980, 3, 15), 1125896325, "AB RH+", 12, true);
         //BomberoData bd = new BomberoData();
         //bd.guardarBombero(bob);
@@ -45,7 +45,9 @@ System.out.println(bd.listarBomberos());
        // sd.guardarSiniestro(siniestro);
        //CuartelData cD = new CuartelData();
         //System.out.println(cD.mostrarTodosCuarteles());  
-        
+        SiniestroData sd= new SiniestroData();
+        Siniestro a= new Siniestro("incendio", LocalDate.MIN, 5, 2);
+        System.out.println(sd.distancias(a));
     } 
 }
 

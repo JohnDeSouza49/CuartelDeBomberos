@@ -9,12 +9,13 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import javax.swing.JOptionPane;
-
+import java.util.ArrayList;
+import java.util.List;
 public class SiniestroData {
        
      private Connection con = null;
     private String sql;
-
+    
     public SiniestroData() {
      con = Conexion.getConexion();
     
@@ -61,4 +62,17 @@ catch(SQLException ex){
         return distancia;
     }
     
+     public ArrayList distancias(Siniestro siniestro){
+         ArrayList dist = new ArrayList<Double>();
+         CuartelData cd= new CuartelData();
+         List<Cuartel> cuartel = new ArrayList<>();
+         cuartel=cd.mostrarTodosCuarteles();
+         for(Cuartel aux:cuartel){
+             double resultado=distanciaEntreDosPuntos(siniestro, aux);
+             dist.add(resultado);
+        }
+         return dist;
+         
+     }
+      
 }

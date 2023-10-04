@@ -41,6 +41,13 @@ public class Siniestro{
 
     public Siniestro() {
     }
+
+    public Siniestro(String tipo, LocalDate fechaSiniestro, int coordenadaX, int coordenadaY) {
+        this.tipo = tipo;
+        this.fechaSiniestro = fechaSiniestro;
+        this.coordenadaX = coordenadaX;
+        this.coordenadaY = coordenadaY;
+    }
     
 
     public int getCodigoSiniestro() {
