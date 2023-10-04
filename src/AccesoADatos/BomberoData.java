@@ -11,7 +11,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.swing.JOptionPane;
 
@@ -117,6 +118,32 @@ catch(SQLException ex){
                 }
   
       }
-      
+        public List<Bombero> listarBomberos() {
+
+        List<Bombero> bomberos = new ArrayList<>();
+        Bombero b = null;
+        try {
+            String sql = "SELECT * FROM bombero";
+            PreparedStatement ps = con.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                b = new Bombero();
+                b.setIdBombero(rs.getInt("idBombero"));
+                b.setDni(rs.getInt("dni"));
+                b.setNombreApellido(rs.getString("NombreApellido"));
+                b.setFechaNac(rs.getDate("fechaNac").toLocalDate());
+                b.setCelular(rs.getInt("celular"));
+                b.setCodigoBrigada(rs.getInt("codigoBrigada"));
+                b.setEstado(rs.getBoolean("estado"));
+                b.setGrupoSangineo(rs.getString("GrupoSanguineo"));
+                bomberos.add(b);
+            }
+            ps.close();
+
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, " Error al acceder a la tabla Alumno " + ex.getMessage());
+        }
+        return bomberos;
+    }
                
 }                

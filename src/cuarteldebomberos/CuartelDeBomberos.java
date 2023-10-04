@@ -21,12 +21,12 @@ public class CuartelDeBomberos {
     public static void main(String[] args) {
         Connection con = Conexion.getConexion();
 
-        Bombero bob = new Bombero(45866683, "Mariano Carbone", LocalDate.of(1985, 8, 22), 1125896325, "AB +", 1, true);
+//        Bombero bob = new Bombero(45866683, "Mariano Carbone", LocalDate.of(1985, 8, 22), 1125896325, "AB +", 1, true);
        BomberoData bd = new BomberoData();
        //bd.DesactivarBombero(bob);
         //bd.modificarBomberoActivo(bob);
-       bd.guardarBombero(bob);
-
+       //bd.guardarBombero(bob);
+System.out.println(bd.listarBomberos());
         //Bombero bob = new Bombero(25896314, "Anibal Gimenez", LocalDate.of(1980, 3, 15), 1125896325, "AB RH+", 12, true);
         //BomberoData bd = new BomberoData();
         //bd.guardarBombero(bob);
