@@ -80,7 +80,7 @@ public class CuartelData {
         
         List<Cuartel> cuarteles = new ArrayList<>();
         Cuartel c = null;
-        String sql = "SELECT cuartel(nombreCuartel, direccion, telefono, correo) ";
+        String sql = "SELECT (nombreCuartel, direccion, telefono, correo) FROM cuartel";
            
         try {
             
@@ -92,7 +92,8 @@ public class CuartelData {
            c.setDireccion("direccion");
            c.setTelefono("telefono");
            c.setCorreoElectronico("correo");
-            
+            cuarteles.add(c);
+            ps.close ();
         } 
         }catch (SQLException ex) {
            JOptionPane.showMessageDialog(null, "hay un error al conectar con la base de datos"+ ex.getMessage());
