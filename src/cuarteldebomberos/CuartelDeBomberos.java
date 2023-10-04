@@ -21,9 +21,9 @@ public class CuartelDeBomberos {
     public static void main(String[] args) {
         Connection con = Conexion.getConexion();
 
-        Bombero bob = new Bombero(1,25896314, "Anibal Gimenez", LocalDate.of(1980, 3, 15), 1125896325, "AB RH+", 1, true);
-        BomberoData bd = new BomberoData();
-        bd.modificarBomberoActivo(bob);
+        //Bombero bob = new Bombero(1,25896314, "Anibal Gimenez", LocalDate.of(1980, 3, 15), 1125896325, "AB RH+", 1, true);
+       // BomberoData bd = new BomberoData();
+        //bd.modificarBomberoActivo(bob);
         //bd.guardarBombero(bob);
 
         //Bombero bob = new Bombero(25896314, "Anibal Gimenez", LocalDate.of(1980, 3, 15), 1125896325, "AB RH+", 12, true);
@@ -42,8 +42,8 @@ public class CuartelDeBomberos {
        // Siniestro siniestro = new Siniestro("incendio", LocalDate.of(2020,2,21), 2, 2, "incendio en departamento", LocalDate.of(2020,2,21),9,1);
        // SiniestroData sd = new SiniestroData();
        // sd.guardarSiniestro(siniestro);
-       // CuartelData cD = new CuartelData();
-        //System.out.println(cD.mostrarTodosCuarteles());  
+       CuartelData cD = new CuartelData();
+        System.out.println(cD.mostrarTodosCuarteles());  
         
     } 
 }

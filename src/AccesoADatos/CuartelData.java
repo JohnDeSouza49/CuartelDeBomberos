@@ -84,12 +84,12 @@ public class CuartelData {
 
             PreparedStatement ps = con.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
-            while (rs.next()) {
-                c = new Cuartel();
-                c.setNombreCuartel(rs.getString("nombreCuartel"));
-                c.setDireccion(rs.getString("direccion"));
-                c.setTelefono(rs.getInt("telefono"));
-                c.setCorreoElectronico(rs.getString("correo"));
+            while (rs.next()) { 
+                String nombreCuartel=(rs.getString("nombreCuartel"));
+                String direccion=(rs.getString("direccion"));
+                int telefono=(rs.getInt("telefono"));
+                String CorreoElectronico=(rs.getString("correo"));
+                c = new Cuartel(nombreCuartel, direccion, telefono, CorreoElectronico);
                 cuarteles.add(c);
                 ps.close();
             }
