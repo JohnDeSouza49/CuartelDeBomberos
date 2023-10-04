@@ -1,6 +1,7 @@
 package AccesoADatos;
 
 import Entidades.Cuartel;
+import com.sun.org.apache.regexp.internal.recompile;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
@@ -79,17 +80,20 @@ public class CuartelData {
     public List<Cuartel> mostrarTodosCuarteles() {
         List<Cuartel> cuarteles = new ArrayList<>();
         Cuartel c = null;
-        String sql = "SELECT nombreCuartel, direccion, telefono, correo FROM cuartel";
+        String sql = "SELECT * FROM cuartel";
         try {
 
             PreparedStatement ps = con.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
-            while (rs.next()) { 
-                String nombreCuartel=(rs.getString("nombreCuartel"));
-                String direccion=(rs.getString("direccion"));
-                int telefono=(rs.getInt("telefono"));
-                String CorreoElectronico=(rs.getString("correo"));
-                c = new Cuartel(nombreCuartel, direccion, telefono, CorreoElectronico);
+             while (rs.next()) {
+               c = new Cuartel();
+               c.setCodigoCuartel(rs.getInt("codigoCuartel"));
+                c.setNombreCuartel(rs.getString("nombreCuartel"));
+                c.setDireccion(rs.getString("direccion"));
+                c.setCoordenadaX(rs.getInt("coordenadax"));
+                c.setCoordenadaY(rs.getInt("coordenaday"));
+                c.setTelefono(rs.getInt("telefono"));
+                c.setCorreoElectronico(rs.getString("correo"));
                 cuarteles.add(c);
                 ps.close();
             }
