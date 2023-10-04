@@ -10,10 +10,10 @@ private String nombreCuartel;
 private String direccion;
 private String coordenadaX;
 private String coordenadaY;
-private String telefono;
+private int telefono;
 private String correoElectronico;
 
-    public Cuartel(int codigoCuartel, String nombreCuartel, String direccion, String coordenadaX, String coordenadaY, String telefono, String correoElectronico) {
+    public Cuartel(int codigoCuartel, String nombreCuartel, String direccion, String coordenadaX, String coordenadaY, int telefono, String correoElectronico) {
         this.codigoCuartel = codigoCuartel;
         this.nombreCuartel = nombreCuartel;
         this.direccion = direccion;
@@ -24,7 +24,7 @@ private String correoElectronico;
         
     }
 
-    public Cuartel(String nombreCuartel, String direccion, String coordenadaX, String coordenadaY, String telefono, String correoElectronico) {
+    public Cuartel(String nombreCuartel, String direccion, String coordenadaX, String coordenadaY, int telefono, String correoElectronico) {
         this.nombreCuartel = nombreCuartel;
         this.direccion = direccion;
         this.coordenadaX = coordenadaX;
@@ -78,11 +78,11 @@ private String correoElectronico;
         this.coordenadaY = coordenadaY;
     }
 
-    public String getTelefono() {
+    public int getTelefono() {
         return telefono;
     }
 
-    public void setTelefono(String telefono) {
+    public void setTelefono(int telefono) {
         this.telefono = telefono;
     }
 

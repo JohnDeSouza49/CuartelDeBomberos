@@ -45,14 +45,14 @@ public class CuartelData {
                 JOptionPane.showMessageDialog(null, "debe ingresar numeros en las coordenadas");
                 return;
             }
-            try {
-                int telefono = Integer.parseInt(cuartel.getTelefono());
-                ps.setInt(5, telefono);
+            //try {
+              //  int telefono = Integer.parseInt(cuartel.getTelefono());
+               // ps.setInt(5, telefono);
                 //ps.setInt(5, cuartel.getTelefono());
-            } catch (NumberFormatException e) {
-                JOptionPane.showMessageDialog(null, "debe ingresar numeros en el numero de telefono");
-                return;
-            }
+            //} catch (NumberFormatException e) {
+              //  JOptionPane.showMessageDialog(null, "debe ingresar numeros en el numero de telefono");
+               // return;
+            //}
 
             ps.setString(6, cuartel.getCorreoElectronico());
             String correo = cuartel.getCorreoElectronico();
@@ -77,21 +77,19 @@ public class CuartelData {
 
     }
     public List <Cuartel> mostrarTodosCuarteles(){
-        
         List<Cuartel> cuarteles = new ArrayList<>();
         Cuartel c = null;
-        String sql = "SELECT (nombreCuartel, direccion, telefono, correo) FROM cuartel";
-           
+        String sql = "SELECT nombreCuartel, direccion, telefono, correo FROM cuartel"; 
         try {
             
           PreparedStatement ps = con.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
-                c = new Cuartel();
-           c.setNombreCuartel("nombreCuartel");
-           c.setDireccion("direccion");
-           c.setTelefono("telefono");
-           c.setCorreoElectronico("correo");
+           c = new Cuartel();
+           c.setNombreCuartel(rs.getString("nombreCuartel"));
+           c.setDireccion(rs.getString("direccion"));
+           c.setTelefono(rs.getInt("telefono"));
+           c.setCorreoElectronico(rs.getString("correo"));
             cuarteles.add(c);
             ps.close ();
         } 

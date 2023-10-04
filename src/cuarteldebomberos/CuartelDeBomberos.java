@@ -42,15 +42,7 @@ public class CuartelDeBomberos {
        // SiniestroData sd = new SiniestroData();
        // sd.guardarSiniestro(siniestro);
         CuartelData cD = new CuartelData();
-         List<Cuartel> cuarteles = cD.mostrarTodosCuarteles();
-                
-        for (Cuartel cuartel : cuarteles) {
-            System.out.println("Nombre de Cuartel: " + cuartel.getNombreCuartel());
-            System.out.println("Dirección: " + cuartel.getDireccion());
-            System.out.println("Teléfono: " + cuartel.getTelefono());
-            System.out.println("Correo Electrónico: " + cuartel.getCorreoElectronico());
-            System.out.println("==============================");
-        }   
+        System.out.println(cD.mostrarTodosCuarteles());  
     } 
 }
 

@@ -47,9 +47,13 @@ public class BomberoData {
 catch(SQLException ex){
     JOptionPane.showMessageDialog(null, "hay un error al cargar el bombero"+ex.getMessage());
     
-                }
+                } 
 
 }
+   public void modificarBombero( Bombero bombero){
+       
+   }  
+     
 }
                
                   
