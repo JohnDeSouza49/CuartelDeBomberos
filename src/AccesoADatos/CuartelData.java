@@ -7,6 +7,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.regex.Matcher;
@@ -39,9 +41,7 @@ public class CuartelData {
                 ps.setInt(3, coordenadaX);
                 ps.setInt(4, coordenadaY);
 
-                //ps.setInt(3, cuartel.getCoordenadaX());
-                // ps.setInt(4, cuartel.getCoordenadaY());
-            } catch (NumberFormatException e) {
+               } catch (NumberFormatException e) {
                 JOptionPane.showMessageDialog(null, "debe ingresar numeros en las coordenadas");
                 return;
             }
@@ -76,5 +76,32 @@ public class CuartelData {
         }
 
     }
+    public List <Cuartel> mostrarTodosCuarteles(){
+        
+        List<Cuartel> cuarteles = new ArrayList<>();
+        Cuartel c = null;
+        String sql = "SELECT cuartel(nombreCuartel, direccion, telefono, correo) ";
+           
+        try {
+            
+          PreparedStatement ps = con.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                c = new Cuartel();
+           c.setNombreCuartel("nombreCuartel");
+           c.setDireccion("direccion");
+           c.setTelefono("telefono");
+           c.setCorreoElectronico("correo");
+            
+        } 
+        }catch (SQLException ex) {
+           JOptionPane.showMessageDialog(null, "hay un error al conectar con la base de datos"+ ex.getMessage());
+        }
+        return cuarteles;
+            
+    }
 
 }
+ 
+
+       

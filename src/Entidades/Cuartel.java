@@ -73,7 +73,8 @@ private String correoElectronico;
         return coordenadaY;
     }
 
-    public void setCoordenadaY(String coordenadaY) {
+    public void setCoordenadaY(String
+            coordenadaY) {
         this.coordenadaY = coordenadaY;
     }
 

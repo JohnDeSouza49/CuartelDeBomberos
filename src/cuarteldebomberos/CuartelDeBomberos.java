@@ -13,6 +13,7 @@ import Entidades.Siniestro;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.time.Month;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 public class CuartelDeBomberos {
@@ -33,14 +34,23 @@ public class CuartelDeBomberos {
         // System.out.println(bd.brigadasLibres());
         // System.out.println(bd.brigadasAsignadas());
         //Cuartel c2 = new Cuartel("Cuartel2", "Calle2", 4, 5, "159254123" "cuartel2@gmail.com");
-        Cuartel c3 = new Cuartel("Cuartel3", "Calle3", "-1", "5", "1145896325", "cuartel3@gmail.com");
-        CuartelData cu3 = new CuartelData();
-        cu3.crearCuartel(c3);
+       // Cuartel c3 = new Cuartel("Cuartel3", "Calle3", "-1", "5", "1145896325", "cuartel3@gmail.com");
+        //CuartelData cu3 = new CuartelData();
+        //cu3.crearCuartel(c3);
         
        // Siniestro siniestro = new Siniestro("incendio", LocalDate.of(2020,2,21), 2, 2, "incendio en departamento", LocalDate.of(2020,2,21),9,1);
        // SiniestroData sd = new SiniestroData();
        // sd.guardarSiniestro(siniestro);
-        
+        CuartelData cD = new CuartelData();
+         List<Cuartel> cuarteles = cD.mostrarTodosCuarteles();
+                
+        for (Cuartel cuartel : cuarteles) {
+            System.out.println("Nombre de Cuartel: " + cuartel.getNombreCuartel());
+            System.out.println("Dirección: " + cuartel.getDireccion());
+            System.out.println("Teléfono: " + cuartel.getTelefono());
+            System.out.println("Correo Electrónico: " + cuartel.getCorreoElectronico());
+            System.out.println("==============================");
+        }   
     } 
 }
 
