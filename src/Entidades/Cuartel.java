@@ -8,12 +8,12 @@ public class Cuartel {
 private int codigoCuartel;
 private String nombreCuartel;
 private String direccion;
-private int coordenadaX;
-private int coordenadaY;
-private int telefono;
+private String coordenadaX;
+private String coordenadaY;
+private String telefono;
 private String correoElectronico;
 
-    public Cuartel(int codigoCuartel, String nombreCuartel, String direccion, int coordenadaX, int coordenadaY, int telefono, String correoElectronico) {
+    public Cuartel(int codigoCuartel, String nombreCuartel, String direccion, String coordenadaX, String coordenadaY, String telefono, String correoElectronico) {
         this.codigoCuartel = codigoCuartel;
         this.nombreCuartel = nombreCuartel;
         this.direccion = direccion;
@@ -24,7 +24,7 @@ private String correoElectronico;
         
     }
 
-    public Cuartel(String nombreCuartel, String direccion, int coordenadaX, int coordenadaY, int telefono, String correoElectronico) {
+    public Cuartel(String nombreCuartel, String direccion, String coordenadaX, String coordenadaY, String telefono, String correoElectronico) {
         this.nombreCuartel = nombreCuartel;
         this.direccion = direccion;
         this.coordenadaX = coordenadaX;
@@ -61,27 +61,27 @@ private String correoElectronico;
         this.direccion = direccion;
     }
 
-    public int getCoordenadaX() {
+    public String getCoordenadaX() {
         return coordenadaX;
     }
 
-    public void setCoordenadaX(int coordenadaX) {
+    public void setCoordenadaX(String coordenadaX) {
         this.coordenadaX = coordenadaX;
     }
 
-    public int getCoordenadaY() {
+    public String getCoordenadaY() {
         return coordenadaY;
     }
 
-    public void setCoordenadaY(int coordenadaY) {
+    public void setCoordenadaY(String coordenadaY) {
         this.coordenadaY = coordenadaY;
     }
 
-    public int getTelefono() {
+    public String getTelefono() {
         return telefono;
     }
 
-    public void setTelefono(int telefono) {
+    public void setTelefono(String telefono) {
         this.telefono = telefono;
     }
 

@@ -32,13 +32,14 @@ public class CuartelDeBomberos {
         //bd.guardarBrigada(nueva);
         // System.out.println(bd.brigadasLibres());
         // System.out.println(bd.brigadasAsignadas());
-        //Cuartel c2 = new Cuartel("Cuartel2", "Calle2", 4, 5, 1146668951, "cuartel2@gmail.com");
-        //CuartelData cu2 = new CuartelData();
-        //cu2.crearCuartel(c2);
+        //Cuartel c2 = new Cuartel("Cuartel2", "Calle2", 4, 5, "159254123" "cuartel2@gmail.com");
+        Cuartel c3 = new Cuartel("Cuartel3", "Calle3", "-1", "5", "1145896325", "cuartel3@gmail.com");
+        CuartelData cu3 = new CuartelData();
+        cu3.crearCuartel(c3);
         
-        Siniestro siniestro = new Siniestro("incendio", LocalDate.of(2020,2,21), 2, 2, "incendio en departamento", LocalDate.of(2020,2,21),9,1);
-        SiniestroData sd = new SiniestroData();
-        sd.guardarSiniestro(siniestro);
+       // Siniestro siniestro = new Siniestro("incendio", LocalDate.of(2020,2,21), 2, 2, "incendio en departamento", LocalDate.of(2020,2,21),9,1);
+       // SiniestroData sd = new SiniestroData();
+       // sd.guardarSiniestro(siniestro);
         
     } 
 }
