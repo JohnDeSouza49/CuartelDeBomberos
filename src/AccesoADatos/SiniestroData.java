@@ -1,5 +1,6 @@
 package AccesoADatos;
 
+import Entidades.Cuartel;
 import Entidades.Siniestro;
 import java.sql.Connection;
 import java.sql.Date;
@@ -48,5 +49,16 @@ catch(SQLException ex){
                 }
 
 }
+      public double distanciaEntreDosPuntos(Siniestro siniestro, Cuartel cuartel) {
+        
+        int x1 =siniestro.getCoordenadaX();
+        int y1 = siniestro.getCoordenadaY();
+
+        int x2 = cuartel.getCoordenadaX();
+        int y2 = cuartel.getCoordenadaY();
+
+        double distancia = Math.sqrt(Math.pow(x2 - x1, 2) + Math.pow(y2 - y1, 2));
+        return distancia;
+    }
     
 }
