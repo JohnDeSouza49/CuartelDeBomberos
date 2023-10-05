@@ -12,6 +12,7 @@ private int coordenadaX;
 private int coordenadaY;
 private int telefono;
 private String correoElectronico;
+private double distancia;
 
     public Cuartel(int codigoCuartel, String nombreCuartel, String direccion, int coordenadaX, int coordenadaY, int telefono, String correoElectronico) {
         this.codigoCuartel = codigoCuartel;
@@ -37,6 +38,25 @@ private String correoElectronico;
         this.direccion = direccion;
         this.telefono = telefono;
         this.correoElectronico = correoElectronico;
+    }
+
+    public Cuartel(int codigoCuartel, String nombreCuartel, String direccion, int telefono, String correoElectronico, double distancia) {
+        this.codigoCuartel = codigoCuartel;
+        this.nombreCuartel = nombreCuartel;
+        this.direccion = direccion;
+        this.telefono = telefono;
+        this.correoElectronico = correoElectronico;
+        this.distancia = distancia;
+    }
+
+  
+
+    public double getDistancia() {
+        return distancia;
+    }
+
+    public void setDistancia(double distancia) {
+        this.distancia = distancia;
     }
 
     public Cuartel() {

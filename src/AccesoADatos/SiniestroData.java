@@ -62,17 +62,47 @@ catch(SQLException ex){
         return distancia;
     }
     
-     public ArrayList distancias(Siniestro siniestro){
-         ArrayList dist = new ArrayList<Double>();
+     public Cuartel cuartelMasCercano(Siniestro siniestro){
+         ArrayList<Cuartel> dist = new ArrayList<>();
+         double resultado=0;
+         double mayor=0;
+         double menor=0;
+         Cuartel cercano=null;
+         Cuartel lejano=null;
          CuartelData cd= new CuartelData();
          List<Cuartel> cuartel = new ArrayList<>();
          cuartel=cd.mostrarTodosCuarteles();
          for(Cuartel aux:cuartel){
-             double resultado=distanciaEntreDosPuntos(siniestro, aux);
-             dist.add(resultado);
-        }
-         return dist;
-         
+              resultado=distanciaEntreDosPuntos(siniestro, aux);
+              Cuartel a= new Cuartel(aux.getCodigoCuartel(), aux.getNombreCuartel(), aux.getDireccion(), aux.getTelefono(), aux.getCorreoElectronico(), resultado);
+              dist.add(a);
+              
      }
+         for (int i = 0; i < dist.size(); i++) {
+             Cuartel cuartelActual=dist.get(i); 
+             double disActual=cuartelActual.getDistancia();
+             
+             if(disActual>mayor){
+                 mayor=disActual;
+                 lejano=cuartelActual;
+             }
+       
+   } 
+         menor=mayor;
+               for (int i = 0; i < dist.size(); i++) {
+             Cuartel cuartelActual=dist.get(i);
+             double disActual=cuartelActual.getDistancia();
+             if(disActual<menor){
+                 menor=disActual;
+                 cercano=cuartelActual;
+             }
       
+   }
+               System.out.println(cercano.getDistancia());
+  
+         return cercano;
+
 }
+     }
+     
+     
