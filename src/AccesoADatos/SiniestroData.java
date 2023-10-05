@@ -10,13 +10,16 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import javax.swing.JOptionPane;
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
-public class SiniestroData {
+public class SiniestroData{
        
      private Connection con = null;
     private String sql;
     
-    public SiniestroData() {
+    public SiniestroData()  {
      con = Conexion.getConexion();
     
 }
@@ -62,13 +65,9 @@ catch(SQLException ex){
         return distancia;
     }
     
-     public Cuartel cuartelMasCercano(Siniestro siniestro){
+     public ArrayList cuartelMasCercano(Siniestro siniestro){
          ArrayList<Cuartel> dist = new ArrayList<>();
          double resultado=0;
-         double mayor=0;
-         double menor=0;
-         Cuartel cercano=null;
-         Cuartel lejano=null;
          CuartelData cd= new CuartelData();
          List<Cuartel> cuartel = new ArrayList<>();
          cuartel=cd.mostrarTodosCuarteles();
@@ -77,32 +76,19 @@ catch(SQLException ex){
               Cuartel a= new Cuartel(aux.getCodigoCuartel(), aux.getNombreCuartel(), aux.getDireccion(), aux.getTelefono(), aux.getCorreoElectronico(), resultado);
               dist.add(a);
               
-     }
-         for (int i = 0; i < dist.size(); i++) {
-             Cuartel cuartelActual=dist.get(i); 
-             double disActual=cuartelActual.getDistancia();
-             
-             if(disActual>mayor){
-                 mayor=disActual;
-                 lejano=cuartelActual;
-             }
-       
-   } 
-         menor=mayor;
-               for (int i = 0; i < dist.size(); i++) {
-             Cuartel cuartelActual=dist.get(i);
-             double disActual=cuartelActual.getDistancia();
-             if(disActual<menor){
-                 menor=disActual;
-                 cercano=cuartelActual;
-             }
-      
-   }
-               System.out.println(cercano.getDistancia());
-  
-         return cercano;
+     }          
+  Collections.sort(dist, new Comparator<Cuartel>() {
+             @Override
+             public int compare(Cuartel t, Cuartel t1) { 
+        double dist1=t.getDistancia();      
+        double dist2=t1.getDistancia();
+        return (int) (dist1 - dist2);
+    }
+         });
+         return dist;
 
 }
+     
      }
      
      

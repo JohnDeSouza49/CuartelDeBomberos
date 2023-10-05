@@ -120,9 +120,10 @@ private double distancia;
 
     @Override
     public String toString() {
-        return "Cuartel{" + "codigoCuartel=" + codigoCuartel + ", nombreCuartel=" + nombreCuartel + ", direccion=" + direccion + " telefono=" + telefono + ", correoElectronico=" + correoElectronico + '}';
+        return "Cuartel{" + "codigoCuartel=" + codigoCuartel + ", nombreCuartel=" + nombreCuartel + ", direccion=" + direccion + ", telefono=" + telefono + ", correoElectronico=" + correoElectronico + ", distancia=" + distancia + '}';
     }
 
+  
   
     
     
