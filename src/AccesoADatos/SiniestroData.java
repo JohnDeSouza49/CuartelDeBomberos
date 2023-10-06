@@ -1,5 +1,6 @@
 package AccesoADatos;
 
+import Entidades.Brigada;
 import Entidades.Cuartel;
 import Entidades.Siniestro;
 import java.sql.Connection;
@@ -88,6 +89,31 @@ catch(SQLException ex){
          return dist;
 
 }
+     public Brigada AsignarBrigada(ArrayList dist, Siniestro siniestro){
+         BrigadaData bd = new BrigadaData();
+         CuartelData cd= new CuartelData();
+         Brigada asignada=null;
+              List<Brigada> brigadas = new ArrayList<>();
+              brigadas=bd.brigadasLibres();
+         for (int i = 0; i < dist.size(); i++) {
+             Cuartel actual= (Cuartel) dist.get(i);
+             Cuartel cA=cd.BuscarCuartel(actual.getTelefono());
+             for(Brigada aux:brigadas){
+                 if(aux.getNumeroCuartel()==cA.getCodigoCuartel()){
+                  if(siniestro.getTipo().equalsIgnoreCase(aux.getEspecialidad())){
+                      asignada=aux;
+                  }
+                            
+             }
+                 
+              
+              
+         }
+     }
+         return asignada;
+             
+     
+     }
      
      }
      
