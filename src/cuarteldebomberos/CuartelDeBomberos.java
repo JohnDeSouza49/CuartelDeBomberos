@@ -2,6 +2,7 @@
 package cuarteldebomberos;
 
 import AccesoADatos.BomberoData;
+import AccesoADatos.BrigadaData;
 import java.time.LocalDate;
 import AccesoADatos.Conexion;
 import AccesoADatos.CuartelData;
@@ -13,6 +14,7 @@ import Entidades.Siniestro;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.time.Month;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -31,7 +33,7 @@ Bombero bob = new Bombero(23456781, "Nahuel Martinez", LocalDate.of(1880, 4, 16)
         //BomberoData bd = new BomberoData();
         bd.guardarBombero(bob);
         //BrigadaData bd= new BrigadaData();
-        //Brigada nueva= new Brigada("Omega", "salvamento en derrumbes", false, 1);
+   
         //bd.guardarBrigada(nueva);
         // System.out.println(bd.brigadasLibres());
         // System.out.println(bd.brigadasAsignadas());
@@ -40,15 +42,26 @@ Bombero bob = new Bombero(23456781, "Nahuel Martinez", LocalDate.of(1880, 4, 16)
         //CuartelData cu3 = new CuartelData();
         //Cuartel c3 = new Cuartel("Cuartel2", "Salta 451", -1, 5, 1145896325, "cuartel3@gmail.com");
         //cu3.crearCuartel(c3);
-        
-       // Siniestro siniestro = new Siniestro("incendio", LocalDate.of(2020,2,21), 2, 2, "incendio en departamento", LocalDate.of(2020,2,21),9,1);
-       // SiniestroData sd = new SiniestroData();
+        //System.out.println(cu3.BuscarCuartel(1145678921));
+        Siniestro siniestro = new Siniestro("incendios", LocalDate.of(2020,2,21), 2, 2, "incendio en departamento", LocalDate.of(2020,2,21),9,1);
+       SiniestroData sd = new SiniestroData();
+      BrigadaData bd= new BrigadaData();
+     //
+      //Brigada nueva= new Brigada("Beta", "Incendio", true, 2);
+      //bd.guardarBrigada(nueva);
+    ArrayList<Cuartel> dist = new ArrayList<>();
+        System.out.println(dist=sd.cuartelMasCercano(siniestro));
+        System.out.println(sd.AsignarBrigada(dist, siniestro));
        // sd.guardarSiniestro(siniestro);
        //CuartelData cD = new CuartelData();
         //System.out.println(cD.mostrarTodosCuarteles());  
+<<<<<<< HEAD
       // SiniestroData sd= new SiniestroData();
         //Siniestro a= new Siniestro("incendio", LocalDate.MIN, 5, 2);
        // System.out.println(sd.cuartelMasCercano(a));
+=======
+       
+>>>>>>> 154630da7631555586cea99fae217ab7c94ec360
         
     } 
 }

@@ -103,5 +103,31 @@ public class CuartelData {
         return cuarteles;
 
     }
-
+    
+    public Cuartel BuscarCuartel( int telefono){
+          String sql="SELECT * from cuartel where telefono=?";
+          Cuartel c= new Cuartel();
+        try {
+            PreparedStatement ps= con.prepareStatement(sql);
+            ps.setInt(1, telefono);
+            ResultSet rs= ps.executeQuery();
+            while(rs.next()){
+                  c = new Cuartel();
+                  int codigo=(rs.getInt("codigoCuartel"));
+               String nombre=(rs.getString("nombreCuartel"));
+                 String direc=(rs.getString("direccion"));
+                 int x =(rs.getInt("coordenadax"));
+                 int y=(rs.getInt("coordenaday"));
+                 int tel=(telefono);
+                 String correo=(rs.getString("correo"));
+                   c = new Cuartel(codigo, nombre, direc, codigo, codigo, telefono, correo);
+                ps.close();
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(CuartelData.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return c;
+          
+    }
+            
 }

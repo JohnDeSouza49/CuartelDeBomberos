@@ -50,7 +50,7 @@ public class BrigadaData {
      public List<Brigada> brigadasLibres() {
          List<Brigada> brigadas = new ArrayList<>();
          Brigada b=null;
-         String sql="SELECT codigoBrigada, nombreBrigada, especialidad, numeroCuartel from brigada where libre=1";
+         String sql="SELECT codigoBrigada, nombreBrigada, especialidad,  numeroCuartel from brigada where libre=1";
         try {
             PreparedStatement ps= con.prepareStatement(sql);
             ResultSet rs= ps.executeQuery();
@@ -60,6 +60,7 @@ public class BrigadaData {
                 b.setNombreBrigada(rs.getString("nombreBrigada"));
                 b.setEspecialidad(rs.getString("especialidad"));
                 b.setNumeroCuartel(rs.getInt("numeroCuartel"));
+                b.setLibre(true);
                 brigadas.add(b);
                 ps.close();
             }
