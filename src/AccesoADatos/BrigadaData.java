@@ -92,4 +92,29 @@ public class BrigadaData {
         }
         return brigadas;
      }
+         public List<Brigada> brigadaslibresxCuartel(int id){
+             List<Brigada> brigadas = new ArrayList<>();
+             Brigada b=null;
+             String sql="SELECT * FROM brigada WHERE numeroCuartel=? and libre=1";
+        try {
+            PreparedStatement ps=con.prepareStatement(sql);
+            ps.setInt(1, id);
+             ResultSet rs= ps.executeQuery();
+            while(rs.next()){
+                b= new Brigada();
+                b.setCodigoBrigada(rs.getInt("codigoBrigada"));
+                b.setNombreBrigada(rs.getString("nombreBrigada"));
+                b.setEspecialidad(rs.getString("especialidad"));
+                b.setNumeroCuartel(rs.getInt("numeroCuartel"));
+                b.setLibre(true);
+                brigadas.add(b);
+                ps.close();
+         }   
+        } catch (SQLException ex) {
+            Logger.getLogger(BrigadaData.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return brigadas;
+             
+         }
+         
 }
