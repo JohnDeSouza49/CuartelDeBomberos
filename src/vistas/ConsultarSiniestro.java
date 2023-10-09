@@ -30,8 +30,8 @@ public class ConsultarSiniestro extends javax.swing.JInternalFrame {
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        jBBuscarSiniestro = new javax.swing.JButton();
+        jBGuardarCambios = new javax.swing.JButton();
 
         setTitle("SINIESTROS ACUALES");
 
@@ -50,9 +50,9 @@ public class ConsultarSiniestro extends javax.swing.JInternalFrame {
         ));
         jScrollPane1.setViewportView(jTable1);
 
-        jButton1.setText("BUSCAR");
+        jBBuscarSiniestro.setText("BUSCAR");
 
-        jButton2.setText("GUARDAR CAMBIOS");
+        jBGuardarCambios.setText("GUARDAR CAMBIOS");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -68,9 +68,9 @@ public class ConsultarSiniestro extends javax.swing.JInternalFrame {
                         .addComponent(jLabel1))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(78, 78, 78)
-                        .addComponent(jButton1)
+                        .addComponent(jBBuscarSiniestro)
                         .addGap(144, 144, 144)
-                        .addComponent(jButton2)))
+                        .addComponent(jBGuardarCambios)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -80,8 +80,8 @@ public class ConsultarSiniestro extends javax.swing.JInternalFrame {
                 .addComponent(jLabel1)
                 .addGap(68, 68, 68)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2))
+                    .addComponent(jBBuscarSiniestro)
+                    .addComponent(jBGuardarCambios))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 96, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(67, 67, 67))
@@ -103,8 +103,8 @@ public class ConsultarSiniestro extends javax.swing.JInternalFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jBBuscarSiniestro;
+    private javax.swing.JButton jBGuardarCambios;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
