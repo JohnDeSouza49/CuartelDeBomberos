@@ -35,7 +35,7 @@ public class CuartelDeBomberos {
        BrigadaData bd= new BrigadaData();
       
         //bd.guardarBrigada(nueva);
-        System.out.println(bd.brigadasLibres());
+       // System.out.println(bd.brigadaslibresxCuartel(1));
         // System.out.println(bd.brigadasAsignadas());
        // Cuartel c2 = new Cuartel("Cuartel2", "Calle2", 4, 5, "159254123" "cuartel2@gmail.com");
        
@@ -43,8 +43,8 @@ public class CuartelDeBomberos {
         //Cuartel c3 = new Cuartel("Cuartel2", "Salta 451", -1, 5, 1145896325, "cuartel3@gmail.com");
         //cu3.crearCuartel(c3);
         //System.out.println(cu3.BuscarCuartel(1145678921));
-        Siniestro siniestro = new Siniestro("incendios", LocalDate.of(2020,2,21), 2, 2, "incendio en departamento", LocalDate.of(2020,2,21),9,1);
-         SiniestroData sd = new SiniestroData();
+        //Siniestro siniestro = new Siniestro("incendios", LocalDate.of(2020,2,21), 2, 2, "incendio en departamento", LocalDate.of(2020,2,21),9,1);
+         //SiniestroData sd = new SiniestroData();
         
      //
      // Brigada nueva= new Brigada("Beta", "Incendios", true, 2);
@@ -56,9 +56,9 @@ public class CuartelDeBomberos {
        //CuartelData cD = new CuartelData();
         //System.out.println(cD.mostrarTodosCuarteles());  
 
-      // SiniestroData sd= new SiniestroData();
-        //Siniestro a= new Siniestro("incendio", LocalDate.MIN, 5, 2);
-       // System.out.println(sd.cuartelMasCercano(a));
+      SiniestroData sd= new SiniestroData();
+        Siniestro a= new Siniestro("Incendios", LocalDate.MIN, 5, 2);
+       System.out.println(sd.AsignarBrigada(a));
 
         
     } 

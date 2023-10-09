@@ -11,7 +11,6 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import javax.swing.JOptionPane;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
@@ -66,7 +65,7 @@ catch(SQLException ex){
         return distancia;
     }
     
-     public ArrayList cuartelMasCercano(Siniestro siniestro){
+     public List<Brigada> cuartelMasCercano(Siniestro siniestro){
          ArrayList<Cuartel> dist = new ArrayList<>();
          double resultado=0;
          CuartelData cd= new CuartelData();
@@ -86,35 +85,41 @@ catch(SQLException ex){
         return (int) (dist1 - dist2);
     }
          });
-         return dist;
+           BrigadaData bd = new BrigadaData();
+           List<Brigada> brigadasCerca = new ArrayList<>();
+           List<Brigada> brigadas = new ArrayList<>();
+               for (int i = 0; i < dist.size(); i++) {
+             Cuartel actual= (Cuartel) dist.get(i);
+             Cuartel cA=cd.BuscarCuartel(actual.getTelefono());
+                brigadasCerca=bd.brigadaslibresxCuartel(cA.getCodigoCuartel());
+                for(Brigada aux:brigadasCerca){
+                    Brigada b=new Brigada(aux.getCodigoBrigada(), aux.getNombreBrigada(), aux.getEspecialidad(), aux.isLibre(), aux.getNumeroCuartel());
+                    brigadas.add(b);
+                }
+                  
+                           
+             }
+          
+         System.out.println(dist);
+         return brigadas;
 
 }
-     public Brigada AsignarBrigada(ArrayList dist, Siniestro siniestro){
+     public Brigada AsignarBrigada(Siniestro siniestro){
          BrigadaData bd = new BrigadaData();
          CuartelData cd= new CuartelData();
          Brigada asignada=null;
-              List<Brigada> brigadas = new ArrayList<>();
-              brigadas=bd.brigadasLibres();
-         for (int i = 0; i < dist.size(); i++) {
-             Cuartel actual= (Cuartel) dist.get(i);
-             Cuartel cA=cd.BuscarCuartel(actual.getTelefono());
-             for(Brigada aux:brigadas){
-                 if(aux.getNumeroCuartel()==cA.getCodigoCuartel()){
-                  if(siniestro.getTipo().equalsIgnoreCase(aux.getEspecialidad())){
-                      asignada=aux;
-                  }
-                            
-             }
-                 
-              
-              
-         }
+         List<Brigada> brigadas = new ArrayList<>();
+          brigadas=  cuartelMasCercano(siniestro);
+          String tipo=siniestro.getTipo();
+         for(Brigada aux:brigadas){
+             String esp= aux.getEspecialidad();
+               if(esp.equalsIgnoreCase(tipo)){
+                   asignada=aux;
+                   break;
+               }
+
      }
-         return asignada;
-             
-     
+     return asignada;
      }
-     
      }
-     
      
