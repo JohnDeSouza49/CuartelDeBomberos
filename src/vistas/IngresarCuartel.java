@@ -8,12 +8,12 @@ package vistas;
  *
  * @author Ivan Martin
  */
-public class IngreasarCuartel extends javax.swing.JInternalFrame {
+public class IngresarCuartel extends javax.swing.JInternalFrame {
 
     /**
      * Creates new form IngreasarCuartel
      */
-    public IngreasarCuartel() {
+    public IngresarCuartel() {
         initComponents();
     }
 
@@ -77,6 +77,11 @@ public class IngreasarCuartel extends javax.swing.JInternalFrame {
         jBEliminar.setText("ELIMINAR");
 
         jBSalir.setText("SALIR");
+        jBSalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBSalirActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -193,6 +198,10 @@ public class IngreasarCuartel extends javax.swing.JInternalFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jBSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBSalirActionPerformed
+         this.dispose();
+    }//GEN-LAST:event_jBSalirActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

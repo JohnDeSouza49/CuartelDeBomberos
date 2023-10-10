@@ -69,6 +69,11 @@ public class IngresarBrigada extends javax.swing.JInternalFrame {
         jBEliminarBi.setText("ELIMINAR");
 
         jBSalirBi.setText("SALIR");
+        jBSalirBi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBSalirBiActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -175,6 +180,11 @@ public class IngresarBrigada extends javax.swing.JInternalFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jBSalirBiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBSalirBiActionPerformed
+       
+        this.dispose();
+    }//GEN-LAST:event_jBSalirBiActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
