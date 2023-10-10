@@ -126,7 +126,10 @@ public class Cuartel {
 
     @Override
     public String toString() {
-        return "Cuartel{" + "codigoCuartel=" + codigoCuartel + ", nombreCuartel=" + nombreCuartel + ", direccion=" + direccion + ", coordenadaX=" + coordenadaX + ", coordenadaY=" + coordenadaY + ", telefono=" + telefono + ", correoElectronico=" + correoElectronico + ", distancia=" + distancia + ", estado=" + estado + '}';
+        return codigoCuartel+", "+ nombreCuartel+", "+direccion ;
     }
+
+ 
+    
 
 }

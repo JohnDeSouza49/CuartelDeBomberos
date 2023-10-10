@@ -1,21 +1,28 @@
 package vistas;
 
 import AccesoADatos.BrigadaData;
+import AccesoADatos.CuartelData;
 import Entidades.Brigada;
+import Entidades.Cuartel;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.table.DefaultTableModel;
 
 public class ConsultarBrigadas extends javax.swing.JInternalFrame {
     private BrigadaData bd;
+    private CuartelData cd;
     private DefaultTableModel modelo = new DefaultTableModel();
     private DefaultTableModel modelo2 =new DefaultTableModel();
+    private DefaultComboBoxModel modelito= null;
     
-    public ConsultarBrigadas(BrigadaData bd) {
+    public ConsultarBrigadas(BrigadaData bd, CuartelData cd) {
         this.bd=bd;
+        this.cd=cd;
         initComponents();
         armarEncabezado();
         armarEncabezado2();
+        llenarCB();
     }
 
     @SuppressWarnings("unchecked")
@@ -151,6 +158,12 @@ public class ConsultarBrigadas extends javax.swing.JInternalFrame {
 
         jLabel3.setText("Cuarteles");
 
+        jCBCuarteles.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCBCuartelesActionPerformed(evt);
+            }
+        });
+
         jBSalir.setText("SALIR");
         jBSalir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -235,6 +248,11 @@ public class ConsultarBrigadas extends javax.swing.JInternalFrame {
            }
     }//GEN-LAST:event_jRBEnServicioActionPerformed
 
+    private void jCBCuartelesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCBCuartelesActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_jCBCuartelesActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup buttonGroup1;
@@ -283,4 +301,19 @@ private void armarEncabezado() {
         modelo.removeRow(f);
     }
 }
+      private void borrarFilasCuarte(){
+    int filas=jTListar.getRowCount()-1;
+    for(int f=filas;f>=0;f--){
+        modelo.removeRow(f);
+    }
+}
+      private void llenarCB(){
+                modelito= new DefaultComboBoxModel();
+                jCBCuarteles.setModel(modelito);
+                for(Cuartel aux:cd.mostrarTodosCuarteles()){
+                    modelito.addElement(aux);
+ 
+                }
+
+            }
 }

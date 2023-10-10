@@ -5,6 +5,7 @@
 package vistas;
 
 import AccesoADatos.BrigadaData;
+import AccesoADatos.CuartelData;
 
 /**
  *
@@ -16,9 +17,10 @@ public class CuartelBomberosEquipo57 extends javax.swing.JFrame {
      * Creates new form Ventana2
      */
     private BrigadaData bd;
+     private CuartelData cd;
     public CuartelBomberosEquipo57() {
         bd= new BrigadaData();
-       
+       cd= new CuartelData();
         initComponents();
     }
 
@@ -234,7 +236,7 @@ public class CuartelBomberosEquipo57 extends javax.swing.JFrame {
         
         jDEscritorio.removeAll();
         jDEscritorio.repaint();
-        ConsultarBrigadas cb = new ConsultarBrigadas(bd);
+        ConsultarBrigadas cb = new ConsultarBrigadas(bd,cd);
         cb.setVisible(true);
         jDEscritorio.add(cb);
         jDEscritorio.moveToFront(cb);
