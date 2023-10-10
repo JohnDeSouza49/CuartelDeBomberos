@@ -14,6 +14,8 @@ public class CuartelBomberosEquipo57 extends javax.swing.JFrame {
      * Creates new form Ventana2
      */
     public CuartelBomberosEquipo57() {
+        
+       
         initComponents();
     }
 
@@ -26,74 +28,121 @@ public class CuartelBomberosEquipo57 extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jDesktopPane1 = new javax.swing.JDesktopPane();
+        jDEscritorio = new javax.swing.JDesktopPane();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
-        jMenuItem2 = new javax.swing.JMenuItem();
+        FormularioIngresarSiniestro = new javax.swing.JMenuItem();
+        FormularioConsultarSiniestro = new javax.swing.JMenuItem();
         jMenu4 = new javax.swing.JMenu();
-        jMenuItem6 = new javax.swing.JMenuItem();
-        jMenuItem8 = new javax.swing.JMenuItem();
-        jMenuItem9 = new javax.swing.JMenuItem();
+        FormularioIngresarCuartel = new javax.swing.JMenuItem();
+        FormularioIngresarBrigada = new javax.swing.JMenuItem();
+        FormularioIngresarBombero = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
-        jMenuItem3 = new javax.swing.JMenuItem();
-        jMenuItem4 = new javax.swing.JMenuItem();
-        jMenuItem5 = new javax.swing.JMenuItem();
+        FormularioConsultarCuarteles = new javax.swing.JMenuItem();
+        FormularioConsultarBrigada = new javax.swing.JMenuItem();
+        FormularioConsultarBomberos = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
         jMenuItem7 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        javax.swing.GroupLayout jDesktopPane1Layout = new javax.swing.GroupLayout(jDesktopPane1);
-        jDesktopPane1.setLayout(jDesktopPane1Layout);
-        jDesktopPane1Layout.setHorizontalGroup(
-            jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 444, Short.MAX_VALUE)
+        jDEscritorio.setPreferredSize(new java.awt.Dimension(400, 277));
+
+        javax.swing.GroupLayout jDEscritorioLayout = new javax.swing.GroupLayout(jDEscritorio);
+        jDEscritorio.setLayout(jDEscritorioLayout);
+        jDEscritorioLayout.setHorizontalGroup(
+            jDEscritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 900, Short.MAX_VALUE)
         );
-        jDesktopPane1Layout.setVerticalGroup(
-            jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 277, Short.MAX_VALUE)
+        jDEscritorioLayout.setVerticalGroup(
+            jDEscritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 770, Short.MAX_VALUE)
         );
 
         jMenu1.setText("SINIESTROS");
 
-        jMenuItem1.setText("Ingresar Siniestro");
-        jMenu1.add(jMenuItem1);
+        FormularioIngresarSiniestro.setText("Ingresar Siniestro");
+        FormularioIngresarSiniestro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                FormularioIngresarSiniestroActionPerformed(evt);
+            }
+        });
+        jMenu1.add(FormularioIngresarSiniestro);
 
-        jMenuItem2.setText("Consultar Siniestros");
-        jMenu1.add(jMenuItem2);
+        FormularioConsultarSiniestro.setText("Consultar Siniestros");
+        FormularioConsultarSiniestro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                FormularioConsultarSiniestroActionPerformed(evt);
+            }
+        });
+        jMenu1.add(FormularioConsultarSiniestro);
 
         jMenuBar1.add(jMenu1);
 
         jMenu4.setText("INGRESOS");
 
-        jMenuItem6.setText("Ingresar Cuartel");
-        jMenu4.add(jMenuItem6);
+        FormularioIngresarCuartel.setText("Ingresar Cuartel");
+        FormularioIngresarCuartel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                FormularioIngresarCuartelActionPerformed(evt);
+            }
+        });
+        jMenu4.add(FormularioIngresarCuartel);
 
-        jMenuItem8.setText("IngresarBrigada");
-        jMenu4.add(jMenuItem8);
+        FormularioIngresarBrigada.setText("IngresarBrigada");
+        FormularioIngresarBrigada.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                FormularioIngresarBrigadaActionPerformed(evt);
+            }
+        });
+        jMenu4.add(FormularioIngresarBrigada);
 
-        jMenuItem9.setText("Ingresar Bombero");
-        jMenu4.add(jMenuItem9);
+        FormularioIngresarBombero.setText("Ingresar Bombero");
+        FormularioIngresarBombero.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                FormularioIngresarBomberoActionPerformed(evt);
+            }
+        });
+        jMenu4.add(FormularioIngresarBombero);
 
         jMenuBar1.add(jMenu4);
 
         jMenu2.setText("CONSULTAS");
 
-        jMenuItem3.setText("Cuarteles");
-        jMenu2.add(jMenuItem3);
+        FormularioConsultarCuarteles.setText("Cuarteles");
+        FormularioConsultarCuarteles.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                FormularioConsultarCuartelesActionPerformed(evt);
+            }
+        });
+        jMenu2.add(FormularioConsultarCuarteles);
 
-        jMenuItem4.setText("Brigadas");
-        jMenu2.add(jMenuItem4);
+        FormularioConsultarBrigada.setText("Brigadas");
+        FormularioConsultarBrigada.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                FormularioConsultarBrigadaActionPerformed(evt);
+            }
+        });
+        jMenu2.add(FormularioConsultarBrigada);
 
-        jMenuItem5.setText("Bomberos");
-        jMenu2.add(jMenuItem5);
+        FormularioConsultarBomberos.setText("Bomberos");
+        FormularioConsultarBomberos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                FormularioConsultarBomberosActionPerformed(evt);
+            }
+        });
+        jMenu2.add(FormularioConsultarBomberos);
 
         jMenuBar1.add(jMenu2);
 
         jMenu3.setText("SALIR");
 
         jMenuItem7.setText("Salir del programa");
+        jMenuItem7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem7ActionPerformed(evt);
+            }
+        });
         jMenu3.add(jMenuItem7);
 
         jMenuBar1.add(jMenu3);
@@ -104,15 +153,98 @@ public class CuartelBomberosEquipo57 extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jDesktopPane1)
+            .addComponent(jDEscritorio, javax.swing.GroupLayout.PREFERRED_SIZE, 900, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jDesktopPane1)
+            .addComponent(jDEscritorio, javax.swing.GroupLayout.DEFAULT_SIZE, 770, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void FormularioIngresarSiniestroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FormularioIngresarSiniestroActionPerformed
+        jDEscritorio.removeAll();
+        jDEscritorio.repaint();
+        IngresarSiniestro is = new IngresarSiniestro();
+        is.setVisible(true);
+        jDEscritorio.add(is);
+        jDEscritorio.moveToFront(is);
+    }//GEN-LAST:event_FormularioIngresarSiniestroActionPerformed
+
+    private void FormularioConsultarSiniestroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FormularioConsultarSiniestroActionPerformed
+        
+        jDEscritorio.removeAll();
+        jDEscritorio.repaint();
+        ConsultarSiniestro cs = new ConsultarSiniestro();
+        cs.setVisible(true);
+        jDEscritorio.add(cs);
+        jDEscritorio.moveToFront(cs);
+        
+    }//GEN-LAST:event_FormularioConsultarSiniestroActionPerformed
+
+    private void FormularioIngresarCuartelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FormularioIngresarCuartelActionPerformed
+        jDEscritorio.removeAll();
+        jDEscritorio.repaint();
+        IngresarCuartel ic = new IngresarCuartel();
+        ic.setVisible(true);
+        jDEscritorio.add(ic);
+        jDEscritorio.moveToFront(ic);
+    }//GEN-LAST:event_FormularioIngresarCuartelActionPerformed
+
+    private void FormularioIngresarBrigadaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FormularioIngresarBrigadaActionPerformed
+        jDEscritorio.removeAll();
+        jDEscritorio.repaint();
+        IngresarBrigada ib = new IngresarBrigada();
+        ib.setVisible(true);
+        jDEscritorio.add(ib);
+        jDEscritorio.moveToFront(ib);
+        
+    }//GEN-LAST:event_FormularioIngresarBrigadaActionPerformed
+
+    private void FormularioIngresarBomberoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FormularioIngresarBomberoActionPerformed
+       
+        jDEscritorio.removeAll();
+        jDEscritorio.repaint();
+        IngresarBombero ibo = new IngresarBombero();
+        ibo.setVisible(true);
+        jDEscritorio.add(ibo);
+        jDEscritorio.moveToFront(ibo);
+    }//GEN-LAST:event_FormularioIngresarBomberoActionPerformed
+
+    private void FormularioConsultarCuartelesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FormularioConsultarCuartelesActionPerformed
+        
+        jDEscritorio.removeAll();
+        jDEscritorio.repaint();
+        ConsultarCuarteles cc = new ConsultarCuarteles();
+        cc.setVisible(true);
+        jDEscritorio.add(cc);
+        jDEscritorio.moveToFront(cc);
+    }//GEN-LAST:event_FormularioConsultarCuartelesActionPerformed
+
+    private void FormularioConsultarBrigadaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FormularioConsultarBrigadaActionPerformed
+        
+        jDEscritorio.removeAll();
+        jDEscritorio.repaint();
+        ConsultarBrigadas cb = new ConsultarBrigadas();
+        cb.setVisible(true);
+        jDEscritorio.add(cb);
+        jDEscritorio.moveToFront(cb);
+    }//GEN-LAST:event_FormularioConsultarBrigadaActionPerformed
+
+    private void FormularioConsultarBomberosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FormularioConsultarBomberosActionPerformed
+       
+        jDEscritorio.removeAll();
+        jDEscritorio.repaint();
+        ConsultarBomberos cbo = new ConsultarBomberos();
+        cbo.setVisible(true);
+        jDEscritorio.add(cbo);
+        jDEscritorio.moveToFront(cbo);
+    }//GEN-LAST:event_FormularioConsultarBomberosActionPerformed
+
+    private void jMenuItem7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem7ActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_jMenuItem7ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -151,20 +283,20 @@ public class CuartelBomberosEquipo57 extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JDesktopPane jDesktopPane1;
+    private javax.swing.JMenuItem FormularioConsultarBomberos;
+    private javax.swing.JMenuItem FormularioConsultarBrigada;
+    private javax.swing.JMenuItem FormularioConsultarCuarteles;
+    private javax.swing.JMenuItem FormularioConsultarSiniestro;
+    private javax.swing.JMenuItem FormularioIngresarBombero;
+    private javax.swing.JMenuItem FormularioIngresarBrigada;
+    private javax.swing.JMenuItem FormularioIngresarCuartel;
+    private javax.swing.JMenuItem FormularioIngresarSiniestro;
+    private javax.swing.JDesktopPane jDEscritorio;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenu jMenu4;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem2;
-    private javax.swing.JMenuItem jMenuItem3;
-    private javax.swing.JMenuItem jMenuItem4;
-    private javax.swing.JMenuItem jMenuItem5;
-    private javax.swing.JMenuItem jMenuItem6;
     private javax.swing.JMenuItem jMenuItem7;
-    private javax.swing.JMenuItem jMenuItem8;
-    private javax.swing.JMenuItem jMenuItem9;
     // End of variables declaration//GEN-END:variables
 }
