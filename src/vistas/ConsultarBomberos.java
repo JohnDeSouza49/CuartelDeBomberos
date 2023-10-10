@@ -1,17 +1,16 @@
-
 package vistas;
 
 import javax.swing.table.DefaultTableModel;
 
 public class ConsultarBomberos extends javax.swing.JInternalFrame {
-private DefaultTableModel modelo = new DefaultTableModel();
-   
+
+    private DefaultTableModel modelo = new DefaultTableModel();
+
     public ConsultarBomberos() {
         initComponents();
-         armarEncabezado();
+        armarEncabezado();
     }
 
-   
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -36,15 +35,23 @@ private DefaultTableModel modelo = new DefaultTableModel();
 
         jTBomberos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Title 1", "Title 2", "Title 3", "Title 4", "Title 5", "Title 6", "Title 7"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, true, true, true
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         jScrollPane1.setViewportView(jTBomberos);
 
         jBBuscar.setText("BUSCAR");
@@ -118,7 +125,7 @@ private DefaultTableModel modelo = new DefaultTableModel();
     }// </editor-fold>//GEN-END:initComponents
 
     private void jBSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBSalirActionPerformed
-         this.dispose();
+        this.dispose();
     }//GEN-LAST:event_jBSalirActionPerformed
 
 
@@ -139,11 +146,18 @@ private void armarEncabezado() {
         modelo.addColumn("NOMBRE COMPLETO");
         modelo.addColumn("F DE NAC");
         modelo.addColumn("CELULAR");
-         modelo.addColumn("BRIGADA");
+        modelo.addColumn("BRIGADA");
         modelo.addColumn("ESTADO");
         modelo.addColumn("G SANGUINEO");
-        
-        jTBomberos.setModel(modelo);
-}
 
+        jTBomberos.setModel(modelo);
+        jTBomberos.getColumnModel().getColumn(0).setPreferredWidth(70);
+        jTBomberos.getColumnModel().getColumn(1).setPreferredWidth(120);
+        jTBomberos.getColumnModel().getColumn(2).setPreferredWidth(70);
+        jTBomberos.getColumnModel().getColumn(3).setPreferredWidth(80);
+        jTBomberos.getColumnModel().getColumn(4).setPreferredWidth(50);
+        jTBomberos.getColumnModel().getColumn(5).setPreferredWidth(50);
+        jTBomberos.getColumnModel().getColumn(6).setPreferredWidth(50);
+
+    }
 }
