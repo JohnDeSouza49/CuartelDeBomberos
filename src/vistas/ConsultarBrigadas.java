@@ -1,12 +1,18 @@
 package vistas;
 
+import AccesoADatos.BrigadaData;
+import Entidades.Brigada;
+import java.util.ArrayList;
+import java.util.List;
 import javax.swing.table.DefaultTableModel;
 
 public class ConsultarBrigadas extends javax.swing.JInternalFrame {
-
+    private BrigadaData bd;
     private DefaultTableModel modelo = new DefaultTableModel();
     private DefaultTableModel modelo2 =new DefaultTableModel();
-    public ConsultarBrigadas() {
+    
+    public ConsultarBrigadas(BrigadaData bd) {
+        this.bd=bd;
         initComponents();
         armarEncabezado();
         armarEncabezado2();
@@ -38,9 +44,19 @@ public class ConsultarBrigadas extends javax.swing.JInternalFrame {
 
         buttonGroup1.add(jRBLibres);
         jRBLibres.setText("Brigadas Libres");
+        jRBLibres.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRBLibresActionPerformed(evt);
+            }
+        });
 
         buttonGroup1.add(jRBEnServicio);
         jRBEnServicio.setText("Brigadas En Servicio");
+        jRBEnServicio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRBEnServicioActionPerformed(evt);
+            }
+        });
 
         jTConsultaBrigada.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -185,6 +201,40 @@ public class ConsultarBrigadas extends javax.swing.JInternalFrame {
         this.dispose();
     }//GEN-LAST:event_jBSalirActionPerformed
 
+    private void jRBLibresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRBLibresActionPerformed
+        // TODO add your handling code here:
+        borrarFilasBrigadas();
+        List<Brigada> brigadas = new ArrayList<>();
+          brigadas= bd.brigadasLibres();
+          if(jRBLibres.isSelected()==true && jRBEnServicio.isSelected()==false ){
+           for(Brigada aux:brigadas){
+               modelo.addRow(new Object[]{
+                aux.getCodigoBrigada(),
+                aux.getNombreBrigada(),
+                aux.getEspecialidad(),
+                aux.getNumeroCuartel()
+           });
+               }
+            }
+    }//GEN-LAST:event_jRBLibresActionPerformed
+
+    private void jRBEnServicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRBEnServicioActionPerformed
+        // TODO add your handling code here:
+        borrarFilasBrigadas();
+        List<Brigada> brigadas = new ArrayList<>();
+        brigadas=bd.brigadasAsignadas();
+        if(jRBLibres.isSelected()==false && jRBEnServicio.isSelected()==true ){
+           for(Brigada aux:brigadas){
+               modelo.addRow(new Object[]{
+                aux.getCodigoBrigada(),
+                aux.getNombreBrigada(),
+                aux.getEspecialidad(),
+                aux.getNumeroCuartel()
+           });
+            }
+           }
+    }//GEN-LAST:event_jRBEnServicioActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup buttonGroup1;
@@ -206,15 +256,13 @@ private void armarEncabezado() {
         modelo.addColumn("CÓDI");
         modelo.addColumn("NOMBRE");
         modelo.addColumn("ESPECIALIDAD");
-        modelo.addColumn("ESTADO");
         modelo.addColumn("CUARTEL");
         jTConsultaBrigada.setModel(modelo);
         
         jTConsultaBrigada.getColumnModel().getColumn(0).setPreferredWidth(50);
         jTConsultaBrigada.getColumnModel().getColumn(1).setPreferredWidth(70);
         jTConsultaBrigada.getColumnModel().getColumn(2).setPreferredWidth(120);
-        jTConsultaBrigada.getColumnModel().getColumn(3).setPreferredWidth(50);
-        jTConsultaBrigada.getColumnModel().getColumn(4).setPreferredWidth(80);
+        jTConsultaBrigada.getColumnModel().getColumn(3).setPreferredWidth(80);
     }
 
     private void armarEncabezado2() {
@@ -229,4 +277,10 @@ private void armarEncabezado() {
         jTListar.getColumnModel().getColumn(2).setPreferredWidth(120);
         jTListar.getColumnModel().getColumn(3).setPreferredWidth(50);
     }
+    private void borrarFilasBrigadas(){
+    int filas=jTConsultaBrigada.getRowCount()-1;
+    for(int f=filas;f>=0;f--){
+        modelo.removeRow(f);
+    }
+}
 }
