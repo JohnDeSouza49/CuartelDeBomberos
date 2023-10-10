@@ -136,6 +136,11 @@ public class CuartelBomberosEquipo57 extends javax.swing.JFrame {
         jMenuBar1.add(jMenu2);
 
         jMenu3.setText("SALIR");
+        jMenu3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenu3ActionPerformed(evt);
+            }
+        });
 
         jMenuItem7.setText("Salir del programa");
         jMenuItem7.addActionListener(new java.awt.event.ActionListener() {
@@ -245,6 +250,11 @@ public class CuartelBomberosEquipo57 extends javax.swing.JFrame {
     private void jMenuItem7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem7ActionPerformed
         this.dispose();
     }//GEN-LAST:event_jMenuItem7ActionPerformed
+
+    private void jMenu3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu3ActionPerformed
+      this.dispose();
+      
+    }//GEN-LAST:event_jMenu3ActionPerformed
 
     /**
      * @param args the command line arguments
