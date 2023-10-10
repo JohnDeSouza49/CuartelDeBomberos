@@ -73,7 +73,7 @@ catch(SQLException ex){
          cuartel=cd.mostrarTodosCuarteles();
          for(Cuartel aux:cuartel){
               resultado=distanciaEntreDosPuntos(siniestro, aux);
-              Cuartel a= new Cuartel(aux.getCodigoCuartel(), aux.getNombreCuartel(), aux.getDireccion(), aux.getTelefono(), aux.getCorreoElectronico(), resultado);
+              Cuartel a= new Cuartel(aux.getCodigoCuartel(), aux.getNombreCuartel(), aux.getDireccion(), aux.getTelefono(), aux.getCorreoElectronico(), resultado, aux.isEstado());
               dist.add(a);
               
      }          

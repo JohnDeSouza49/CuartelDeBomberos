@@ -85,15 +85,17 @@ public class CuartelData {
 
             PreparedStatement ps = con.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
-             while (rs.next()) {
-               c = new Cuartel();
-               c.setCodigoCuartel(rs.getInt("codigoCuartel"));
-                c.setNombreCuartel(rs.getString("nombreCuartel"));
-                c.setDireccion(rs.getString("direccion"));
-                c.setCoordenadaX(rs.getInt("coordenadax"));
-                c.setCoordenadaY(rs.getInt("coordenaday"));
-                c.setTelefono(rs.getInt("telefono"));
-                c.setCorreoElectronico(rs.getString("correo"));
+            while (rs.next()) {
+                
+               int cod = (rs.getInt("codigoCuartel"));
+                 String nom =(rs.getString("nombreCuartel"));
+                 String dir= (rs.getString("direccion"));
+                 int cooX =(rs.getInt("coordenadax"));
+               int CooY =(rs.getInt("coordenaday"));
+               int tel =(rs.getInt("telefono"));
+              String correo = (rs.getString("correo"));
+                boolean est =(rs.getBoolean("estado"));
+                c = new Cuartel(cod, nom, dir, cooX, CooY, tel, correo, est);
                 cuarteles.add(c);
                 ps.close();
             }
@@ -103,31 +105,53 @@ public class CuartelData {
         return cuarteles;
 
     }
-    
-    public Cuartel BuscarCuartel( int telefono){
-          String sql="SELECT * from cuartel where telefono=?";
-          Cuartel c= new Cuartel();
+
+    public Cuartel BuscarCuartel(int telefono) {
+        String sql = "SELECT * from cuartel where telefono=?";
+        Cuartel c = null;
         try {
-            PreparedStatement ps= con.prepareStatement(sql);
+            PreparedStatement ps = con.prepareStatement(sql);
             ps.setInt(1, telefono);
-            ResultSet rs= ps.executeQuery();
-            while(rs.next()){
-                  c = new Cuartel();
-                  int codigo=(rs.getInt("codigoCuartel"));
-               String nombre=(rs.getString("nombreCuartel"));
-                 String direc=(rs.getString("direccion"));
-                 int x =(rs.getInt("coordenadax"));
-                 int y=(rs.getInt("coordenaday"));
-                 int tel=(telefono);
-                 String correo=(rs.getString("correo"));
-                   c = new Cuartel(codigo, nombre, direc, codigo, codigo, telefono, correo);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                int codigo = (rs.getInt("codigoCuartel"));
+                String nombre = (rs.getString("nombreCuartel"));
+                String direc = (rs.getString("direccion"));
+                int x = (rs.getInt("coordenadax"));
+                int y = (rs.getInt("coordenaday"));
+                int tel = (telefono);
+                String correo = (rs.getString("correo"));
+                boolean estado = (rs.getBoolean("estado"));
+                c = new Cuartel(codigo, nombre, direc, codigo, codigo, telefono, correo, estado);
                 ps.close();
             }
         } catch (SQLException ex) {
             Logger.getLogger(CuartelData.class.getName()).log(Level.SEVERE, null, ex);
         }
         return c;
-          
+
     }
-            
+
+    public void eliminarCuartel(Cuartel cuartel) {
+        String sql = "UPDATE `cuartel` set estado=0 where codigoCuartel=?";
+        if (cuartel.isEstado() == true) {
+            try {
+                PreparedStatement ps = con.prepareStatement(sql);
+                ps.setInt(1, cuartel.getCodigoCuartel());
+
+                int exito = ps.executeUpdate();
+                if (exito == 1) {
+                    JOptionPane.showMessageDialog(null, "Cuartel inactivo");
+                } else {
+                    JOptionPane.showMessageDialog(null, "El Cuartel no existe o no se encuentra inactivo");
+                }
+            } catch (SQLException ex) {
+                JOptionPane.showMessageDialog(null, "Error al acceder a la tabla cuartel " + ex.getMessage());
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "el Cuartel ya se encuentra inactivo");
+        }
+
+    }
+
 }
