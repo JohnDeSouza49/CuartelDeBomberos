@@ -101,20 +101,20 @@ public class ConsultarBrigadas extends javax.swing.JInternalFrame {
                 .addComponent(jRBEnServicio, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(42, 42, 42))
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(0, 301, Short.MAX_VALUE)
-                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 440, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(281, 281, 281)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(21, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 705, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(22, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(228, 228, 228)
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(41, 41, 41)
+                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 655, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -252,13 +252,16 @@ public class ConsultarBrigadas extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
      
        
-        Cuartel cuartel = (Cuartel) jCBCuarteles.getSelectedItem();
+        //Cuartel cuartel = (Cuartel) jCBCuarteles.getSelectedItem();
+        
+        int cuartel = jCBCuarteles.getSelectedIndex();
         borrarFilasCuartel();
-        int libre = cuartel.getCodigoCuartel();
+        System.out.println("indice:" + cuartel);
+        //int libre = cuartel.getCodigoCuartel();
        
-        if(cuartel!=null){
+        if(cuartel!= -1){
             List<Brigada> brigadas = new ArrayList<>();
-            brigadas  = bd.brigadaPorCuartel(libre);
+            brigadas  = bd.brigadaPorCuartel(cuartel+1);
             for(Brigada b: brigadas){
                 
                 modelo2.addRow( new Object[]{
@@ -338,8 +341,8 @@ private void armarEncabezado() {
                 modelito= new DefaultComboBoxModel();
                 jCBCuarteles.setModel(modelito);
                 for(Cuartel aux:cd.mostrarTodosCuarteles()){
-                    modelito.addElement(aux);
- 
+                modelito.addElement(aux.getNombreCuartel());
+                   
                 }
 
             }
