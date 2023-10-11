@@ -249,15 +249,10 @@ public class ConsultarBrigadas extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jRBEnServicioActionPerformed
 
     private void jCBCuartelesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCBCuartelesActionPerformed
-        // TODO add your handling code here:
-     
-       
-        //Cuartel cuartel = (Cuartel) jCBCuarteles.getSelectedItem();
         
         int cuartel = jCBCuarteles.getSelectedIndex();
         borrarFilasCuartel();
         System.out.println("indice:" + cuartel);
-        //int libre = cuartel.getCodigoCuartel();
        
         if(cuartel!= -1){
             List<Brigada> brigadas = new ArrayList<>();
