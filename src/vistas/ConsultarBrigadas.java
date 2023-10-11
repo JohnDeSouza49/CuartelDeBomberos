@@ -250,7 +250,35 @@ public class ConsultarBrigadas extends javax.swing.JInternalFrame {
 
     private void jCBCuartelesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCBCuartelesActionPerformed
         // TODO add your handling code here:
+     
+       
+        Cuartel cuartel = (Cuartel) jCBCuarteles.getSelectedItem();
+        borrarFilasCuartel();
+        int libre = cuartel.getCodigoCuartel();
+       
+        if(cuartel!=null){
+            List<Brigada> brigadas = new ArrayList<>();
+            brigadas  = bd.brigadaPorCuartel(libre);
+            for(Brigada b: brigadas){
+                
+                modelo2.addRow( new Object[]{
+                    
+                    b.getCodigoBrigada(),
+                    b.getNombreBrigada(),
+                    b.getEspecialidad(),
+                  
+                });
+            }
+            
+        }
+       
         
+        
+        
+     
+        
+        
+       
     }//GEN-LAST:event_jCBCuartelesActionPerformed
 
 
@@ -287,13 +315,12 @@ private void armarEncabezado() {
         modelo2.addColumn("CÓDI");
         modelo2.addColumn("NOMBRE");
         modelo2.addColumn("ESPECIALIDAD");
-        modelo2.addColumn("ESTADO");
         jTListar.setModel(modelo2);
         
         jTListar.getColumnModel().getColumn(0).setPreferredWidth(50);
         jTListar.getColumnModel().getColumn(1).setPreferredWidth(70);
         jTListar.getColumnModel().getColumn(2).setPreferredWidth(120);
-        jTListar.getColumnModel().getColumn(3).setPreferredWidth(50);
+       
     }
     private void borrarFilasBrigadas(){
     int filas=jTConsultaBrigada.getRowCount()-1;
@@ -301,10 +328,10 @@ private void armarEncabezado() {
         modelo.removeRow(f);
     }
 }
-      private void borrarFilasCuarte(){
+      private void borrarFilasCuartel(){
     int filas=jTListar.getRowCount()-1;
     for(int f=filas;f>=0;f--){
-        modelo.removeRow(f);
+        modelo2.removeRow(f);
     }
 }
       private void llenarCB(){

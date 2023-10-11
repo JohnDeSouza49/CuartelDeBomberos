@@ -117,4 +117,33 @@ public class BrigadaData {
              
          }
          
+         public List<Brigada>brigadaPorCuartel(int numeroCuartel){
+             
+             List<Brigada>brigadas = new ArrayList<>();
+             Brigada br = null;
+             String consulta = "SELECT * FROM brigada WHERE numeroCuartel=?";
+        try {
+            PreparedStatement ps=con.prepareStatement(consulta);
+            ps.setInt(1, numeroCuartel);
+            ResultSet rs= ps.executeQuery();
+            
+            while (rs.next()){
+                
+                br = new Brigada();
+                br.setCodigoBrigada(rs.getInt("codigoBrigada"));
+                br.setNombreBrigada(rs.getString("nombreBrigada"));
+                br.setEspecialidad(rs.getString("especialidad"));
+                br.setLibre(rs.getBoolean("libre"));
+                brigadas.add(br);
+                ps.close();
+            }
+           
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(BrigadaData.class.getName()).log(Level.SEVERE, null, ex);
+        }
+            return brigadas;  
+             
+         }
+    
 }
