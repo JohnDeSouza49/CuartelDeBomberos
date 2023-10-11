@@ -69,8 +69,17 @@ public class CuartelData {
 
             if (rs.next()) {
                 cuartel.setCodigoCuartel(rs.getInt(1));
-
             }
+                 int exito = ps.executeUpdate();
+            
+            if (exito == 1) {
+               JOptionPane.showMessageDialog(null, "Cuartel agregado con éxito");
+            } else {
+                JOptionPane.showMessageDialog(null, "verifique los datos ingresados");
+            }
+                
+
+            
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "hay un error al cargar el cuartel");
         }

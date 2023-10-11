@@ -227,7 +227,7 @@ public class IngresarCuartel extends javax.swing.JInternalFrame {
         
         Cuartel c = new Cuartel(nombreCuartel, direccion, coordenadaX, coordenadaY, telefono, correo, estado );
         cd.guardarCuartel(c);
-        JOptionPane.showMessageDialog(null, "Cuartel agregado con éxito");
+        
         jTFCodigo.setText("");
         jTFNombre.setText("");
         jTFDireccion.setText("");
