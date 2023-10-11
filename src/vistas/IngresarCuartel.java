@@ -214,7 +214,7 @@ public class IngresarCuartel extends javax.swing.JInternalFrame {
     private void jBGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBGuardarActionPerformed
         // TODO add your handling code here:
         try{
-        int codigoCuartel = Integer.parseInt(jTFCodigo.getText());
+       // int codigoCuartel = Integer.parseInt(jTFCodigo.getText());
         String nombreCuartel = jTFNombre.getText();
         String direccion = jTFDireccion.getText();
         int telefono = Integer.parseInt( jtFTelefono.getText());
@@ -227,6 +227,7 @@ public class IngresarCuartel extends javax.swing.JInternalFrame {
         
         Cuartel c = new Cuartel(nombreCuartel, direccion, coordenadaX, coordenadaY, telefono, correo, estado );
         cd.guardarCuartel(c);
+        JOptionPane.showMessageDialog(null, "Cuartel agregado con éxito");
         jTFCodigo.setText("");
         jTFNombre.setText("");
         jTFDireccion.setText("");
@@ -236,10 +237,12 @@ public class IngresarCuartel extends javax.swing.JInternalFrame {
         jTFCorreo.setText("");
         jRBEstado.setSelected(false);
         
+        
         }catch(NumberFormatException e){
                 
-            JOptionPane.showMessageDialog(this, "error");
+            JOptionPane.showMessageDialog(this, "error"+e.getMessage());
                 }
+        
         
     }//GEN-LAST:event_jBGuardarActionPerformed
 
