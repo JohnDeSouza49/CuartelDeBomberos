@@ -214,7 +214,7 @@ public class IngresarCuartel extends javax.swing.JInternalFrame {
     private void jBGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBGuardarActionPerformed
         // TODO add your handling code here:
         try{
-       // int codigoCuartel = Integer.parseInt(jTFCodigo.getText());
+
         String nombreCuartel = jTFNombre.getText();
         String direccion = jTFDireccion.getText();
         int telefono = Integer.parseInt( jtFTelefono.getText());
