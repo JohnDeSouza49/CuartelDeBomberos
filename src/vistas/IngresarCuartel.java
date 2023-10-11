@@ -1,19 +1,18 @@
-
 package vistas;
 
 import AccesoADatos.CuartelData;
 import Entidades.Cuartel;
+import java.awt.event.KeyEvent;
 import javax.swing.JOptionPane;
-
 
 public class IngresarCuartel extends javax.swing.JInternalFrame {
 
     CuartelData cd = new CuartelData();
+
     public IngresarCuartel() {
         initComponents();
     }
 
-    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -56,9 +55,27 @@ public class IngresarCuartel extends javax.swing.JInternalFrame {
 
         jLabel5.setText("Coordenada X");
 
+        jTFCooX.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTFCooXKeyTyped(evt);
+            }
+        });
+
         jLabel6.setText("Coordenada Y");
 
+        jTFCooY.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTFCooYKeyTyped(evt);
+            }
+        });
+
         jLabel7.setText("Telefono");
+
+        jtFTelefono.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jtFTelefonoKeyTyped(evt);
+            }
+        });
 
         jLabel8.setText("E-mail");
 
@@ -208,44 +225,64 @@ public class IngresarCuartel extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jBSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBSalirActionPerformed
-         this.dispose();
+        this.dispose();
     }//GEN-LAST:event_jBSalirActionPerformed
 
     private void jBGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBGuardarActionPerformed
         // TODO add your handling code here:
-        try{
+        try {
+            if (jTFNombre.getText().isEmpty() || jTFDireccion.getText().isEmpty() || jTFCorreo.getText().isEmpty()) {
+                JOptionPane.showMessageDialog(this, "Debe completar todos los campos");
+                return;
+            }
+            String nombreCuartel = jTFNombre.getText();
+            String direccion = jTFDireccion.getText();
+            int telefono = Integer.parseInt(jtFTelefono.getText());
+            int coordenadaX = Integer.parseInt(jTFCooX.getText());
+            int coordenadaY = Integer.parseInt(jTFCooY.getText());
+            String correo = jTFCorreo.getText();
+            boolean estado = jRBEstado.isSelected();
 
-        String nombreCuartel = jTFNombre.getText();
-        String direccion = jTFDireccion.getText();
-        int telefono = Integer.parseInt( jtFTelefono.getText());
-        int coordenadaX = Integer.parseInt(jTFCooX.getText());
-        int coordenadaY = Integer.parseInt(jTFCooY.getText());
-        String correo = jTFCorreo.getText();
-        boolean estado = jRBEstado.isSelected();
-        
-        
-        
-        Cuartel c = new Cuartel(nombreCuartel, direccion, coordenadaX, coordenadaY, telefono, correo, estado );
-        cd.guardarCuartel(c);
-        
-        jTFCodigo.setText("");
-        jTFNombre.setText("");
-        jTFDireccion.setText("");
-        jtFTelefono.setText("");
-        jTFCooX.setText("");
-        jTFCooY.setText("");
-        jTFCorreo.setText("");
-        jRBEstado.setSelected(false);
-        
-        }catch(NumberFormatException nf){
-            JOptionPane.showMessageDialog(this, "las coordenadas y el numero de telefono deben ser números, alguno de ellos no lo son");
-        }catch(Exception e){
-                
+            Cuartel c = new Cuartel(nombreCuartel, direccion, coordenadaX, coordenadaY, telefono, correo, estado);
+            cd.guardarCuartel(c);
+
+            jTFCodigo.setText("");
+            jTFNombre.setText("");
+            jTFDireccion.setText("");
+            jtFTelefono.setText("");
+            jTFCooX.setText("");
+            jTFCooY.setText("");
+            jTFCorreo.setText("");
+            jRBEstado.setSelected(false);
+
+        } catch (Exception e) {
+
             JOptionPane.showMessageDialog(this, "error");
-                }
-        
-        
+        }
+
+
     }//GEN-LAST:event_jBGuardarActionPerformed
+
+    private void jtFTelefonoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtFTelefonoKeyTyped
+        char c = evt.getKeyChar();
+        if (!(Character.isDigit(c) || (c == KeyEvent.VK_BACK_SPACE) || (c == KeyEvent.VK_DELETE))) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_jtFTelefonoKeyTyped
+
+    private void jTFCooXKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTFCooXKeyTyped
+        char c = evt.getKeyChar();
+        if (!(Character.isDigit(c) || (c == KeyEvent.VK_BACK_SPACE) || (c == KeyEvent.VK_DELETE))) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_jTFCooXKeyTyped
+
+    private void jTFCooYKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTFCooYKeyTyped
+        char c = evt.getKeyChar();
+        if (!(Character.isDigit(c) || (c == KeyEvent.VK_BACK_SPACE) || (c == KeyEvent.VK_DELETE))) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_jTFCooYKeyTyped
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
