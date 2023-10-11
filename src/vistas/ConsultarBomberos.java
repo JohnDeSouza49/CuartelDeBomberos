@@ -4,7 +4,11 @@ import javax.swing.table.DefaultTableModel;
 
 public class ConsultarBomberos extends javax.swing.JInternalFrame {
 
-    private DefaultTableModel modelo = new DefaultTableModel();
+    private DefaultTableModel modelo = new DefaultTableModel(){
+        public boolean isCellEditable(int f, int c){
+            return false;
+        }
+    };
 
     public ConsultarBomberos() {
         initComponents();
