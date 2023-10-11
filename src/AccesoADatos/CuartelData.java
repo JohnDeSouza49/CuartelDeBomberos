@@ -27,7 +27,7 @@ public class CuartelData {
 
     }
 
-    public void crearCuartel(Cuartel cuartel) {
+    public void guardarCuartel(Cuartel cuartel) {
         String sql = "INSERT INTO cuartel(nombreCuartel, direccion, coordenadaX, coordenadaY, telefono, correo)VALUES (?, ?, ?, ?, ?, ?)";
 
         try {

@@ -43,7 +43,7 @@ public class CuartelDeBomberos {
         //Cuartel c3 = new Cuartel(4, "Cuartel2", "Salta 451", -1, 5, 1145896325, "cuartel3@gmail.com",true);
         //cu3.eliminarCuartel(c3);
         System.out.println(cu3.mostrarTodosCuarteles());
-       // cu3.crearCuartel(c3);
+       // cu3.guardarCuartel(c3);
         //System.out.println(cu3.BuscarCuartel(1145678921));
         //Siniestro siniestro = new Siniestro("incendios", LocalDate.of(2020,2,21), 2, 2, "incendio en departamento", LocalDate.of(2020,2,21),9,1);
          //SiniestroData sd = new SiniestroData();
