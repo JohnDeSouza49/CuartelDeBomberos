@@ -238,9 +238,9 @@ public class IngresarCuartel extends javax.swing.JInternalFrame {
         jRBEstado.setSelected(false);
         
         
-        }catch(NumberFormatException e){
+        }catch(Exception e){
                 
-            JOptionPane.showMessageDialog(this, "error"+e.getMessage());
+            JOptionPane.showMessageDialog(this, "error");
                 }
         
         

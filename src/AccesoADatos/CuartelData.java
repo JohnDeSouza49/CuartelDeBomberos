@@ -51,17 +51,7 @@ public class CuartelData {
                 JOptionPane.showMessageDialog(null, "Por favor, ingrese un correo electrónico válido.");
                 return;
 
-                // } catch (NumberFormatException e) {
-                //JOptionPane.showMessageDialog(null, "debe ingresar numeros en las coordenadas");
-                // return;
-                //}
-                //try {
-                //  int telefono = Integer.parseInt(cuartel.getTelefono());
-                //ps.setInt(5, cuartel.getTelefono());
-                //} catch (NumberFormatException e) {
-                //  JOptionPane.showMessageDialog(null, "debe ingresar numeros en el numero de telefono");
-                // return;
-                //}
+               
             }
 
             ps.executeUpdate();
