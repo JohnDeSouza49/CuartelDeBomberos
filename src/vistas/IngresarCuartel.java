@@ -237,7 +237,8 @@ public class IngresarCuartel extends javax.swing.JInternalFrame {
         jTFCorreo.setText("");
         jRBEstado.setSelected(false);
         
-        
+        }catch(NumberFormatException nf){
+            JOptionPane.showMessageDialog(this, "las coordenadas y el numero de telefono deben ser números, alguno de ellos no lo son");
         }catch(Exception e){
                 
             JOptionPane.showMessageDialog(this, "error");
