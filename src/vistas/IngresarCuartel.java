@@ -41,6 +41,7 @@ public class IngresarCuartel extends javax.swing.JInternalFrame {
         jBSalir = new javax.swing.JButton();
         jLEstado = new javax.swing.JLabel();
         jRBEstado = new javax.swing.JRadioButton();
+        jBlimpiar = new javax.swing.JButton();
 
         setTitle("INGRESAR CUARTEL");
 
@@ -87,6 +88,11 @@ public class IngresarCuartel extends javax.swing.JInternalFrame {
         });
 
         jBBuscar.setText("BUSCAR");
+        jBBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBBuscarActionPerformed(evt);
+            }
+        });
 
         jBModificar.setText("MODIFICAR");
 
@@ -100,6 +106,13 @@ public class IngresarCuartel extends javax.swing.JInternalFrame {
         });
 
         jLEstado.setText("Estado");
+
+        jBlimpiar.setText("LIMPIAR CAMPOS");
+        jBlimpiar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBlimpiarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -150,10 +163,7 @@ public class IngresarCuartel extends javax.swing.JInternalFrame {
                                         .addGroup(jPanel1Layout.createSequentialGroup()
                                             .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                            .addComponent(jTFCooY))))
-                                .addGroup(jPanel1Layout.createSequentialGroup()
-                                    .addGap(158, 158, 158)
-                                    .addComponent(jBSalir)))
+                                            .addComponent(jTFCooY)))))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
@@ -163,6 +173,12 @@ public class IngresarCuartel extends javax.swing.JInternalFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jRBEstado)))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jBlimpiar)
+                .addGap(90, 90, 90)
+                .addComponent(jBSalir)
+                .addGap(90, 90, 90))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -197,7 +213,7 @@ public class IngresarCuartel extends javax.swing.JInternalFrame {
                             .addComponent(jTFCorreo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLEstado)
                             .addComponent(jRBEstado))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 108, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 106, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -205,9 +221,11 @@ public class IngresarCuartel extends javax.swing.JInternalFrame {
                             .addComponent(jBBuscar)
                             .addComponent(jBModificar)
                             .addComponent(jBEliminar))
-                        .addGap(29, 29, 29)))
-                .addComponent(jBSalir)
-                .addGap(15, 15, 15))
+                        .addGap(27, 27, 27)))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jBSalir)
+                    .addComponent(jBlimpiar))
+                .addGap(17, 17, 17))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -284,6 +302,64 @@ public class IngresarCuartel extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_jTFCooYKeyTyped
 
+    private void jBBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBBuscarActionPerformed
+        // TODO add your handling code here:
+
+        Cuartel c = new Cuartel();
+
+        try{
+        if (!jTFNombre.getText().isEmpty()) {
+
+            String nombre = jTFNombre.getText();
+            c = cd.BuscarCuartelPorNombre(nombre);
+
+            jTFCodigo.setText(c.getCodigoCuartel() + "");
+            jTFNombre.setText(c.getNombreCuartel());
+            jTFDireccion.setText(c.getDireccion());
+            jtFTelefono.setText(c.getTelefono() + "");
+            jTFCooX.setText(c.getCoordenadaX() + "");
+            jTFCooY.setText(c.getCoordenadaY() + "");
+            jTFCorreo.setText(c.getCorreoElectronico());
+            jRBEstado.setSelected(c.isEstado());
+
+        } else if (!jTFCodigo.getText().isEmpty()) {
+
+            int codigo = Integer.parseInt(jTFCodigo.getText());
+            c = cd.BuscarCuartelPorCodigo(codigo);
+
+            jTFCodigo.setText(c.getCodigoCuartel() + "");
+            jTFNombre.setText(c.getNombreCuartel());
+            jTFDireccion.setText(c.getDireccion());
+            jtFTelefono.setText(c.getTelefono() + "");
+            jTFCooX.setText(c.getCoordenadaX() + "");
+            jTFCooY.setText(c.getCoordenadaY() + "");
+            jTFCorreo.setText(c.getCorreoElectronico());
+            jRBEstado.setSelected(c.isEstado());
+        }else{
+            
+            JOptionPane.showMessageDialog(this, "Deve ingresar un código o un nombre del cuartel a buscar");
+            
+        }
+        }catch(NullPointerException npe){
+             JOptionPane.showMessageDialog(this, "El cuartel a buscar no existe");
+        }
+      
+
+    }//GEN-LAST:event_jBBuscarActionPerformed
+
+    private void jBlimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBlimpiarActionPerformed
+        // TODO add your handling code here:
+
+        jTFCodigo.setText("");
+        jTFNombre.setText("");
+        jTFDireccion.setText("");
+        jtFTelefono.setText( "");
+        jTFCooX.setText( "");
+        jTFCooY.setText( "");
+        jTFCorreo.setText("");
+        jRBEstado.setSelected(false);
+    }//GEN-LAST:event_jBlimpiarActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBBuscar;
@@ -291,6 +367,7 @@ public class IngresarCuartel extends javax.swing.JInternalFrame {
     private javax.swing.JButton jBGuardar;
     private javax.swing.JButton jBModificar;
     private javax.swing.JButton jBSalir;
+    private javax.swing.JButton jBlimpiar;
     private javax.swing.JLabel jLEstado;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

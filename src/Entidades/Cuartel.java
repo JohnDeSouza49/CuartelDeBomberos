@@ -11,7 +11,12 @@ public class Cuartel {
     private String correoElectronico;
     private double distancia;
     private boolean estado;
-
+    
+    
+    public Cuartel()
+    {
+        
+    }
     public Cuartel(int codigoCuartel, String nombreCuartel, String direccion, int coordenadaX, int coordenadaY, int telefono, String correoElectronico, boolean estado) {
         this.codigoCuartel = codigoCuartel;
         this.nombreCuartel = nombreCuartel;
