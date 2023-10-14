@@ -95,6 +95,11 @@ public class IngresarCuartel extends javax.swing.JInternalFrame {
         });
 
         jBModificar.setText("MODIFICAR");
+        jBModificar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBModificarActionPerformed(evt);
+            }
+        });
 
         jBEliminar.setText("ELIMINAR");
 
@@ -359,6 +364,25 @@ public class IngresarCuartel extends javax.swing.JInternalFrame {
         jTFCorreo.setText("");
         jRBEstado.setSelected(false);
     }//GEN-LAST:event_jBlimpiarActionPerformed
+
+    private void jBModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBModificarActionPerformed
+        // TODO add your handling code here:
+       try{ 
+        int codigo =  Integer.parseInt(  jTFCodigo.getText());
+        String nombre =   jTFNombre.getText();
+        String dir = jTFDireccion.getText();
+        int tel =  Integer.parseInt(jtFTelefono.getText());
+        int cooX = Integer.parseInt(jTFCooX.getText());
+        int cooY = Integer.parseInt(jTFCooY.getText());
+        String correo =  jTFCorreo.getText();
+        boolean est = jRBEstado.isSelected();
+        
+        Cuartel c = new Cuartel(codigo, nombre, dir, cooX, cooY,tel, correo, est);
+        cd.modificarCuartel(c);
+       }catch(NumberFormatException nfe){
+           JOptionPane.showMessageDialog(this, "Error... no se puede modificar cuartel");
+       }
+    }//GEN-LAST:event_jBModificarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

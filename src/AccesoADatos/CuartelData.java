@@ -205,5 +205,36 @@ public class CuartelData {
         }
 
     }
+    
+    public void modificarCuartel(Cuartel cuartel){
+        
+        String sql = "UPDATE cuartel SET nombreCuartel = ?, direccion = ?, "
+                + "coordenadaX = ?, coordenadaY = ?, telefono = ?, correo = ?, estado = ? WHERE codigoCuartel = ?";
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            
+            ps.setString(1, cuartel.getNombreCuartel() );
+            ps.setString(2, cuartel.getDireccion());
+            ps.setInt(3, cuartel.getCoordenadaX());
+            ps.setInt(4, cuartel.getCoordenadaY());
+            ps.setString(5, cuartel.getTelefono()+"");
+            ps.setString(6, cuartel.getCorreoElectronico());
+            ps.setBoolean(7, cuartel.isEstado());
+            ps.setInt(8, cuartel.getCodigoCuartel());
+            
+            int exito = ps.executeUpdate();
+            
+            if(exito == 1){
+                JOptionPane.showMessageDialog(null, "Cuartel modificado Exitosamente.");
+            }else{
+                  JOptionPane.showMessageDialog(null, "El cuartel no existe");
+            }
+            
+        } catch (SQLException ex) {
+           JOptionPane.showMessageDialog(null, "Error al acceder a la tabla Cuartel " + ex.getMessage());
+        }
+        
+        
+    }
 
 }
