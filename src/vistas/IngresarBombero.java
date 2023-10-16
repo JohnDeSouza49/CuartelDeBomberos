@@ -272,7 +272,7 @@ public class IngresarBombero extends javax.swing.JInternalFrame {
             
             
             if(jTFNombreYApellido.getText().isEmpty() || jTFGrupo.getText().isEmpty() ){
-                JOptionPane.showMessageDialog(this, "Ingrese valores correptos");
+                JOptionPane.showMessageDialog(this, "Ingrese valores correctos");
                 return;
             }
             if(!jTFId.getText().isEmpty()){
@@ -292,9 +292,9 @@ public class IngresarBombero extends javax.swing.JInternalFrame {
             jTFGrupo.setText("");
 
         } catch (NumberFormatException nfe) {
-            JOptionPane.showMessageDialog(this, "Ingrese valores correptos");
+            JOptionPane.showMessageDialog(this, "Ingrese valores correctos");
         } catch (NullPointerException npe) {
-            JOptionPane.showMessageDialog(this, "Ingrese valores correptos");
+            JOptionPane.showMessageDialog(this, "Ingrese valores correctos");
         }
 
 
