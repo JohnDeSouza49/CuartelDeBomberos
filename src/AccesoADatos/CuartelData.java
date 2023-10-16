@@ -28,7 +28,7 @@ public class CuartelData {
     }
 
     public void guardarCuartel(Cuartel cuartel) {
-        String sql = "INSERT INTO cuartel(nombreCuartel, direccion, coordenadaX, coordenadaY, telefono, correo)VALUES (?, ?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO cuartel(nombreCuartel, direccion, coordenadaX, coordenadaY, telefono, correo, estado)VALUES (?, ?, ?, ?, ?, ?,?)";
 
         try {
 
@@ -43,6 +43,7 @@ public class CuartelData {
             ps.setInt(4, cuartel.getCoordenadaY());
             ps.setInt(5, cuartel.getTelefono());
             ps.setString(6, cuartel.getCorreoElectronico());
+            ps.setBoolean(7, cuartel.isEstado());
             String correo = cuartel.getCorreoElectronico();
             String regex = "^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Z|a-z]{2,6}$";
             Pattern pattern = Pattern.compile(regex);
