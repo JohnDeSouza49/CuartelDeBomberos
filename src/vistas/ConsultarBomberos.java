@@ -1,18 +1,32 @@
 package vistas;
 
+import AccesoADatos.BrigadaData;
+import AccesoADatos.CuartelData;
+import Entidades.Brigada;
+import Entidades.Cuartel;
+import java.util.ArrayList;
+import java.util.List;
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 public class ConsultarBomberos extends javax.swing.JInternalFrame {
-
+        private BrigadaData bd;
+    private CuartelData cd;
+   private DefaultComboBoxModel modelito= null;
+   private DefaultComboBoxModel modelito2= null;  
     private DefaultTableModel modelo = new DefaultTableModel(){
         public boolean isCellEditable(int f, int c){
             return false;
         }
     };
 
-    public ConsultarBomberos() {
+    public ConsultarBomberos(CuartelData cd, BrigadaData bd) {
+        this.bd=bd;
+        this.cd=cd;
         initComponents();
         armarEncabezado();
+        llenar();
     }
 
     @SuppressWarnings("unchecked")
@@ -59,6 +73,12 @@ public class ConsultarBomberos extends javax.swing.JInternalFrame {
         jScrollPane1.setViewportView(jTBomberos);
 
         jBBuscar.setText("BUSCAR");
+
+        jCBCuarteles.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCBCuartelesActionPerformed(evt);
+            }
+        });
 
         jLabel3.setText("Brigada");
 
@@ -132,6 +152,15 @@ public class ConsultarBomberos extends javax.swing.JInternalFrame {
         this.dispose();
     }//GEN-LAST:event_jBSalirActionPerformed
 
+    private void jCBCuartelesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCBCuartelesActionPerformed
+        // TODO add your handling code here:
+         Cuartel selec= (Cuartel) jCBCuarteles.getSelectedItem();
+         int codigo=selec.getCodigoCuartel();
+          llenarB(codigo);
+          
+     //JOptionPane.showMessageDialog(null, selec.getCodigoCuartel());
+    }//GEN-LAST:event_jCBCuartelesActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBBuscar;
@@ -164,4 +193,20 @@ private void armarEncabezado() {
         jTBomberos.getColumnModel().getColumn(6).setPreferredWidth(50);
 
     }
+public void llenar(){
+    modelito= new DefaultComboBoxModel ();
+    jCBCuarteles.setModel(modelito);
+    for(Cuartel aux: cd.mostrarTodosCuarteles() ){ 
+        modelito.addElement(aux);
+    }
+}
+public void llenarB(int codigo){
+     List<Brigada> brigadas = new ArrayList<>();
+    brigadas= bd.brigadaPorCuartel(codigo);
+     modelito2= new DefaultComboBoxModel ();
+     jCBBrigada.setModel(modelito2);
+     for(Brigada aux:brigadas){ 
+         modelito2.addElement(aux);
+         }
+}
 }

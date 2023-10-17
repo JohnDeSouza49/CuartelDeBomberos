@@ -246,7 +246,7 @@ public class CuartelBomberosEquipo57 extends javax.swing.JFrame {
        
         jDEscritorio.removeAll();
         jDEscritorio.repaint();
-        ConsultarBomberos cbo = new ConsultarBomberos();
+        ConsultarBomberos cbo = new ConsultarBomberos(cd,bd);
         cbo.setVisible(true);
         jDEscritorio.add(cbo);
         jDEscritorio.moveToFront(cbo);
