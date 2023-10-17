@@ -235,7 +235,41 @@ public class BomberoData {
             JOptionPane.showMessageDialog(null, " Error al acceder a la tabla Alumno " + ex.getMessage());
         }
         return bomberos;
-    }  
+    } 
+    public List<Bombero> listarBomberoPorCuartelYBrigada(int codigoCuartel, int codigoBrigada) {
+
+    List<Bombero> bomberosFiltrados = new ArrayList<>();
+    Bombero b = null;
+
+    try {
+        String sql = "SELECT * FROM bombero WHERE codigoCuartel = ? AND codigoBrigada = ?";
+        PreparedStatement ps = con.prepareStatement(sql);
+        ps.setInt(1, codigoCuartel);
+        ps.setInt(2, codigoBrigada);
+        ResultSet rs = ps.executeQuery();
+
+        while (rs.next()) {
+            b = new Bombero();
+            b.setIdBombero(rs.getInt("idBombero"));
+            b.setDni(rs.getInt("dni"));
+            b.setNombreApellido(rs.getString("NombreApellido"));
+            b.setFechaNac(rs.getDate("fechaNac").toLocalDate());
+            b.setCelular(rs.getInt("celular"));
+            b.setCodigoBrigada(rs.getInt("codigoBrigada"));
+            b.setEstado(rs.getBoolean("estado"));
+            b.setGrupoSanguineo(rs.getString("GrupoSanguineo"));
+            b.setCodigoCuartel(rs.getInt("codigoCuartel"));
+            bomberosFiltrados.add(b);
+        }
+
+        ps.close();
+
+    } catch (SQLException ex) {
+        JOptionPane.showMessageDialog(null, "Error al acceder a la tabla Bombero: " + ex.getMessage());
+    }
+
+    return bomberosFiltrados;
+}
       }  
   
 
