@@ -50,6 +50,12 @@ public class IngresarCuartel extends javax.swing.JInternalFrame {
 
         jLabel2.setText("Codigo");
 
+        jTFCodigo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTFCodigoActionPerformed(evt);
+            }
+        });
+
         jLabel3.setText("Nombre");
 
         jLabel4.setText("Direccion");
@@ -383,6 +389,10 @@ public class IngresarCuartel extends javax.swing.JInternalFrame {
            JOptionPane.showMessageDialog(this, "Error... no se puede modificar cuartel");
        }
     }//GEN-LAST:event_jBModificarActionPerformed
+
+    private void jTFCodigoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTFCodigoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTFCodigoActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

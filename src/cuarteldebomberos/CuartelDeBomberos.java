@@ -31,7 +31,8 @@ public class CuartelDeBomberos {
 //System.out.println(bd.listarBomberos());
         //Bombero bob = new Bombero(25896314, "Anibal Gimenez", LocalDate.of(1980, 3, 15), 1125896325, "AB RH+", 12, true);
         BomberoData bd = new BomberoData();
-        System.out.println(bd.listarBomberosxCuartel(2));
+        //System.out.println(bd.listarBomberosxCuartel(2));
+        System.out.println(bd.listarBomberoPorCuartelYBrigada(1, 1));
         //bd.guardarBombero(bob);
       // BrigadaData bd= new BrigadaData();
       
