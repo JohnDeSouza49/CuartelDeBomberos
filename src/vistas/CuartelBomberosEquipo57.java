@@ -4,6 +4,7 @@
  */
 package vistas;
 
+import AccesoADatos.BomberoData;
 import AccesoADatos.BrigadaData;
 import AccesoADatos.CuartelData;
 
@@ -18,9 +19,12 @@ public class CuartelBomberosEquipo57 extends javax.swing.JFrame {
      */
     private BrigadaData bd;
      private CuartelData cd;
+     private BomberoData bombd;
     public CuartelBomberosEquipo57() {
         bd= new BrigadaData();
        cd= new CuartelData();
+       bombd= new BomberoData();
+       
         initComponents();
     }
 
@@ -246,7 +250,7 @@ public class CuartelBomberosEquipo57 extends javax.swing.JFrame {
        
         jDEscritorio.removeAll();
         jDEscritorio.repaint();
-        ConsultarBomberos cbo = new ConsultarBomberos(cd,bd);
+        ConsultarBomberos cbo = new ConsultarBomberos(cd,bd, bombd);
         cbo.setVisible(true);
         jDEscritorio.add(cbo);
         jDEscritorio.moveToFront(cbo);

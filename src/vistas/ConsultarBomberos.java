@@ -1,7 +1,9 @@
 package vistas;
 
+import AccesoADatos.BomberoData;
 import AccesoADatos.BrigadaData;
 import AccesoADatos.CuartelData;
+import Entidades.Bombero;
 import Entidades.Brigada;
 import Entidades.Cuartel;
 import java.util.ArrayList;
@@ -13,6 +15,7 @@ import javax.swing.table.DefaultTableModel;
 public class ConsultarBomberos extends javax.swing.JInternalFrame {
         private BrigadaData bd;
     private CuartelData cd;
+    private BomberoData bombd;
    private DefaultComboBoxModel modelito= null;
    private DefaultComboBoxModel modelito2= null;  
     private DefaultTableModel modelo = new DefaultTableModel(){
@@ -21,9 +24,10 @@ public class ConsultarBomberos extends javax.swing.JInternalFrame {
         }
     };
 
-    public ConsultarBomberos(CuartelData cd, BrigadaData bd) {
+    public ConsultarBomberos(CuartelData cd, BrigadaData bd, BomberoData bombd) {
         this.bd=bd;
         this.cd=cd;
+        this.bombd=bombd;
         initComponents();
         armarEncabezado();
         llenar();
@@ -40,9 +44,9 @@ public class ConsultarBomberos extends javax.swing.JInternalFrame {
         jTBomberos = new javax.swing.JTable();
         jBBuscar = new javax.swing.JButton();
         jCBCuarteles = new javax.swing.JComboBox<>();
-        jLabel3 = new javax.swing.JLabel();
         jCBBrigada = new javax.swing.JComboBox<>();
         jBSalir = new javax.swing.JButton();
+        jCheckBox = new javax.swing.JCheckBox();
 
         setTitle("CONSULTAS BOMBEROS");
 
@@ -80,12 +84,23 @@ public class ConsultarBomberos extends javax.swing.JInternalFrame {
             }
         });
 
-        jLabel3.setText("Brigada");
+        jCBBrigada.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCBBrigadaActionPerformed(evt);
+            }
+        });
 
         jBSalir.setText("SALIR");
         jBSalir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBSalirActionPerformed(evt);
+            }
+        });
+
+        jCheckBox.setText("Brigadas");
+        jCheckBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBoxActionPerformed(evt);
             }
         });
 
@@ -110,16 +125,15 @@ public class ConsultarBomberos extends javax.swing.JInternalFrame {
                         .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 376, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
+                        .addGap(0, 25, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(26, 26, 26)
                         .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jCBCuarteles, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(10, 10, 10)))
-                .addGap(25, 25, 25)
+                        .addComponent(jCheckBox)
+                        .addGap(18, 18, 18)))
                 .addComponent(jCBBrigada, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(96, 96, 96))
         );
@@ -130,15 +144,15 @@ public class ConsultarBomberos extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(24, 24, 24)
+                .addGap(23, 23, 23)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(jCBCuarteles, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3)
-                    .addComponent(jCBBrigada, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jCBBrigada, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jCheckBox))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 386, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jBBuscar)
                     .addComponent(jBSalir))
@@ -155,11 +169,44 @@ public class ConsultarBomberos extends javax.swing.JInternalFrame {
     private void jCBCuartelesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCBCuartelesActionPerformed
         // TODO add your handling code here:
          Cuartel selec= (Cuartel) jCBCuarteles.getSelectedItem();
+         borrarFilas();
          int codigo=selec.getCodigoCuartel();
-          llenarB(codigo);
+          List<Bombero>cuartel = new ArrayList<>();
+          cuartel=bombd.listarBomberosxCuartel(codigo);
+          for(Bombero aux:cuartel){
+                   modelo.addRow(new Object[]{
+                aux.getDni(),
+                aux.getNombreApellido(),
+                aux.getFechaNac(),
+                aux.getCelular(),
+                aux.getCodigoBrigada(),
+                aux.isEstado(),
+                aux.getGrupoSanguineo()
+           });
+          }
           
      //JOptionPane.showMessageDialog(null, selec.getCodigoCuartel());
     }//GEN-LAST:event_jCBCuartelesActionPerformed
+
+    private void jCBBrigadaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCBBrigadaActionPerformed
+        // TODO add your handling code here:
+          Cuartel selec= (Cuartel) jCBCuarteles.getSelectedItem();
+         int codigo=selec.getCodigoCuartel();
+          
+          
+    }//GEN-LAST:event_jCBBrigadaActionPerformed
+
+    private void jCheckBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxActionPerformed
+        // TODO add your handling code here:
+        if(jCheckBox.isSelected()==true){ 
+             Cuartel selec= (Cuartel) jCBCuarteles.getSelectedItem();
+         int codigo=selec.getCodigoCuartel();
+          llenarB(codigo);
+        }
+        if(jCheckBox.isSelected()==false){ 
+            jCBBrigada.removeAllItems();
+        }
+    }//GEN-LAST:event_jCheckBoxActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -167,9 +214,9 @@ public class ConsultarBomberos extends javax.swing.JInternalFrame {
     private javax.swing.JButton jBSalir;
     private javax.swing.JComboBox<String> jCBBrigada;
     private javax.swing.JComboBox<String> jCBCuarteles;
+    private javax.swing.JCheckBox jCheckBox;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JTable jTBomberos;
@@ -209,4 +256,11 @@ public void llenarB(int codigo){
          modelito2.addElement(aux);
          }
 }
+   private void borrarFilas(){
+    int filas=jTBomberos.getRowCount()-1;
+    for(int f=filas;f>=0;f--){
+        modelo.removeRow(f);
+    
+        }
+    }
 }
