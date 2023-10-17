@@ -1,6 +1,4 @@
-
 package AccesoADatos;
-
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -24,7 +22,7 @@ public class Conexion {
                 Class.forName("org.mariadb.jdbc.Driver");
                 connection = DriverManager.getConnection(URL + DB, USUARIO, PASSWORD);
                 JOptionPane.showMessageDialog(null, "Conectado");
-               
+
             } catch (ClassNotFoundException ex) {
                 JOptionPane.showMessageDialog(null, "Error al cargar los driver");
             } catch (SQLException ex) {
@@ -34,4 +32,3 @@ public class Conexion {
         return connection;
     }
 }
-
