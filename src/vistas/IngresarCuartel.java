@@ -295,14 +295,14 @@ public class IngresarCuartel extends javax.swing.JInternalFrame {
 
     private void jTFCooXKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTFCooXKeyTyped
         char c = evt.getKeyChar();
-        if (!(Character.isDigit(c) || (c == KeyEvent.VK_BACK_SPACE) || (c == KeyEvent.VK_DELETE))) {
+        if (!(Character.isDigit(c) || (c == KeyEvent.VK_BACK_SPACE) || (c == KeyEvent.VK_DELETE || c == '-'))) {
             evt.consume();
         }
     }//GEN-LAST:event_jTFCooXKeyTyped
 
     private void jTFCooYKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTFCooYKeyTyped
         char c = evt.getKeyChar();
-        if (!(Character.isDigit(c) || (c == KeyEvent.VK_BACK_SPACE) || (c == KeyEvent.VK_DELETE))) {
+        if (!(Character.isDigit(c) || (c == KeyEvent.VK_BACK_SPACE) || (c == KeyEvent.VK_DELETE || c == '-'))) {
             evt.consume();
         }
     }//GEN-LAST:event_jTFCooYKeyTyped
