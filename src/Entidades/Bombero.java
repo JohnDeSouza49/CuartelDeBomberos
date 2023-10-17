@@ -1,9 +1,7 @@
-
 package Entidades;
 
 import java.sql.Date;
 import java.time.LocalDate;
-
 
 public class Bombero {
 
@@ -16,23 +14,23 @@ public class Bombero {
     private boolean estado;
     private String grupoSanguineo;
     private int codigoCuartel;
-    
+
     public Bombero() {
     }
 
-    public Bombero(int idBombero, int dni, String nombreApellido, LocalDate fechaNac, int celular, int codigoBrigada, boolean estado,String grupoSanguineo, int codigoCuartel) {
+    public Bombero(int idBombero, int dni, String nombreApellido, LocalDate fechaNac, int celular, int codigoBrigada, boolean estado, String grupoSanguineo, int codigoCuartel) {
         this.idBombero = idBombero;
         this.dni = dni;
         this.nombreApellido = nombreApellido;
         this.fechaNac = fechaNac;
         this.celular = celular;
-        this.grupoSanguineo =grupoSanguineo;
+        this.grupoSanguineo = grupoSanguineo;
         this.codigoBrigada = codigoBrigada;
         this.estado = estado;
         this.codigoCuartel = codigoCuartel;
     }
 
-    public Bombero(int dni, String nombreApellido, LocalDate fechaNac, int celular, int codigoBrigada, boolean estado,String grupoSanguineo, int codigoCuartel) {
+    public Bombero(int dni, String nombreApellido, LocalDate fechaNac, int celular, int codigoBrigada, boolean estado, String grupoSanguineo, int codigoCuartel) {
         this.dni = dni;
         this.nombreApellido = nombreApellido;
         this.fechaNac = fechaNac;
@@ -41,7 +39,7 @@ public class Bombero {
         this.estado = estado;
         this.grupoSanguineo = grupoSanguineo;
         this.codigoCuartel = codigoCuartel;
-      
+
     }
 
     public Bombero(int dni, String nombreApellido, LocalDate fechaNac, int codigoBrigada, boolean estado) {
@@ -67,8 +65,6 @@ public class Bombero {
     public void setCodigoCuartel(int codigoCuartel) {
         this.codigoCuartel = codigoCuartel;
     }
-
-  
 
     public int getIdBombero() {
         return idBombero;
@@ -102,7 +98,6 @@ public class Bombero {
         this.fechaNac = fechaNac;
     }
 
-    
     public int getCelular() {
         return celular;
     }
@@ -132,9 +127,4 @@ public class Bombero {
         return "Bombero{" + "idBombero=" + idBombero + ", dni=" + dni + ", nombreApellido=" + nombreApellido + ", fechaNac=" + fechaNac + ", celular=" + celular + ", codigoBrigada=" + codigoBrigada + ", estado=" + estado + ", grupoSanguineo=" + grupoSanguineo + ", codigoCuartel=" + codigoCuartel + '}';
     }
 
-   
-
-    
-
-   
 }

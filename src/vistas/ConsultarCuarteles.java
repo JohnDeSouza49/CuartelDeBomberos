@@ -1,15 +1,12 @@
 
 package vistas;
 
-
 public class ConsultarCuarteles extends javax.swing.JInternalFrame {
 
-   
     public ConsultarCuarteles() {
         initComponents();
     }
 
-   
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -116,7 +113,7 @@ public class ConsultarCuarteles extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-         this.dispose();
+        this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
 

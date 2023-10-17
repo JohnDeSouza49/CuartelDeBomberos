@@ -1,15 +1,11 @@
-
 package vistas;
-
 
 public class IngresarSiniestro extends javax.swing.JInternalFrame {
 
-   
     public IngresarSiniestro() {
         initComponents();
     }
 
-  
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {

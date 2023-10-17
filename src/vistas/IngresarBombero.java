@@ -347,7 +347,6 @@ public class IngresarBombero extends javax.swing.JInternalFrame {
         try {
             if (!jTFDni.getText().isEmpty()) {
 
-             
                 int dni = Integer.parseInt(jTFDni.getText());
 
                 b = bd.buscarBomberoPorDni(dni);
@@ -365,8 +364,6 @@ public class IngresarBombero extends javax.swing.JInternalFrame {
                 jCBCuartel.setSelectedIndex(b.getCodigoCuartel());
 
             } else if (!jTFNombreYApellido.getText().isEmpty()) {
-
-               
 
                 b = bd.buscarBomberoPorNombre(jTFNombreYApellido.getText());
 
@@ -394,7 +391,7 @@ public class IngresarBombero extends javax.swing.JInternalFrame {
             jTFId.setText("");
             jTFDni.setText("");
 
-        }catch(IllegalArgumentException iae){
+        } catch (IllegalArgumentException iae) {
             JOptionPane.showMessageDialog(this, "El bombero a buscar no existe!!!");
         }
         {

@@ -18,13 +18,14 @@ public class CuartelBomberosEquipo57 extends javax.swing.JFrame {
      * Creates new form Ventana2
      */
     private BrigadaData bd;
-     private CuartelData cd;
-     private BomberoData bombd;
+    private CuartelData cd;
+    private BomberoData bombd;
+
     public CuartelBomberosEquipo57() {
-        bd= new BrigadaData();
-       cd= new CuartelData();
-       bombd= new BomberoData();
-       
+        bd = new BrigadaData();
+        cd = new CuartelData();
+        bombd = new BomberoData();
+
         initComponents();
     }
 
@@ -187,14 +188,14 @@ public class CuartelBomberosEquipo57 extends javax.swing.JFrame {
     }//GEN-LAST:event_FormularioIngresarSiniestroActionPerformed
 
     private void FormularioConsultarSiniestroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FormularioConsultarSiniestroActionPerformed
-        
+
         jDEscritorio.removeAll();
         jDEscritorio.repaint();
         ConsultarSiniestro cs = new ConsultarSiniestro();
         cs.setVisible(true);
         jDEscritorio.add(cs);
         jDEscritorio.moveToFront(cs);
-        
+
     }//GEN-LAST:event_FormularioConsultarSiniestroActionPerformed
 
     private void FormularioIngresarCuartelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FormularioIngresarCuartelActionPerformed
@@ -213,11 +214,11 @@ public class CuartelBomberosEquipo57 extends javax.swing.JFrame {
         ib.setVisible(true);
         jDEscritorio.add(ib);
         jDEscritorio.moveToFront(ib);
-        
+
     }//GEN-LAST:event_FormularioIngresarBrigadaActionPerformed
 
     private void FormularioIngresarBomberoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FormularioIngresarBomberoActionPerformed
-       
+
         jDEscritorio.removeAll();
         jDEscritorio.repaint();
         IngresarBombero ibo = new IngresarBombero();
@@ -227,7 +228,7 @@ public class CuartelBomberosEquipo57 extends javax.swing.JFrame {
     }//GEN-LAST:event_FormularioIngresarBomberoActionPerformed
 
     private void FormularioConsultarCuartelesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FormularioConsultarCuartelesActionPerformed
-        
+
         jDEscritorio.removeAll();
         jDEscritorio.repaint();
         ConsultarCuarteles cc = new ConsultarCuarteles();
@@ -237,20 +238,20 @@ public class CuartelBomberosEquipo57 extends javax.swing.JFrame {
     }//GEN-LAST:event_FormularioConsultarCuartelesActionPerformed
 
     private void FormularioConsultarBrigadaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FormularioConsultarBrigadaActionPerformed
-        
+
         jDEscritorio.removeAll();
         jDEscritorio.repaint();
-        ConsultarBrigadas cb = new ConsultarBrigadas(bd,cd);
+        ConsultarBrigadas cb = new ConsultarBrigadas(bd, cd);
         cb.setVisible(true);
         jDEscritorio.add(cb);
         jDEscritorio.moveToFront(cb);
     }//GEN-LAST:event_FormularioConsultarBrigadaActionPerformed
 
     private void FormularioConsultarBomberosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FormularioConsultarBomberosActionPerformed
-       
+
         jDEscritorio.removeAll();
         jDEscritorio.repaint();
-        ConsultarBomberos cbo = new ConsultarBomberos(cd,bd, bombd);
+        ConsultarBomberos cbo = new ConsultarBomberos(cd, bd, bombd);
         cbo.setVisible(true);
         jDEscritorio.add(cbo);
         jDEscritorio.moveToFront(cbo);
@@ -261,8 +262,8 @@ public class CuartelBomberosEquipo57 extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem7ActionPerformed
 
     private void jMenu3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu3ActionPerformed
-      this.dispose();
-      
+        this.dispose();
+
     }//GEN-LAST:event_jMenu3ActionPerformed
 
     /**

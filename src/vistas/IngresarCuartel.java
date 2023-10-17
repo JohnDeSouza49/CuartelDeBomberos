@@ -318,43 +318,43 @@ public class IngresarCuartel extends javax.swing.JInternalFrame {
 
         Cuartel c = new Cuartel();
 
-        try{
-        if (!jTFNombre.getText().isEmpty()) {
+        try {
+            if (!jTFNombre.getText().isEmpty()) {
 
-            String nombre = jTFNombre.getText();
-            c = cd.BuscarCuartelPorNombre(nombre);
+                String nombre = jTFNombre.getText();
+                c = cd.BuscarCuartelPorNombre(nombre);
 
-            jTFCodigo.setText(c.getCodigoCuartel() + "");
-            jTFNombre.setText(c.getNombreCuartel());
-            jTFDireccion.setText(c.getDireccion());
-            jtFTelefono.setText(c.getTelefono() + "");
-            jTFCooX.setText(c.getCoordenadaX() + "");
-            jTFCooY.setText(c.getCoordenadaY() + "");
-            jTFCorreo.setText(c.getCorreoElectronico());
-            jRBEstado.setSelected(c.isEstado());
+                jTFCodigo.setText(c.getCodigoCuartel() + "");
+                jTFNombre.setText(c.getNombreCuartel());
+                jTFDireccion.setText(c.getDireccion());
+                jtFTelefono.setText(c.getTelefono() + "");
+                jTFCooX.setText(c.getCoordenadaX() + "");
+                jTFCooY.setText(c.getCoordenadaY() + "");
+                jTFCorreo.setText(c.getCorreoElectronico());
+                jRBEstado.setSelected(c.isEstado());
 
-        } else if (!jTFCodigo.getText().isEmpty()) {
+            } else if (!jTFCodigo.getText().isEmpty()) {
 
-            int codigo = Integer.parseInt(jTFCodigo.getText());
-            c = cd.BuscarCuartelPorCodigo(codigo);
+                int codigo = Integer.parseInt(jTFCodigo.getText());
+                c = cd.BuscarCuartelPorCodigo(codigo);
 
-            jTFCodigo.setText(c.getCodigoCuartel() + "");
-            jTFNombre.setText(c.getNombreCuartel());
-            jTFDireccion.setText(c.getDireccion());
-            jtFTelefono.setText(c.getTelefono() + "");
-            jTFCooX.setText(c.getCoordenadaX() + "");
-            jTFCooY.setText(c.getCoordenadaY() + "");
-            jTFCorreo.setText(c.getCorreoElectronico());
-            jRBEstado.setSelected(c.isEstado());
-        }else{
-            
-            JOptionPane.showMessageDialog(this, "Deve ingresar un código o un nombre del cuartel a buscar");
-            
+                jTFCodigo.setText(c.getCodigoCuartel() + "");
+                jTFNombre.setText(c.getNombreCuartel());
+                jTFDireccion.setText(c.getDireccion());
+                jtFTelefono.setText(c.getTelefono() + "");
+                jTFCooX.setText(c.getCoordenadaX() + "");
+                jTFCooY.setText(c.getCoordenadaY() + "");
+                jTFCorreo.setText(c.getCorreoElectronico());
+                jRBEstado.setSelected(c.isEstado());
+            } else {
+
+                JOptionPane.showMessageDialog(this, "Deve ingresar un código o un nombre del cuartel a buscar");
+
+            }
+        } catch (NullPointerException npe) {
+            JOptionPane.showMessageDialog(this, "El cuartel a buscar no existe");
         }
-        }catch(NullPointerException npe){
-             JOptionPane.showMessageDialog(this, "El cuartel a buscar no existe");
-        }
-      
+
 
     }//GEN-LAST:event_jBBuscarActionPerformed
 
@@ -364,30 +364,30 @@ public class IngresarCuartel extends javax.swing.JInternalFrame {
         jTFCodigo.setText("");
         jTFNombre.setText("");
         jTFDireccion.setText("");
-        jtFTelefono.setText( "");
-        jTFCooX.setText( "");
-        jTFCooY.setText( "");
+        jtFTelefono.setText("");
+        jTFCooX.setText("");
+        jTFCooY.setText("");
         jTFCorreo.setText("");
         jRBEstado.setSelected(false);
     }//GEN-LAST:event_jBlimpiarActionPerformed
 
     private void jBModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBModificarActionPerformed
         // TODO add your handling code here:
-       try{ 
-        int codigo =  Integer.parseInt(  jTFCodigo.getText());
-        String nombre =   jTFNombre.getText();
-        String dir = jTFDireccion.getText();
-        int tel =  Integer.parseInt(jtFTelefono.getText());
-        int cooX = Integer.parseInt(jTFCooX.getText());
-        int cooY = Integer.parseInt(jTFCooY.getText());
-        String correo =  jTFCorreo.getText();
-        boolean est = jRBEstado.isSelected();
-        
-        Cuartel c = new Cuartel(codigo, nombre, dir, cooX, cooY,tel, correo, est);
-        cd.modificarCuartel(c);
-       }catch(NumberFormatException nfe){
-           JOptionPane.showMessageDialog(this, "Error... no se puede modificar cuartel");
-       }
+        try {
+            int codigo = Integer.parseInt(jTFCodigo.getText());
+            String nombre = jTFNombre.getText();
+            String dir = jTFDireccion.getText();
+            int tel = Integer.parseInt(jtFTelefono.getText());
+            int cooX = Integer.parseInt(jTFCooX.getText());
+            int cooY = Integer.parseInt(jTFCooY.getText());
+            String correo = jTFCorreo.getText();
+            boolean est = jRBEstado.isSelected();
+
+            Cuartel c = new Cuartel(codigo, nombre, dir, cooX, cooY, tel, correo, est);
+            cd.modificarCuartel(c);
+        } catch (NumberFormatException nfe) {
+            JOptionPane.showMessageDialog(this, "Error... no se puede modificar cuartel");
+        }
     }//GEN-LAST:event_jBModificarActionPerformed
 
     private void jTFCodigoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTFCodigoActionPerformed

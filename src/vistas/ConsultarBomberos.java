@@ -13,21 +13,22 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 public class ConsultarBomberos extends javax.swing.JInternalFrame {
-        private BrigadaData bd;
+
+    private BrigadaData bd;
     private CuartelData cd;
     private BomberoData bombd;
-   private DefaultComboBoxModel modelito= null;
-   private DefaultComboBoxModel modelito2= null;  
-    private DefaultTableModel modelo = new DefaultTableModel(){
-        public boolean isCellEditable(int f, int c){
+    private DefaultComboBoxModel modelito = null;
+    private DefaultComboBoxModel modelito2 = null;
+    private DefaultTableModel modelo = new DefaultTableModel() {
+        public boolean isCellEditable(int f, int c) {
             return false;
         }
     };
 
     public ConsultarBomberos(CuartelData cd, BrigadaData bd, BomberoData bombd) {
-        this.bd=bd;
-        this.cd=cd;
-        this.bombd=bombd;
+        this.bd = bd;
+        this.cd = cd;
+        this.bombd = bombd;
         initComponents();
         armarEncabezado();
         llenar();
@@ -168,13 +169,13 @@ public class ConsultarBomberos extends javax.swing.JInternalFrame {
 
     private void jCBCuartelesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCBCuartelesActionPerformed
         // TODO add your handling code here:
-         Cuartel selec= (Cuartel) jCBCuarteles.getSelectedItem();
-         borrarFilas();
-         int codigo=selec.getCodigoCuartel();
-          List<Bombero>cuartel = new ArrayList<>();
-          cuartel=bombd.listarBomberosxCuartel(codigo);
-          for(Bombero aux:cuartel){
-                   modelo.addRow(new Object[]{
+        Cuartel selec = (Cuartel) jCBCuarteles.getSelectedItem();
+        borrarFilas();
+        int codigo = selec.getCodigoCuartel();
+        List<Bombero> cuartel = new ArrayList<>();
+        cuartel = bombd.listarBomberosxCuartel(codigo);
+        for (Bombero aux : cuartel) {
+            modelo.addRow(new Object[]{
                 aux.getDni(),
                 aux.getNombreApellido(),
                 aux.getFechaNac(),
@@ -182,28 +183,28 @@ public class ConsultarBomberos extends javax.swing.JInternalFrame {
                 aux.getCodigoBrigada(),
                 aux.isEstado(),
                 aux.getGrupoSanguineo()
-           });
-          }
-          
-     //JOptionPane.showMessageDialog(null, selec.getCodigoCuartel());
+            });
+        }
+
+        //JOptionPane.showMessageDialog(null, selec.getCodigoCuartel());
     }//GEN-LAST:event_jCBCuartelesActionPerformed
 
     private void jCBBrigadaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCBBrigadaActionPerformed
         // TODO add your handling code here:
-          Cuartel selec= (Cuartel) jCBCuarteles.getSelectedItem();
-         int codigo=selec.getCodigoCuartel();
-          
-          
+        Cuartel selec = (Cuartel) jCBCuarteles.getSelectedItem();
+        int codigo = selec.getCodigoCuartel();
+
+
     }//GEN-LAST:event_jCBBrigadaActionPerformed
 
     private void jCheckBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxActionPerformed
         // TODO add your handling code here:
-        if(jCheckBox.isSelected()==true){ 
-             Cuartel selec= (Cuartel) jCBCuarteles.getSelectedItem();
-         int codigo=selec.getCodigoCuartel();
-          llenarB(codigo);
+        if (jCheckBox.isSelected() == true) {
+            Cuartel selec = (Cuartel) jCBCuarteles.getSelectedItem();
+            int codigo = selec.getCodigoCuartel();
+            llenarB(codigo);
         }
-        if(jCheckBox.isSelected()==false){ 
+        if (jCheckBox.isSelected() == false) {
             jCBBrigada.removeAllItems();
         }
     }//GEN-LAST:event_jCheckBoxActionPerformed
@@ -240,27 +241,30 @@ private void armarEncabezado() {
         jTBomberos.getColumnModel().getColumn(6).setPreferredWidth(50);
 
     }
-public void llenar(){
-    modelito= new DefaultComboBoxModel ();
-    jCBCuarteles.setModel(modelito);
-    for(Cuartel aux: cd.mostrarTodosCuarteles() ){ 
-        modelito.addElement(aux);
+
+    public void llenar() {
+        modelito = new DefaultComboBoxModel();
+        jCBCuarteles.setModel(modelito);
+        for (Cuartel aux : cd.mostrarTodosCuarteles()) {
+            modelito.addElement(aux);
+        }
     }
-}
-public void llenarB(int codigo){
-     List<Brigada> brigadas = new ArrayList<>();
-    brigadas= bd.brigadaPorCuartel(codigo);
-     modelito2= new DefaultComboBoxModel ();
-     jCBBrigada.setModel(modelito2);
-     for(Brigada aux:brigadas){ 
-         modelito2.addElement(aux);
-         }
-}
-   private void borrarFilas(){
-    int filas=jTBomberos.getRowCount()-1;
-    for(int f=filas;f>=0;f--){
-        modelo.removeRow(f);
-    
+
+    public void llenarB(int codigo) {
+        List<Brigada> brigadas = new ArrayList<>();
+        brigadas = bd.brigadaPorCuartel(codigo);
+        modelito2 = new DefaultComboBoxModel();
+        jCBBrigada.setModel(modelito2);
+        for (Brigada aux : brigadas) {
+            modelito2.addElement(aux);
+        }
+    }
+
+    private void borrarFilas() {
+        int filas = jTBomberos.getRowCount() - 1;
+        for (int f = filas; f >= 0; f--) {
+            modelo.removeRow(f);
+
         }
     }
 }

@@ -10,23 +10,24 @@ import javax.swing.DefaultComboBoxModel;
 import javax.swing.table.DefaultTableModel;
 
 public class ConsultarBrigadas extends javax.swing.JInternalFrame {
+
     private BrigadaData bd;
     private CuartelData cd;
-    private DefaultTableModel modelo = new DefaultTableModel(){
-       public boolean isCellEditable(int fila, int columna){
-           return false;
-       }
-    };
-    private DefaultTableModel modelo2 =new DefaultTableModel(){
-        public boolean isCellEditable(int fila, int columna){
+    private DefaultTableModel modelo = new DefaultTableModel() {
+        public boolean isCellEditable(int fila, int columna) {
             return false;
         }
     };
-    private DefaultComboBoxModel modelito= null;
-    
+    private DefaultTableModel modelo2 = new DefaultTableModel() {
+        public boolean isCellEditable(int fila, int columna) {
+            return false;
+        }
+    };
+    private DefaultComboBoxModel modelito = null;
+
     public ConsultarBrigadas(BrigadaData bd, CuartelData cd) {
-        this.bd=bd;
-        this.cd=cd;
+        this.bd = bd;
+        this.cd = cd;
         initComponents();
         armarEncabezado();
         armarEncabezado2();
@@ -227,65 +228,56 @@ public class ConsultarBrigadas extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
         borrarFilasBrigadas();
         List<Brigada> brigadas = new ArrayList<>();
-          brigadas= bd.brigadasLibres();
-          if(jRBLibres.isSelected()==true && jRBEnServicio.isSelected()==false ){
-           for(Brigada aux:brigadas){
-               modelo.addRow(new Object[]{
-                aux.getCodigoBrigada(),
-                aux.getNombreBrigada(),
-                aux.getEspecialidad(),
-                aux.getNumeroCuartel()
-           });
-               }
+        brigadas = bd.brigadasLibres();
+        if (jRBLibres.isSelected() == true && jRBEnServicio.isSelected() == false) {
+            for (Brigada aux : brigadas) {
+                modelo.addRow(new Object[]{
+                    aux.getCodigoBrigada(),
+                    aux.getNombreBrigada(),
+                    aux.getEspecialidad(),
+                    aux.getNumeroCuartel()
+                });
             }
+        }
     }//GEN-LAST:event_jRBLibresActionPerformed
 
     private void jRBEnServicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRBEnServicioActionPerformed
         // TODO add your handling code here:
         borrarFilasBrigadas();
         List<Brigada> brigadas = new ArrayList<>();
-        brigadas=bd.brigadasAsignadas();
-        if(jRBLibres.isSelected()==false && jRBEnServicio.isSelected()==true ){
-           for(Brigada aux:brigadas){
-               modelo.addRow(new Object[]{
-                aux.getCodigoBrigada(),
-                aux.getNombreBrigada(),
-                aux.getEspecialidad(),
-                aux.getNumeroCuartel()
-           });
+        brigadas = bd.brigadasAsignadas();
+        if (jRBLibres.isSelected() == false && jRBEnServicio.isSelected() == true) {
+            for (Brigada aux : brigadas) {
+                modelo.addRow(new Object[]{
+                    aux.getCodigoBrigada(),
+                    aux.getNombreBrigada(),
+                    aux.getEspecialidad(),
+                    aux.getNumeroCuartel()
+                });
             }
-           }
+        }
     }//GEN-LAST:event_jRBEnServicioActionPerformed
 
     private void jCBCuartelesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCBCuartelesActionPerformed
-        
+
         int cuartel = jCBCuarteles.getSelectedIndex();
         borrarFilasCuartel();
         System.out.println("indice:" + cuartel);
-       
-        if(cuartel!= -1){
+
+        if (cuartel != -1) {
             List<Brigada> brigadas = new ArrayList<>();
-            brigadas  = bd.brigadaPorCuartel(cuartel+1);
-            for(Brigada b: brigadas){
-                
-                modelo2.addRow( new Object[]{
-                    
+            brigadas = bd.brigadaPorCuartel(cuartel + 1);
+            for (Brigada b : brigadas) {
+
+                modelo2.addRow(new Object[]{
                     b.getCodigoBrigada(),
                     b.getNombreBrigada(),
-                    b.getEspecialidad(),
-                  
-                });
+                    b.getEspecialidad(),});
             }
-            
+
         }
-       
-        
-        
-        
-     
-        
-        
-       
+
+
     }//GEN-LAST:event_jCBCuartelesActionPerformed
 
 
@@ -311,7 +303,7 @@ private void armarEncabezado() {
         modelo.addColumn("ESPECIALIDAD");
         modelo.addColumn("CUARTEL");
         jTConsultaBrigada.setModel(modelo);
-        
+
         jTConsultaBrigada.getColumnModel().getColumn(0).setPreferredWidth(50);
         jTConsultaBrigada.getColumnModel().getColumn(1).setPreferredWidth(70);
         jTConsultaBrigada.getColumnModel().getColumn(2).setPreferredWidth(120);
@@ -323,31 +315,34 @@ private void armarEncabezado() {
         modelo2.addColumn("NOMBRE");
         modelo2.addColumn("ESPECIALIDAD");
         jTListar.setModel(modelo2);
-        
+
         jTListar.getColumnModel().getColumn(0).setPreferredWidth(50);
         jTListar.getColumnModel().getColumn(1).setPreferredWidth(70);
         jTListar.getColumnModel().getColumn(2).setPreferredWidth(120);
-       
-    }
-    private void borrarFilasBrigadas(){
-    int filas=jTConsultaBrigada.getRowCount()-1;
-    for(int f=filas;f>=0;f--){
-        modelo.removeRow(f);
-    }
-}
-      private void borrarFilasCuartel(){
-    int filas=jTListar.getRowCount()-1;
-    for(int f=filas;f>=0;f--){
-        modelo2.removeRow(f);
-    }
-}
-      private void llenarCB(){
-                modelito= new DefaultComboBoxModel();
-                jCBCuarteles.setModel(modelito);
-                for(Cuartel aux:cd.mostrarTodosCuarteles()){
-                modelito.addElement(aux.getNombreCuartel());
-                   
-                }
 
-            }
+    }
+
+    private void borrarFilasBrigadas() {
+        int filas = jTConsultaBrigada.getRowCount() - 1;
+        for (int f = filas; f >= 0; f--) {
+            modelo.removeRow(f);
+        }
+    }
+
+    private void borrarFilasCuartel() {
+        int filas = jTListar.getRowCount() - 1;
+        for (int f = filas; f >= 0; f--) {
+            modelo2.removeRow(f);
+        }
+    }
+
+    private void llenarCB() {
+        modelito = new DefaultComboBoxModel();
+        jCBCuarteles.setModel(modelito);
+        for (Cuartel aux : cd.mostrarTodosCuarteles()) {
+            modelito.addElement(aux.getNombreCuartel());
+
+        }
+
+    }
 }

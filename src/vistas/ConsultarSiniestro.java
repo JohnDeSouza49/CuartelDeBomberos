@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JInternalFrame.java to edit this template
  */
 package vistas;
+
 import AccesoADatos.SiniestroData;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -11,7 +12,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.util.Calendar;
-
 
 public class ConsultarSiniestro extends javax.swing.JInternalFrame {
 
@@ -129,12 +129,12 @@ public class ConsultarSiniestro extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jBSalirActionPerformed
 
     private void jBBuscarSiniestroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBBuscarSiniestroActionPerformed
-      Connection connection = null;
+        Connection connection = null;
         PreparedStatement preparedStatement = null;
         ResultSet resultSet = null;
 
         try {
-                        // Obtener la fecha y hora actual
+            // Obtener la fecha y hora actual
             Calendar calendar = Calendar.getInstance();
             Timestamp fechaActual = new Timestamp(calendar.getTimeInMillis());
 
@@ -157,7 +157,7 @@ public class ConsultarSiniestro extends javax.swing.JInternalFrame {
                 String descripcion = resultSet.getString("descripción");
                 String ubicacion = resultSet.getString("ubicación");
 
-               // System.out.println("Codigo del Siniestro: " + codigoSiniestro);
+                // System.out.println("Codigo del Siniestro: " + codigoSiniestro);
                 System.out.println("Fecha: " + fecha);
                 System.out.println("Descripción: " + descripcion);
                 System.out.println("Ubicación: " + ubicacion);
@@ -167,9 +167,15 @@ public class ConsultarSiniestro extends javax.swing.JInternalFrame {
             e.printStackTrace();
         } finally {
             try {
-                if (resultSet != null) resultSet.close();
-                if (preparedStatement != null) preparedStatement.close();
-                if (connection != null) connection.close();
+                if (resultSet != null) {
+                    resultSet.close();
+                }
+                if (preparedStatement != null) {
+                    preparedStatement.close();
+                }
+                if (connection != null) {
+                    connection.close();
+                }
             } catch (SQLException e) {
                 e.printStackTrace();
             }
