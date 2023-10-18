@@ -2,8 +2,10 @@
 package vistas;
 
 import AccesoADatos.BrigadaData;
+import AccesoADatos.CuartelData;
 import AccesoADatos.SiniestroData;
 import Entidades.Brigada;
+import Entidades.Cuartel;
 import Entidades.Siniestro;
 import java.time.LocalDate;
 import java.time.ZoneId;
@@ -251,14 +253,20 @@ if(jTFCooXSi.getText().isEmpty()||jTFCooYSi.getText().isEmpty()){
     
     }//GEN-LAST:event_jBAsignarCuartelActionPerformed
 else {
-    
+    CuartelData cu = new CuartelData();
     int x = Integer.parseInt(jTFCooXSi.getText());
     int y = Integer.parseInt(jTFCooYSi.getText());
     String tipo = (String) jCBTipoSi.getSelectedItem();
     LocalDate feSi = jDCFechaSi.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
     Brigada brigadaAsignada;
    Siniestro siniestro = new Siniestro(tipo, feSi, x , y);
-    brigadaAsignada = bd
+   brigadaAsignada = sd.AsignarBrigada(siniestro);
+   jTFBrigada.setText(brigadaAsignada.getNombreBrigada());
+   Cuartel cuartelAsignado = cu.BuscarCuartelPorCodigo(brigadaAsignada.getNumeroCuartel());
+   
+   jTFCuartel.setText(cuartelAsignado.getNombreCuartel());
+   
+   
     
 }
     }
