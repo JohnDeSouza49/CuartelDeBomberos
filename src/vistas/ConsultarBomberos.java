@@ -211,6 +211,7 @@ public class ConsultarBomberos extends javax.swing.JInternalFrame {
          if (jCheckBox.isSelected()== false) {
             llenarTabla1(codigo);
             jCBBrigada.removeAll();
+            //a
          }  
     }//GEN-LAST:event_jCheckBoxActionPerformed
 
