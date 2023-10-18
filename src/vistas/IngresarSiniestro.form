@@ -124,8 +124,8 @@
                                           <Component id="jCBTipoSi" min="-2" pref="159" max="-2" attributes="0"/>
                                       </Group>
                                       <Group type="102" alignment="0" attributes="0">
-                                          <Component id="jLabel9" min="-2" pref="74" max="-2" attributes="0"/>
-                                          <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
+                                          <Component id="jLabel9" min="-2" pref="99" max="-2" attributes="0"/>
+                                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                           <Group type="103" groupAlignment="0" attributes="0">
                                               <Component id="jTFCooYSi" min="-2" pref="128" max="-2" attributes="0"/>
                                               <Component id="jTFBrigada" min="-2" pref="128" max="-2" attributes="0"/>
@@ -171,7 +171,7 @@
                       <Component id="jLabel6" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jTFCooYSi" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace pref="35" max="32767" attributes="0"/>
+                  <EmptySpace pref="24" max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabel10" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jTFCuartel" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -231,6 +231,9 @@
         <Component class="javax.swing.JTextField" name="jTFCodigoSi">
         </Component>
         <Component class="javax.swing.JTextField" name="jTFBrigada">
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTFBrigadaActionPerformed"/>
+          </Events>
         </Component>
         <Component class="com.toedter.calendar.JDateChooser" name="jDCFechaSi">
         </Component>
@@ -260,7 +263,7 @@
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel9">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Brigada N&#xb0;"/>
+            <Property name="text" type="java.lang.String" value="Nombre Brigada"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel10">
@@ -292,11 +295,22 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="ASIGNAR CUARTEL"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jBAsignarCuartelActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JComboBox" name="jCBTipoSi">
           <Properties>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-              <StringArray count="0"/>
+              <StringArray count="7">
+                <StringItem index="0" value=" incendios en viviendas e industrias"/>
+                <StringItem index="1" value=" salvamento en derrumbes"/>
+                <StringItem index="2" value=" rescates en &#xe1;mbito monta&#xf1;a"/>
+                <StringItem index="3" value=" rescate de personas atrapadas en accidentes de tr&#xe1;fico"/>
+                <StringItem index="4" value=" socorrer inundaciones"/>
+                <StringItem index="5" value=" operativos de prevenci&#xf3;n."/>
+                <StringItem index="6" value=" "/>
+              </StringArray>
             </Property>
           </Properties>
           <AuxValues>
