@@ -16,6 +16,7 @@ public class IngresarSiniestro extends javax.swing.JInternalFrame {
     private BrigadaData bd;
     private SiniestroData sd;
     Brigada brigadaAsignada=null;
+    Siniestro siniestro=null;
     public IngresarSiniestro(BrigadaData bd, SiniestroData sd) {
         this.bd = bd;
         this.sd = sd;
@@ -276,7 +277,7 @@ public class IngresarSiniestro extends javax.swing.JInternalFrame {
         int y = Integer.parseInt(jTFCooYSi.getText());
         String tipo = (String) jCBTipoSi.getSelectedItem();
         LocalDate feSi = jDCFechaSi.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
-        Siniestro siniestro = new Siniestro(tipo, feSi, x, y);
+         siniestro = new Siniestro(tipo, feSi, x, y);
         brigadaAsignada = sd.AsignarBrigada(siniestro);
         JOptionPane.showMessageDialog(this, "buscando brigada libre...");
         jTFBrigada.setText(brigadaAsignada.getNombreBrigada());
@@ -289,6 +290,14 @@ public class IngresarSiniestro extends javax.swing.JInternalFrame {
     private void jBGuardarSiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBGuardarSiActionPerformed
         // TODO add your handling code here:
         bd.brigadaOcupada(brigadaAsignada);
+        SiniestroData sd= new SiniestroData();
+        int x= siniestro.getCoordenadaX();
+        int y= siniestro.getCoordenadaY();
+        String tipo= siniestro.getTipo();
+        String detalles=jTADetalleSi.getText();
+        LocalDate feS=siniestro.getFechaSiniestro();
+        Siniestro s= new Siniestro(tipo, feS, x, y, detalles,feS, 0, brigadaAsignada.getCodigoBrigada());
+        sd.guardarSiniestro(siniestro);
         JOptionPane.showMessageDialog(null, "Siniestro registrado");
     }//GEN-LAST:event_jBGuardarSiActionPerformed
 
