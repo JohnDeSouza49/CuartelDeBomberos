@@ -27,16 +27,15 @@ public class ConsultarSiniestro extends javax.swing.JInternalFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         jBBuscarSiniestro = new javax.swing.JButton();
         jBGuardarCambios = new javax.swing.JButton();
         jBSalir = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
 
         setTitle("SINIESTROS ACUALES");
-
-        jLabel1.setText("SINIESTROS ULTIMAS 24 HS");
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -51,7 +50,7 @@ public class ConsultarSiniestro extends javax.swing.JInternalFrame {
         ));
         jScrollPane1.setViewportView(jTable1);
 
-        jBBuscarSiniestro.setText("BUSCAR");
+        jBBuscarSiniestro.setText("ULTIMAS 24 HORAS");
 
         jBGuardarCambios.setText("GUARDAR CAMBIOS");
 
@@ -62,41 +61,50 @@ public class ConsultarSiniestro extends javax.swing.JInternalFrame {
             }
         });
 
+        jButton1.setText("SIN RESOLVER");
+
+        jLabel2.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jLabel2.setText("BUSCAR SINIESTROS");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(58, 58, 58)
+                .addComponent(jBGuardarCambios)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jBSalir)
+                .addGap(43, 43, 43))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGap(0, 12, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 524, javax.swing.GroupLayout.PREFERRED_SIZE))
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(184, 184, 184)
-                        .addComponent(jLabel1))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(78, 78, 78)
-                        .addComponent(jBBuscarSiniestro)
-                        .addGap(144, 144, 144)
-                        .addComponent(jBGuardarCambios))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(217, 217, 217)
-                        .addComponent(jBSalir)))
+                .addContainerGap()
+                .addComponent(jBBuscarSiniestro, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButton1)
+                .addGap(57, 57, 57))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(183, 183, 183)
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(30, 30, 30)
-                .addComponent(jLabel1)
-                .addGap(68, 68, 68)
+                .addGap(17, 17, 17)
+                .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 35, Short.MAX_VALUE)
+                .addGap(36, 36, 36)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jBBuscarSiniestro)
-                    .addComponent(jBGuardarCambios))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 96, Short.MAX_VALUE)
+                    .addComponent(jButton1))
+                .addGap(122, 122, 122)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jBSalir)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jBSalir)
+                    .addComponent(jBGuardarCambios))
                 .addGap(17, 17, 17))
         );
 
@@ -123,7 +131,8 @@ public class ConsultarSiniestro extends javax.swing.JInternalFrame {
     private javax.swing.JButton jBBuscarSiniestro;
     private javax.swing.JButton jBGuardarCambios;
     private javax.swing.JButton jBSalir;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
