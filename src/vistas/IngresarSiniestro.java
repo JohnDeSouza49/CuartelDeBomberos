@@ -288,7 +288,7 @@ public class IngresarSiniestro extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jBAsignarCuartelActionPerformed
 
     private void jBGuardarSiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBGuardarSiActionPerformed
-        // TODO add your handling code here:
+       
         bd.brigadaOcupada(brigadaAsignada);
         SiniestroData sd= new SiniestroData();
         int x= siniestro.getCoordenadaX();
