@@ -1,4 +1,3 @@
-
 package vistas;
 
 import AccesoADatos.BrigadaData;
@@ -11,21 +10,19 @@ import java.time.LocalDate;
 import java.time.ZoneId;
 import javax.swing.JOptionPane;
 
-
 public class IngresarSiniestro extends javax.swing.JInternalFrame {
-private BrigadaData bd;
-private SiniestroData sd;
 
-   
+    private BrigadaData bd;
+    private SiniestroData sd;
+    Brigada brigadaAsignada=null;
     public IngresarSiniestro(BrigadaData bd, SiniestroData sd) {
         this.bd = bd;
         this.sd = sd;
-        
+      
         initComponents();
-        
+
     }
 
-  
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -89,6 +86,11 @@ private SiniestroData sd;
         jLabel10.setText("Cuartel");
 
         jBGuardarSi.setText("GUARDAR");
+        jBGuardarSi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBGuardarSiActionPerformed(evt);
+            }
+        });
 
         jBSalir.setText("SALIR");
         jBSalir.addActionListener(new java.awt.event.ActionListener() {
@@ -106,7 +108,7 @@ private SiniestroData sd;
             }
         });
 
-        jCBTipoSi.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " incendios en viviendas e industrias", " salvamento en derrumbes", " rescates en ámbito montaña", " rescate de personas", " socorrer inundaciones", " operativos de prevención.", " " }));
+        jCBTipoSi.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "incendios en viviendas e industrias", "salvamento en derrumbes", "rescates en ámbito montaña", "rescate de personas", "socorrer inundaciones", "operativos de prevención.", "" }));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -203,7 +205,7 @@ private SiniestroData sd;
                     .addComponent(jTFCooXSi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel6)
                     .addComponent(jTFCooYSi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 64, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel10)
                     .addComponent(jTFCuartel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -248,28 +250,30 @@ private SiniestroData sd;
     }//GEN-LAST:event_jTFBrigadaActionPerformed
 
     private void jBAsignarCuartelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBAsignarCuartelActionPerformed
-if(jTFCooXSi.getText().isEmpty()||jTFCooYSi.getText().isEmpty()){
-    JOptionPane.showMessageDialog(this, "debe completar las coordenadas del siniestro");
-    
-    }//GEN-LAST:event_jBAsignarCuartelActionPerformed
-else {
+        if (jTFCooXSi.getText().isEmpty() || jTFCooYSi.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "debe completar las coordenadas del siniestro");
+            } else {
     CuartelData cu = new CuartelData();
-    int x = Integer.parseInt(jTFCooXSi.getText());
-    int y = Integer.parseInt(jTFCooYSi.getText());
-    String tipo = (String) jCBTipoSi.getSelectedItem();
-    LocalDate feSi = jDCFechaSi.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
-    Brigada brigadaAsignada;
-   Siniestro siniestro = new Siniestro(tipo, feSi, x , y);
-   brigadaAsignada = sd.AsignarBrigada(siniestro);
-   jTFBrigada.setText(brigadaAsignada.getNombreBrigada());
-   Cuartel cuartelAsignado = cu.BuscarCuartelPorCodigo(brigadaAsignada.getNumeroCuartel());
-   
-   jTFCuartel.setText(cuartelAsignado.getNombreCuartel());
-   
-   
-    
-}
+        int x = Integer.parseInt(jTFCooXSi.getText());
+        int y = Integer.parseInt(jTFCooYSi.getText());
+        String tipo = (String) jCBTipoSi.getSelectedItem();
+        LocalDate feSi = jDCFechaSi.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+        Siniestro siniestro = new Siniestro(tipo, feSi, x, y);
+        brigadaAsignada = sd.AsignarBrigada(siniestro);
+        JOptionPane.showMessageDialog(this, "buscando brigada libre...");
+        jTFBrigada.setText(brigadaAsignada.getNombreBrigada());
+        Cuartel cuartelAsignado = cu.BuscarCuartelPorCodigo(brigadaAsignada.getNumeroCuartel());
+        jTFCuartel.setText(cuartelAsignado.getNombreCuartel());
+
     }
+    }//GEN-LAST:event_jBAsignarCuartelActionPerformed
+
+    private void jBGuardarSiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBGuardarSiActionPerformed
+        // TODO add your handling code here:
+        bd.brigadaOcupada(brigadaAsignada);
+        JOptionPane.showMessageDialog(null, "Siniestro registrado");
+    }//GEN-LAST:event_jBGuardarSiActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBAsignarCuartel;
