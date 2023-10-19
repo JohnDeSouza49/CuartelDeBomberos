@@ -55,6 +55,11 @@ public class IngresarCuartel extends javax.swing.JInternalFrame {
                 jTFCodigoActionPerformed(evt);
             }
         });
+        jTFCodigo.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTFCodigoKeyTyped(evt);
+            }
+        });
 
         jLabel3.setText("Nombre");
 
@@ -393,6 +398,13 @@ public class IngresarCuartel extends javax.swing.JInternalFrame {
     private void jTFCodigoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTFCodigoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTFCodigoActionPerformed
+
+    private void jTFCodigoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTFCodigoKeyTyped
+ char c = evt.getKeyChar();
+        if (!(Character.isDigit(c) || (c == KeyEvent.VK_BACK_SPACE) || (c == KeyEvent.VK_DELETE))) {
+            evt.consume();
+    }         
+    }//GEN-LAST:event_jTFCodigoKeyTyped
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

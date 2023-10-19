@@ -11,6 +11,7 @@ import java.time.ZoneId;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 
+
 public class IngresarBombero extends javax.swing.JInternalFrame {
 
     BomberoData bd = new BomberoData();
@@ -63,6 +64,12 @@ public class IngresarBombero extends javax.swing.JInternalFrame {
         jLabel2.setText("Codigo");
 
         jLabel3.setText("DNI");
+
+        jTFId.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTFIdKeyTyped(evt);
+            }
+        });
 
         jTFDni.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
@@ -178,9 +185,7 @@ public class IngresarBombero extends javax.swing.JInternalFrame {
                                                             .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                                                .addComponent(jRadioButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                                            .addComponent(jRadioButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                             .addGroup(jPanel1Layout.createSequentialGroup()
                                                                 .addComponent(jTFCelular, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                                 .addGap(0, 0, Short.MAX_VALUE))))))
@@ -417,6 +422,12 @@ public class IngresarBombero extends javax.swing.JInternalFrame {
 
     }//GEN-LAST:event_jBlimpiarActionPerformed
 
+    private void jTFIdKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTFIdKeyTyped
+      char c = evt.getKeyChar();
+        if (!(Character.isDigit(c) || (c == KeyEvent.VK_BACK_SPACE) || (c == KeyEvent.VK_DELETE))) {
+            evt.consume();
+    }//GEN-LAST:event_jTFIdKeyTyped
+}
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBEliminar;

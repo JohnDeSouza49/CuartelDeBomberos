@@ -1,6 +1,8 @@
 
 package vistas;
 
+import java.awt.event.KeyEvent;
+
 
 public class IngresarBrigada extends javax.swing.JInternalFrame {
 
@@ -39,6 +41,12 @@ public class IngresarBrigada extends javax.swing.JInternalFrame {
         jLabel1.setText("BRIGADA");
 
         jLabel2.setText("Codigo");
+
+        jTFCodigoBi.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTFCodigoBiKeyTyped(evt);
+            }
+        });
 
         jLabel3.setText("Nombre");
 
@@ -179,6 +187,13 @@ public class IngresarBrigada extends javax.swing.JInternalFrame {
        
         this.dispose();
     }//GEN-LAST:event_jBSalirBiActionPerformed
+
+    private void jTFCodigoBiKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTFCodigoBiKeyTyped
+        char c = evt.getKeyChar();
+        if (!(Character.isDigit(c) || (c == KeyEvent.VK_BACK_SPACE) || (c == KeyEvent.VK_DELETE))) {
+            evt.consume();
+        }        // TODO add your handling code here:
+    }//GEN-LAST:event_jTFCodigoBiKeyTyped
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
