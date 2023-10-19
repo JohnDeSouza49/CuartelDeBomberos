@@ -48,6 +48,16 @@ public class Siniestro{
         this.coordenadaX = coordenadaX;
         this.coordenadaY = coordenadaY;
     }
+
+    public Siniestro(int codigoSiniestro, String tipo, LocalDate fechaSiniestro, int coordenadaX, int coordenadaY, String detalles, int codigoBrigada) {
+        this.codigoSiniestro = codigoSiniestro;
+        this.tipo = tipo;
+        this.fechaSiniestro = fechaSiniestro;
+        this.coordenadaX = coordenadaX;
+        this.coordenadaY = coordenadaY;
+        this.detalles = detalles;
+        this.codigoBrigada = codigoBrigada;
+    }
     
 
     public int getCodigoSiniestro() {
