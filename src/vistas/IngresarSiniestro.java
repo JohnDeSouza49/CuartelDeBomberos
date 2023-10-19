@@ -106,7 +106,7 @@ private SiniestroData sd;
             }
         });
 
-        jCBTipoSi.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " incendios en viviendas e industrias", " salvamento en derrumbes", " rescates en ámbito montaña", " rescate de personas atrapadas en accidentes de tráfico", " socorrer inundaciones", " operativos de prevención.", " " }));
+        jCBTipoSi.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " incendios en viviendas e industrias", " salvamento en derrumbes", " rescates en ámbito montaña", " rescate de personas", " socorrer inundaciones", " operativos de prevención.", " " }));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);

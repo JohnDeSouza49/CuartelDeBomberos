@@ -22,7 +22,6 @@ public class IngresarBrigada extends javax.swing.JInternalFrame {
         jLabel3 = new javax.swing.JLabel();
         jTFNombreBi = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
-        jTFEspecialidadBi = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         jRBEstadoBi = new javax.swing.JRadioButton();
         jLabel6 = new javax.swing.JLabel();
@@ -32,6 +31,7 @@ public class IngresarBrigada extends javax.swing.JInternalFrame {
         jBModificarBi = new javax.swing.JButton();
         jBEliminarBi = new javax.swing.JButton();
         jBSalirBi = new javax.swing.JButton();
+        jCBTipo = new javax.swing.JComboBox<>();
 
         setTitle("INGRESAR BRIGADA");
 
@@ -63,6 +63,8 @@ public class IngresarBrigada extends javax.swing.JInternalFrame {
             }
         });
 
+        jCBTipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "incendios en viviendas e industrias", "salvamento en derrumbes", "rescates en ámbito montaña", "rescate de personas ", "socorrer inundaciones", "operativos de prevención." }));
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -79,14 +81,6 @@ public class IngresarBrigada extends javax.swing.JInternalFrame {
                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                             .addGap(16, 16, 16)
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(jPanel1Layout.createSequentialGroup()
-                                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(25, 25, 25)
-                                    .addComponent(jTFCodigoBi, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(18, 18, 18)
-                                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(18, 18, 18)
-                                    .addComponent(jTFNombreBi, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGroup(jPanel1Layout.createSequentialGroup()
                                     .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGap(18, 18, 18)
@@ -105,9 +99,21 @@ public class IngresarBrigada extends javax.swing.JInternalFrame {
                                             .addComponent(jLabel4)
                                             .addComponent(jLabel5))
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jRBEstadoBi)
-                                            .addComponent(jTFEspecialidadBi, javax.swing.GroupLayout.PREFERRED_SIZE, 352, javax.swing.GroupLayout.PREFERRED_SIZE)))))))
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                                .addComponent(jRBEstadoBi)
+                                                .addGap(324, 324, 324))
+                                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                                .addComponent(jCBTipo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                .addGap(7, 7, 7)))))
+                                .addGroup(jPanel1Layout.createSequentialGroup()
+                                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(25, 25, 25)
+                                    .addComponent(jTFCodigoBi, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(jTFNombreBi, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(188, 188, 188)
                         .addComponent(jBSalirBi)))
@@ -128,9 +134,9 @@ public class IngresarBrigada extends javax.swing.JInternalFrame {
                     .addComponent(jTFNombreBi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTFEspecialidadBi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(24, 24, 24)
+                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jCBTipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(23, 23, 23)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -145,7 +151,7 @@ public class IngresarBrigada extends javax.swing.JInternalFrame {
                     .addComponent(jBBuscarBi)
                     .addComponent(jBModificarBi)
                     .addComponent(jBEliminarBi))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
                 .addComponent(jBSalirBi)
                 .addGap(24, 24, 24))
         );
@@ -181,6 +187,7 @@ public class IngresarBrigada extends javax.swing.JInternalFrame {
     private javax.swing.JButton jBGuardarBi;
     private javax.swing.JButton jBModificarBi;
     private javax.swing.JButton jBSalirBi;
+    private javax.swing.JComboBox<String> jCBTipo;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -191,7 +198,6 @@ public class IngresarBrigada extends javax.swing.JInternalFrame {
     private javax.swing.JRadioButton jRBEstadoBi;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JTextField jTFCodigoBi;
-    private javax.swing.JTextField jTFEspecialidadBi;
     private javax.swing.JTextField jTFIdCuartel;
     private javax.swing.JTextField jTFNombreBi;
     // End of variables declaration//GEN-END:variables
