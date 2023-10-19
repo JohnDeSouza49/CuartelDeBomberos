@@ -69,6 +69,9 @@ public class IngresarSiniestro extends javax.swing.JInternalFrame {
 
         jLabel6.setText("Coordenada Y");
 
+        jTFCodigoSi.setEditable(false);
+
+        jTFBrigada.setEditable(false);
         jTFBrigada.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTFBrigadaActionPerformed(evt);
@@ -84,6 +87,8 @@ public class IngresarSiniestro extends javax.swing.JInternalFrame {
         jLabel9.setText("Nombre Brigada");
 
         jLabel10.setText("Cuartel");
+
+        jTFCuartel.setEditable(false);
 
         jBGuardarSi.setText("GUARDAR");
         jBGuardarSi.addActionListener(new java.awt.event.ActionListener() {
