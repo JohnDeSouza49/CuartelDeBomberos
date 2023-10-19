@@ -6,6 +6,7 @@ import AccesoADatos.SiniestroData;
 import Entidades.Brigada;
 import Entidades.Cuartel;
 import Entidades.Siniestro;
+import java.awt.event.KeyEvent;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import javax.swing.JOptionPane;
@@ -72,6 +73,18 @@ public class IngresarSiniestro extends javax.swing.JInternalFrame {
         jTFBrigada.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTFBrigadaActionPerformed(evt);
+            }
+        });
+
+        jTFCooXSi.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTFCooXSiKeyTyped(evt);
+            }
+        });
+
+        jTFCooYSi.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTFCooYSiKeyTyped(evt);
             }
         });
 
@@ -205,7 +218,7 @@ public class IngresarSiniestro extends javax.swing.JInternalFrame {
                     .addComponent(jTFCooXSi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel6)
                     .addComponent(jTFCooYSi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 64, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel10)
                     .addComponent(jTFCuartel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -273,6 +286,20 @@ public class IngresarSiniestro extends javax.swing.JInternalFrame {
         bd.brigadaOcupada(brigadaAsignada);
         JOptionPane.showMessageDialog(null, "Siniestro registrado");
     }//GEN-LAST:event_jBGuardarSiActionPerformed
+
+    private void jTFCooXSiKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTFCooXSiKeyTyped
+ char c = evt.getKeyChar();
+        if (!(Character.isDigit(c) || (c == KeyEvent.VK_BACK_SPACE) || (c == KeyEvent.VK_DELETE || c == '-'))) {
+            evt.consume();
+        }        
+    }//GEN-LAST:event_jTFCooXSiKeyTyped
+
+    private void jTFCooYSiKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTFCooYSiKeyTyped
+         char c = evt.getKeyChar();
+        if (!(Character.isDigit(c) || (c == KeyEvent.VK_BACK_SPACE) || (c == KeyEvent.VK_DELETE || c == '-'))) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_jTFCooYSiKeyTyped
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
