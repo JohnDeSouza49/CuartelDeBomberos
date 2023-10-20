@@ -131,31 +131,7 @@ public class CuartelData {
         return c;
 
     }
-    public Cuartel BuscarCuartelPorNombre(String nom) {
-        String sql = "SELECT * from cuartel where nombreCuartel=?";
-        Cuartel c = null;
-        try {
-            PreparedStatement ps = con.prepareStatement(sql);
-            ps.setString(1, nom);
-            ResultSet rs = ps.executeQuery();
-            if (rs.next()) {
-                int codigo = (rs.getInt("codigoCuartel"));
-                String nombre = (rs.getString("nombreCuartel"));
-                String direc = (rs.getString("direccion"));
-                int x = (rs.getInt("coordenadax"));
-                int y = (rs.getInt("coordenaday"));
-                int tel = (rs.getInt("telefono"));
-                String correo = (rs.getString("correo"));
-                boolean est = (rs.getBoolean("estado"));
-                c = new Cuartel(codigo, nombre, direc, x, y, tel, correo, est);
-                ps.close();
-            }
-        } catch (SQLException ex) {
-            Logger.getLogger(CuartelData.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return c;
-
-    }
+   
      public Cuartel BuscarCuartelPorCodigo(int cod) {
         String sql = "SELECT * from cuartel where codigoCuartel=?";
         Cuartel c = null;

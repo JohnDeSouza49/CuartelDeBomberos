@@ -153,33 +153,7 @@ public class BomberoData {
         return bomberos;
     }
     
-    public Bombero  buscarBomberoPorDni(int dni){
-        
-         String sql = "SELECT * FROM bombero  where dni=?";
-        Bombero b = new Bombero();
-        try{
-         PreparedStatement ps = con.prepareStatement(sql);
-            ps.setInt(1, dni);
-            ResultSet rs = ps.executeQuery();
-            if(rs.next()){
-                
-               b.setIdBombero(rs.getInt("idBombero"));
-               b.setDni(rs.getInt("dni"));
-               b.setNombreApellido(rs.getString("nombreApellido"));
-               b.setFechaNac(rs.getDate("fechanac").toLocalDate());
-               b.setCelular(rs.getInt("celular"));
-               b.setCodigoBrigada(rs.getInt("codigoBrigada"));
-               b.setEstado(rs.getBoolean("estado"));
-               b.setGrupoSanguineo(rs.getString("gruposanguineo"));
-               b.setCodigoCuartel(rs.getInt("codigoCuartel"));
-                
-            }
-        
-        }catch(SQLException ex){
-            JOptionPane.showMessageDialog(null, "El bombero no existe");
-        }
-        return b;
-    }
+   
       public Bombero  buscarBomberoPorNombre(String nombre){
         
          String sql = "SELECT * FROM bombero  where nombreApellido=?";

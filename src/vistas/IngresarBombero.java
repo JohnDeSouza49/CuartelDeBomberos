@@ -54,7 +54,6 @@ public class IngresarBombero extends javax.swing.JInternalFrame {
         jTFGrupo = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
         jCBCuartel = new javax.swing.JComboBox<>();
-        jBlimpiar = new javax.swing.JButton();
 
         setTitle("INGRESAR BOMBERO");
 
@@ -129,13 +128,6 @@ public class IngresarBombero extends javax.swing.JInternalFrame {
 
         jLabel9.setText("Cuartel");
 
-        jBlimpiar.setText("LIMPIAR CAMPOS");
-        jBlimpiar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jBlimpiarActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -196,14 +188,11 @@ public class IngresarBombero extends javax.swing.JInternalFrame {
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jBGuardar)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jBEliminar)))))
+                                .addComponent(jBEliminar))))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(222, 222, 222)
+                        .addComponent(jBSalir)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(96, 96, 96)
-                .addComponent(jBlimpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jBSalir)
-                .addGap(99, 99, 99))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -249,11 +238,9 @@ public class IngresarBombero extends javax.swing.JInternalFrame {
                             .addComponent(jBModificar)
                             .addComponent(jBEliminar)))
                     .addComponent(jRadioButton1))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 47, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jBSalir)
-                    .addComponent(jBlimpiar))
-                .addGap(47, 47, 47))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 50, Short.MAX_VALUE)
+                .addComponent(jBSalir)
+                .addGap(44, 44, 44))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -348,26 +335,7 @@ public class IngresarBombero extends javax.swing.JInternalFrame {
         Bombero b = new Bombero();
 
         try {
-            if (!jTFDni.getText().isEmpty()) {
-
-             
-                int dni = Integer.parseInt(jTFDni.getText());
-
-                b = bd.buscarBomberoPorDni(dni);
-
-                jTFId.setText(b.getIdBombero() + "");
-                jTFDni.setText(b.getDni() + "");
-                jTFNombreYApellido.setText(b.getNombreApellido());
-                LocalDate fechaNa = b.getFechaNac();
-                Date date = java.sql.Date.valueOf(fechaNa);
-                jDCFechaNacimiento.setDate(date);
-                jTFCelular.setText(b.getCelular() + "");
-                jTFCodigoBrigada.setText(b.getCodigoBrigada() + "");
-                jRadioButton1.setSelected(b.isEstado());
-                jTFGrupo.setText(b.getGrupoSanguineo());
-                jCBCuartel.setSelectedIndex(b.getCodigoCuartel());
-
-            } else if (!jTFNombreYApellido.getText().isEmpty()) {
+          
 
                
 
@@ -384,42 +352,20 @@ public class IngresarBombero extends javax.swing.JInternalFrame {
                 jRadioButton1.setSelected(b.isEstado());
                 jTFGrupo.setText(b.getGrupoSanguineo());
 
-            } else {
-
-                JOptionPane.showMessageDialog(this, "Deve ingresar un dni o un nombre y apellido del bombero a buscar");
+            } catch(NullPointerException  npe){
+                jTFId.setText("");
+                jTFDni.setText( "");
+                JOptionPane.showMessageDialog(this, "Ingrese nombre y apellido del bombero a buscar");
             }
-        } catch (NumberFormatException nfe) {
-            JOptionPane.showMessageDialog(this, "El bombero a buscar no existe!!");
+       
 
-        } catch (NullPointerException npe) {
-
-            JOptionPane.showMessageDialog(this, "El bombero a buscar no existe!!!");
-            jTFId.setText("");
-            jTFDni.setText("");
-
-        }catch(IllegalArgumentException iae){
-            JOptionPane.showMessageDialog(this, "El bombero a buscar no existe!!!");
-        }
-        {
-
-        }
+      
 
     }//GEN-LAST:event_jBuscarActionPerformed
 
-    private void jBlimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBlimpiarActionPerformed
-        // TODO add your handling code here:
-        jTFId.setText("");
-        jTFDni.setText("");
-        jTFNombreYApellido.setText("");
-        jDCFechaNacimiento.setDate(null);
-        jTFCelular.setText("");
-        jTFCodigoBrigada.setText("");
-        jRadioButton1.setSelected(false);
-        jTFGrupo.setText("");
-
-
-    }//GEN-LAST:event_jBlimpiarActionPerformed
-
+    
+    
+    
     private void jTFIdKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTFIdKeyTyped
       char c = evt.getKeyChar();
         if (!(Character.isDigit(c) || (c == KeyEvent.VK_BACK_SPACE) || (c == KeyEvent.VK_DELETE))) {
@@ -432,7 +378,6 @@ public class IngresarBombero extends javax.swing.JInternalFrame {
     private javax.swing.JButton jBGuardar;
     private javax.swing.JButton jBModificar;
     private javax.swing.JButton jBSalir;
-    private javax.swing.JButton jBlimpiar;
     private javax.swing.JButton jBuscar;
     private javax.swing.JComboBox<String> jCBCuartel;
     private com.toedter.calendar.JDateChooser jDCFechaNacimiento;
