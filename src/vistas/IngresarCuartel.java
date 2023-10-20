@@ -328,7 +328,7 @@ public class IngresarCuartel extends javax.swing.JInternalFrame {
 
             
         }catch(NumberFormatException nfe){
-            JOptionPane.showMessageDialog(this, "Ingrese elcodigo");
+            JOptionPane.showMessageDialog(this, "Ingrese un cuartel a buscar");
         }
       
 
