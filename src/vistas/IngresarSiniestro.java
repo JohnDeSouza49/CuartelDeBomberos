@@ -300,6 +300,7 @@ public class IngresarSiniestro extends javax.swing.JInternalFrame {
          int puntuacion = 0;
         Siniestro s = new Siniestro(tipo, feS, x, y, detalles,frS,puntuacion, brigadaAsignada.getCodigoBrigada());
         
+
         sd.guardarSiniestro(siniestro);
         JOptionPane.showMessageDialog(null, "Siniestro registrado");
     }//GEN-LAST:event_jBGuardarSiActionPerformed
