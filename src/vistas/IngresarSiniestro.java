@@ -296,7 +296,9 @@ public class IngresarSiniestro extends javax.swing.JInternalFrame {
         String tipo= siniestro.getTipo();
         String detalles=jTADetalleSi.getText();
         LocalDate feS=siniestro.getFechaSiniestro();
-        Siniestro s = new Siniestro(tipo, feS, x, y, detalles, brigadaAsignada.getCodigoBrigada());
+         LocalDate frS = null;
+         int puntuacion = 0;
+        Siniestro s = new Siniestro(tipo, feS, x, y, detalles,frS,puntuacion, brigadaAsignada.getCodigoBrigada());
         
         sd.guardarSiniestro(siniestro);
         JOptionPane.showMessageDialog(null, "Siniestro registrado");
