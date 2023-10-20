@@ -1,15 +1,20 @@
-
 package vistas;
 
+import javax.swing.table.DefaultTableModel;
 
 public class ConsultarCuarteles extends javax.swing.JInternalFrame {
 
-   
+    private DefaultTableModel modelo = new DefaultTableModel() {
+        public boolean isCellEditable(int fila, int columna) {
+            return false;
+        }
+    };
+
     public ConsultarCuarteles() {
         initComponents();
+        armarEncabezado();
     }
 
-   
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -116,7 +121,7 @@ public class ConsultarCuarteles extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-         this.dispose();
+        this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
 
@@ -130,4 +135,16 @@ public class ConsultarCuarteles extends javax.swing.JInternalFrame {
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
+
+    private void armarEncabezado() {
+        modelo.addColumn("CÓD");
+        modelo.addColumn("NOMBRE");
+        modelo.addColumn("DIRECCION");
+        modelo.addColumn("TELEFONO");
+        modelo.addColumn("CORREO");
+
+        jTable1.setModel(modelo);
+
+    }
+
 }
