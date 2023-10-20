@@ -326,8 +326,8 @@
                 <StringItem index="2" value="rescates en &#xe1;mbito monta&#xf1;a"/>
                 <StringItem index="3" value="rescate de personas"/>
                 <StringItem index="4" value="socorrer inundaciones"/>
-                <StringItem index="5" value="operativos de prevenci&#xf3;n."/>
-                <StringItem index="6" value=""/>
+                <StringItem index="5" value="operativos de prevenci&#xf3;n"/>
+                <StringItem index="6" value=" "/>
               </StringArray>
             </Property>
           </Properties>

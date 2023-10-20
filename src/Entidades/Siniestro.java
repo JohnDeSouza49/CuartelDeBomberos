@@ -49,8 +49,7 @@ public class Siniestro{
         this.coordenadaY = coordenadaY;
     }
 
-    public Siniestro(int codigoSiniestro, String tipo, LocalDate fechaSiniestro, int coordenadaX, int coordenadaY, String detalles, int codigoBrigada) {
-        this.codigoSiniestro = codigoSiniestro;
+    public Siniestro( String tipo, LocalDate fechaSiniestro, int coordenadaX, int coordenadaY, String detalles, int codigoBrigada) {
         this.tipo = tipo;
         this.fechaSiniestro = fechaSiniestro;
         this.coordenadaX = coordenadaX;

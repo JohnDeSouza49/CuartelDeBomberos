@@ -127,7 +127,7 @@ public class IngresarSiniestro extends javax.swing.JInternalFrame {
             }
         });
 
-        jCBTipoSi.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "incendios en viviendas e industrias", "salvamento en derrumbes", "rescates en ámbito montaña", "rescate de personas", "socorrer inundaciones", "operativos de prevención.", "" }));
+        jCBTipoSi.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "incendios en viviendas e industrias", "salvamento en derrumbes", "rescates en ámbito montaña", "rescate de personas", "socorrer inundaciones", "operativos de prevención", " " }));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -296,7 +296,8 @@ public class IngresarSiniestro extends javax.swing.JInternalFrame {
         String tipo= siniestro.getTipo();
         String detalles=jTADetalleSi.getText();
         LocalDate feS=siniestro.getFechaSiniestro();
-        Siniestro s= new Siniestro(tipo, feS, x, y, detalles,feS, 0, brigadaAsignada.getCodigoBrigada());
+        Siniestro s = new Siniestro(tipo, feS, x, y, detalles, brigadaAsignada.getCodigoBrigada());
+        
         sd.guardarSiniestro(siniestro);
         JOptionPane.showMessageDialog(null, "Siniestro registrado");
     }//GEN-LAST:event_jBGuardarSiActionPerformed

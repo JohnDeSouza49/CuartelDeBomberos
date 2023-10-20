@@ -36,9 +36,7 @@ public class CuartelData {
 
             ps.setString(1, cuartel.getNombreCuartel());
             ps.setString(2, cuartel.getDireccion());
-            // try {
-            //int coordenadaX = Integer.parseInt(cuartel.getCoordenadaX());
-            //int coordenadaY = Integer.parseInt(cuartel.getCoordenadaY());
+            
             ps.setInt(3, cuartel.getCoordenadaX());
             ps.setInt(4, cuartel.getCoordenadaY());
             ps.setInt(5, cuartel.getTelefono());
