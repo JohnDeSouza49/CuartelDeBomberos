@@ -288,7 +288,7 @@ public class IngresarSiniestro extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jBAsignarCuartelActionPerformed
 
     private void jBGuardarSiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBGuardarSiActionPerformed
-       
+      //try{
         bd.brigadaOcupada(brigadaAsignada);
         SiniestroData sd= new SiniestroData();
         int x= siniestro.getCoordenadaX();
@@ -296,15 +296,19 @@ public class IngresarSiniestro extends javax.swing.JInternalFrame {
         String tipo= siniestro.getTipo();
         String detalles=jTADetalleSi.getText();
         LocalDate feS=siniestro.getFechaSiniestro();
-         LocalDate frS = null;
-         int puntuacion = 0;
-        Siniestro s = new Siniestro(tipo, feS, x, y, detalles,frS,puntuacion, brigadaAsignada.getCodigoBrigada());
+       //  LocalDate frS = siniestro.getFechaResolucion();
+         //int puntuacion = siniestro.getPuntuacion();
+        Siniestro s = new Siniestro(tipo, feS, x, y, detalles, brigadaAsignada.getCodigoBrigada());
         
 
-        sd.guardarSiniestro(siniestro);
-        JOptionPane.showMessageDialog(null, "Siniestro registrado");
+        sd.guardarSiniestro(s);
+        JOptionPane.showMessageDialog(this, "Siniestro registrado");
+       //}catch (Exception e) {
+            // Maneja la excepción cuando no se encuentra una brigada libre
+            //JOptionPane.showMessageDialog(this, "No se encontraron brigadas libres. Por favor, inténtelo de nuevo más tarde."+e.getMessage());
+            System.out.println(siniestro.getTipo()+" "+siniestro.getFechaSiniestro()+" "+siniestro.getCoordenadaX()+siniestro.getCoordenadaY()+jTADetalleSi.getText()+brigadaAsignada.getCodigoBrigada());
     }//GEN-LAST:event_jBGuardarSiActionPerformed
-
+    
     private void jTFCooXSiKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTFCooXSiKeyTyped
  char c = evt.getKeyChar();
         if (!(Character.isDigit(c) || (c == KeyEvent.VK_BACK_SPACE) || (c == KeyEvent.VK_DELETE || c == '-'))) {

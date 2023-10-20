@@ -101,7 +101,7 @@ catch(SQLException ex){
                            
              }
           
-         System.out.println(dist);
+         //System.out.println(dist);
          return brigadas;
 
 }
@@ -133,8 +133,6 @@ catch(SQLException ex){
           ps.setInt(3, siniestro.getCoordenadaX());
           ps.setInt(4, siniestro.getCoordenadaY());
           ps.setString(5, siniestro.getDetalles());
-          
-         
           ps.setInt(6, siniestro.getCodigoBrigada());
           ps.executeUpdate();
             ResultSet rs = ps.getGeneratedKeys();
