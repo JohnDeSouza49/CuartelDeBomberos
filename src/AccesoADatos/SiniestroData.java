@@ -187,6 +187,37 @@ public class SiniestroData {
             JOptionPane.showMessageDialog(null, "hay un error al consultar el siniestro" + ex.getMessage());
           
             }
+    }
+         public void siniestroSinResolver(Siniestro siniestro) {
+             
+           try {
+            String sql = "SELECT codigoSiniestro, tipo, fechaSiniestro, fechaResol, puntuacion, codigoBrigada FROM siniestro WHERE fechaResol = null AND puntuacion = 0";
+            PreparedStatement ps;
+
+            ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+
+            ps.setInt(1, siniestro.getCodigoSiniestro());
+            ps.setString(2, siniestro.getTipo());
+            ps.setDate(3, Date.valueOf(siniestro.getFechaSiniestro()));
+            ps.setDate(4, Date.valueOf(siniestro.getFechaResolucion()));
+            ps.setInt(5, siniestro.getPuntuacion());
+            ps.setInt(6, siniestro.getCodigoBrigada());
+            ps.executeUpdate();
+            ResultSet rs = ps.getGeneratedKeys();
+    while (rs.next()) {
+                int codSin = rs.getInt("codigoSinietro");
+                Timestamp fechaS = rs.getTimestamp("fechaSiniestro");
+                String tipo = rs.getString("tipo");
+
+               int codBrig = rs.getInt("codigoBrigada");
+    }
+         
+                
+           
+             } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "hay un error al consultar el siniestro" + ex.getMessage());
+             
+         }
         }
         }
   
