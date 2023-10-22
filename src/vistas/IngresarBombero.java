@@ -278,7 +278,7 @@ public class IngresarBombero extends javax.swing.JInternalFrame {
             int codCu = (Integer) jCBCuartel.getSelectedItem();
 
             if (jTFNombreYApellido.getText().isEmpty() || jTFGrupo.getText().isEmpty()) {
-                JOptionPane.showMessageDialog(this, "Ingrese valores correctos");
+                JOptionPane.showMessageDialog(this, "debe completar todos los campos");
                 return;
             }
             if (!jTFId.getText().isEmpty()) {
@@ -296,11 +296,13 @@ public class IngresarBombero extends javax.swing.JInternalFrame {
             jTFCodigoBrigada.setText("");
             jRadioButton1.setSelected(false);
             jTFGrupo.setText("");
+          
+            
 
         } catch (NumberFormatException nfe) {
-            JOptionPane.showMessageDialog(this, "Ingrese valores correctos");
+            JOptionPane.showMessageDialog(this, "Ingrese valores correctos"+nfe.getMessage());
         } catch (NullPointerException npe) {
-            JOptionPane.showMessageDialog(this, "Ingrese valores correctos");
+            JOptionPane.showMessageDialog(this, "Ingrese valores correctos"+npe.getMessage());
         }
 
 
