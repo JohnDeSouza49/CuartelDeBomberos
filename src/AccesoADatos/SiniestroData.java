@@ -188,37 +188,69 @@ public class SiniestroData {
           
             }
     }
-         public void siniestroSinResolver(Siniestro siniestro) {
-             
-           try {
-            String sql = "SELECT codigoSiniestro, tipo, fechaSiniestro, fechaResol, puntuacion, codigoBrigada FROM siniestro WHERE fechaResol = null AND puntuacion = 0";
-            PreparedStatement ps;
+        public void siniestroSinResolver() {
+    try {
+        String sql = "SELECT codigoSiniestro, tipo, fechaSiniestro, fechaResol, puntuacion, codigoBrigada FROM siniestro WHERE fechaResol IS NULL AND puntuacion = 0";
+        PreparedStatement ps = con.prepareStatement(sql);
+        ResultSet rs = ps.executeQuery();
 
-            ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+        while (rs.next()) {
+            int codSin = rs.getInt("codigoSiniestro");
+            Timestamp fechaS = rs.getTimestamp("fechaSiniestro");
+            Timestamp fechaRS = rs.getTimestamp("fechaResol");
+            int punt = rs.getInt("puntuacion");
+            String tipo = rs.getString("tipo");
+            int codBrig = rs.getInt("codigoBrigada");
 
-            ps.setInt(1, siniestro.getCodigoSiniestro());
-            ps.setString(2, siniestro.getTipo());
-            ps.setDate(3, Date.valueOf(siniestro.getFechaSiniestro()));
-            ps.setDate(4, Date.valueOf(siniestro.getFechaResolucion()));
-            ps.setInt(5, siniestro.getPuntuacion());
-            ps.setInt(6, siniestro.getCodigoBrigada());
-            ps.executeUpdate();
-            ResultSet rs = ps.getGeneratedKeys();
-    while (rs.next()) {
-                int codSin = rs.getInt("codigoSinietro");
-                Timestamp fechaS = rs.getTimestamp("fechaSiniestro");
-                String tipo = rs.getString("tipo");
-
-               int codBrig = rs.getInt("codigoBrigada");
+        }      
+    } catch (SQLException ex) {
+        JOptionPane.showMessageDialog(null, "Hay un error al consultar el siniestro: " + ex.getMessage());
     }
-         
-                
-           
-             } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "hay un error al consultar el siniestro" + ex.getMessage());
-             
+
+
          }
+        public void eliminarSiniestro(int codigoSiniestro) {
+    try {
+        String sql = "DELETE FROM siniestro WHERE codigoSiniestro = ?";
+        PreparedStatement ps = con.prepareStatement(sql);
+        ps.setInt(1, codigoSiniestro);
+
+        int filasAfectadas = ps.executeUpdate();
+
+        if (filasAfectadas > 0) {
+           JOptionPane.showMessageDialog(null,"Siniestro eliminado exitosamente.");
+        } else {
+            JOptionPane.showMessageDialog(null,"No se encontró ningún siniestro con ese código.");
         }
+    } catch (SQLException ex) {
+        JOptionPane.showMessageDialog(null, "Hay un error al eliminar el siniestro: " + ex.getMessage());
+    }
+}
+public void asignarPuntuacion(int codigoSiniestro, int puntuacion) {
+    try {
+        String sql = "UPDATE siniestro SET puntuacion = ?, fechaResol = ? WHERE codigoSiniestro = ?";
+        PreparedStatement ps = con.prepareStatement(sql);
+        
+       
+        Calendar calendar = Calendar.getInstance();
+        Timestamp fechaResolucion = new Timestamp(calendar.getTimeInMillis());
+        
+        ps.setInt(1, puntuacion);
+        ps.setTimestamp(2, fechaResolucion);
+        ps.setInt(3, codigoSiniestro);
+
+        int filasAfectadas = ps.executeUpdate();
+
+        if (filasAfectadas > 0) {
+            JOptionPane.showMessageDialog(null,"Siniestro resuelto.");
+        } else {
+            JOptionPane.showMessageDialog(null,"No se encontró ningún siniestro con ese código.");
         }
-  
+    } catch (SQLException ex) {
+        JOptionPane.showMessageDialog(null, "Hay un error al asignar puntuación al siniestro: " + ex.getMessage());
+    }
+}
+
+}
+          
 
