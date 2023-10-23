@@ -158,12 +158,13 @@ public class SiniestroData {
    public List<Siniestro> consultarSiniestroUlt24Hs() {
         List<Siniestro> siniestro = new ArrayList<>();
        Siniestro s = null;
+       LocalDate fechaR;
         Calendar calendar = Calendar.getInstance();
         Timestamp fechaActual = new Timestamp(calendar.getTimeInMillis());
         calendar.add(Calendar.HOUR, -24);
         Timestamp fechaHace24Horas = new Timestamp(calendar.getTimeInMillis());
         try {
-            String sql = "SELECT codigoSiniestro, tipo, fechaSiniestro, fechaResol, puntuacion, codigoBrigada  FROM siniestros WHERE fechaSiniestro BETWEEN ? AND ?";
+            String sql = "SELECT codigoSiniestro, tipo, fechaSiniestro, fechaResol, puntuacion, codigoBrigada  FROM siniestro WHERE fechaSiniestro BETWEEN ? AND ?";
             PreparedStatement ps;
 
             ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
@@ -175,16 +176,24 @@ public class SiniestroData {
 
 
             while (rs.next()) {
-                int codSin = rs.getInt("codigoSinietro");
-                Timestamp fechaS = rs.getTimestamp("fechaSiniestro");
-                LocalDate fechaR = null;
+                int codSin = rs.getInt("codigoSiniestro");
+              LocalDate fechaS = rs.getDate("fechaSiniestro").toLocalDate();
+                try{
+                    fechaR = rs.getDate("fechaResol").toLocalDate();
+                }catch (NullPointerException e){
+                    JOptionPane.showMessageDialog(null,"la fecha de resolucion debe completarse " +e.getMessage());
+                fechaR = null;
+                
+                
+                    
+                }
                 String tipo = rs.getString("tipo");
                 int punt = rs.getInt("puntuacion");
                 int codBrig = rs.getInt("codigoBrigada");
                 
                 
                 
-              s = new Siniestro(codSin, tipo, fechaR, fechaR, punt, codBrig);
+              s = new Siniestro(codSin, tipo, fechaS, fechaR, punt, codBrig);
                siniestro.add(s);
             }
         } catch (SQLException ex) {

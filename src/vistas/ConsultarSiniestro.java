@@ -60,6 +60,11 @@ private SiniestroData sd;
         jScrollPane1.setViewportView(jTSiniestro);
 
         jBBuscarSiniestro.setText("ULTIMAS 24 HORAS");
+        jBBuscarSiniestro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBBuscarSiniestroActionPerformed(evt);
+            }
+        });
 
         jBGuardarCambios.setText("GUARDAR CAMBIOS");
 
@@ -154,6 +159,22 @@ private SiniestroData sd;
                 });
         }
     }//GEN-LAST:event_jBSinResolverActionPerformed
+
+    private void jBBuscarSiniestroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBBuscarSiniestroActionPerformed
+        List<Siniestro> sin = new ArrayList<>();
+        borrarFilas();
+        sin= sd.consultarSiniestroUlt24Hs();
+        for(Siniestro aux:sin){
+             modelo.addRow(new Object[]{
+                   aux.getCodigoSiniestro(),
+                 aux.getTipo(),
+                 aux.getFechaSiniestro(),
+                 aux.getFechaResolucion(),
+                 aux.getPuntuacion(),
+                 aux.getCodigoBrigada()
+                });
+        }
+    }//GEN-LAST:event_jBBuscarSiniestroActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
