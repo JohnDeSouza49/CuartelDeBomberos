@@ -130,7 +130,7 @@ public class Cuartel {
 
     @Override
     public String toString() {
-        return codigoCuartel + ", " + nombreCuartel + ", " + direccion;
+        return codigoCuartel + ", " + nombreCuartel;
     }
 
 }

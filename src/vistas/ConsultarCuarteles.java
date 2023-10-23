@@ -1,18 +1,24 @@
 package vistas;
 
+import AccesoADatos.CuartelData;
+import Entidades.Cuartel;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.table.DefaultTableModel;
 
 public class ConsultarCuarteles extends javax.swing.JInternalFrame {
-
+    private DefaultComboBoxModel modelito = null;
+    CuartelData cd;
     private DefaultTableModel modelo = new DefaultTableModel() {
         public boolean isCellEditable(int fila, int columna) {
             return false;
         }
     };
 
-    public ConsultarCuarteles() {
+    public ConsultarCuarteles(CuartelData cd) {
+        this.cd=cd;
         initComponents();
         armarEncabezado();
+        llenarCB();
     }
 
     @SuppressWarnings("unchecked")
@@ -47,6 +53,12 @@ public class ConsultarCuarteles extends javax.swing.JInternalFrame {
         jScrollPane1.setViewportView(jTable1);
 
         jLabel4.setText("Cuarteles");
+
+        jCBCuarteles.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCBCuartelesActionPerformed(evt);
+            }
+        });
 
         jButton1.setText("SALIR");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -124,6 +136,18 @@ public class ConsultarCuarteles extends javax.swing.JInternalFrame {
         this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void jCBCuartelesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCBCuartelesActionPerformed
+    Cuartel selec=(Cuartel) jCBCuarteles.getSelectedItem();
+    borrarFilas();
+    modelo.addRow(new Object[]{
+                  selec.getCodigoCuartel(),
+                 selec.getNombreCuartel(),
+                 selec.getDireccion(),
+                 selec.getTelefono(),
+                 selec.getCorreoElectronico()
+                });
+    }//GEN-LAST:event_jCBCuartelesActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
@@ -145,6 +169,20 @@ public class ConsultarCuarteles extends javax.swing.JInternalFrame {
 
         jTable1.setModel(modelo);
 
+    }
+    private void llenarCB(){
+          modelito = new DefaultComboBoxModel();
+        jCBCuarteles.setModel(modelito);
+        for (Cuartel aux : cd.mostrarTodosCuarteles()) {
+            modelito.addElement(aux);
+
+        }
+    }
+      private void borrarFilas() {
+        int filas = jTable1.getRowCount() - 1;
+        for (int f = filas; f >= 0; f--) {
+            modelo.removeRow(f);
+        }
     }
 
 }
