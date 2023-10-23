@@ -282,17 +282,16 @@ public class IngresarSiniestro extends javax.swing.JInternalFrame {
             try{
             brigadaAsignada = sd.AsignarBrigada(siniestro);
             JOptionPane.showMessageDialog(this, "buscando brigada libre...");
-            }catch(NullPointerException e){
-                 if (brigadaAsignada== null){
-          JOptionPane.showMessageDialog(this, "No se encontraron brigadas libres. Por favor, inténtelo de nuevo más tarde.");  
-        }
-            }
+            
            
         
             jTFBrigada.setText(brigadaAsignada.getNombreBrigada());
             Cuartel cuartelAsignado = cu.BuscarCuartelPorCodigo(brigadaAsignada.getNumeroCuartel());
             jTFCuartel.setText(cuartelAsignado.getNombreCuartel());
-
+}catch(NullPointerException e){
+          JOptionPane.showMessageDialog(this, "No se encontraron brigadas libres. Por favor, inténtelo de nuevo más tarde.");  
+        
+            }
         }
     }//GEN-LAST:event_jBAsignarCuartelActionPerformed
 
