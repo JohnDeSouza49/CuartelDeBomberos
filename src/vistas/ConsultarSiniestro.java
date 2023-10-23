@@ -1,6 +1,10 @@
 
 package vistas;
 
+import AccesoADatos.SiniestroData;
+import Entidades.Siniestro;
+import java.util.ArrayList;
+import java.util.List;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -8,15 +12,16 @@ import javax.swing.table.DefaultTableModel;
  * @author Ivan Martin
  */
 public class ConsultarSiniestro extends javax.swing.JInternalFrame {
-
+private SiniestroData sd;
     private DefaultTableModel modelo = new DefaultTableModel() {
-
+    
         public boolean isCellEditable(int row, int column) {
             return column == 3 || column == 4;
         }
     };
 
-    public ConsultarSiniestro() {
+    public ConsultarSiniestro(SiniestroData sd) {
+        this.sd=sd;
         initComponents();
         armarEncabezado();
     }
@@ -36,7 +41,7 @@ public class ConsultarSiniestro extends javax.swing.JInternalFrame {
         jBBuscarSiniestro = new javax.swing.JButton();
         jBGuardarCambios = new javax.swing.JButton();
         jBSalir = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        jBSinResolver = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
 
         setTitle("SINIESTROS ACUALES");
@@ -65,7 +70,12 @@ public class ConsultarSiniestro extends javax.swing.JInternalFrame {
             }
         });
 
-        jButton1.setText("SIN RESOLVER");
+        jBSinResolver.setText("SIN RESOLVER");
+        jBSinResolver.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBSinResolverActionPerformed(evt);
+            }
+        });
 
         jLabel2.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel2.setText("BUSCAR SINIESTROS");
@@ -84,7 +94,7 @@ public class ConsultarSiniestro extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addComponent(jBBuscarSiniestro, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 447, Short.MAX_VALUE)
-                .addComponent(jButton1)
+                .addComponent(jBSinResolver)
                 .addGap(57, 57, 57))
             .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
@@ -100,7 +110,7 @@ public class ConsultarSiniestro extends javax.swing.JInternalFrame {
                 .addGap(42, 42, 42)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jBBuscarSiniestro)
-                    .addComponent(jButton1))
+                    .addComponent(jBSinResolver))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 312, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
@@ -128,12 +138,29 @@ public class ConsultarSiniestro extends javax.swing.JInternalFrame {
         this.dispose();
     }//GEN-LAST:event_jBSalirActionPerformed
 
+    private void jBSinResolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBSinResolverActionPerformed
+        // TODO add your handling code here:
+        List<Siniestro> sin = new ArrayList<>();
+        borrarFilas();
+        sin= sd.siniestroSinResolver();
+        for(Siniestro aux:sin){
+             modelo.addRow(new Object[]{
+                   aux.getCodigoSiniestro(),
+                 aux.getTipo(),
+                 aux.getFechaSiniestro(),
+                 aux.getFechaResolucion(),
+                 aux.getPuntuacion(),
+                 aux.getCodigoBrigada()
+                });
+        }
+    }//GEN-LAST:event_jBSinResolverActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBBuscarSiniestro;
     private javax.swing.JButton jBGuardarCambios;
     private javax.swing.JButton jBSalir;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jBSinResolver;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
@@ -147,5 +174,11 @@ private void armarEncabezado() {
         modelo.addColumn("PUNTUACION");
         modelo.addColumn("CODIGO BRIGADA");
         jTSiniestro.setModel(modelo);
+    }
+   private void borrarFilas() {
+        int filas = jTSiniestro.getRowCount() - 1;
+        for (int f = filas; f >= 0; f--) {
+            modelo.removeRow(f);
+        }
     }
 }

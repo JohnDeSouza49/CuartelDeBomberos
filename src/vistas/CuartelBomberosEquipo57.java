@@ -180,7 +180,7 @@ public class CuartelBomberosEquipo57 extends javax.swing.JFrame {
 
         jDEscritorio.removeAll();
         jDEscritorio.repaint();
-        ConsultarSiniestro cs = new ConsultarSiniestro();
+        ConsultarSiniestro cs = new ConsultarSiniestro(sd);
         cs.setVisible(true);
         jDEscritorio.add(cs);
         jDEscritorio.moveToFront(cs);

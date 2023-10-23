@@ -57,6 +57,18 @@ public class Siniestro {
         this.codigoBrigada = codigoBrigada;
     }
 
+    public Siniestro(int codigoSiniestro, String tipo, LocalDate fechaSiniestro, LocalDate fechaResolucion, int puntuacion, int codigoBrigada) {
+        this.codigoSiniestro = codigoSiniestro;
+        this.tipo = tipo;
+        this.fechaSiniestro = fechaSiniestro;
+        this.fechaResolucion = fechaResolucion;
+        this.puntuacion = puntuacion;
+        this.codigoBrigada = codigoBrigada;
+    }
+
+  
+  
+ 
     public int getCodigoSiniestro() {
         return codigoSiniestro;
     }

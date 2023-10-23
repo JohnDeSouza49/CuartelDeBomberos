@@ -10,6 +10,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.sql.Timestamp;
+import java.time.LocalDate;
 import javax.swing.JOptionPane;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -188,24 +189,31 @@ public class SiniestroData {
         }
     }
 
-    public void siniestroSinResolver() {
+    public List siniestroSinResolver() {
+       List<Siniestro> sinResol = new ArrayList<>();
         try {
+            Siniestro s=null;
+          
             String sql = "SELECT codigoSiniestro, tipo, fechaSiniestro, fechaResol, puntuacion, codigoBrigada FROM siniestro WHERE fechaResol IS NULL AND puntuacion = 0";
             PreparedStatement ps = con.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
 
             while (rs.next()) {
+ 
                 int codSin = rs.getInt("codigoSiniestro");
-                Timestamp fechaS = rs.getTimestamp("fechaSiniestro");
-                Timestamp fechaRS = rs.getTimestamp("fechaResol");
+                LocalDate fechaS = rs.getDate("fechaSiniestro").toLocalDate();
+                LocalDate fechaR = null;
                 int punt = rs.getInt("puntuacion");
                 String tipo = rs.getString("tipo");
                 int codBrig = rs.getInt("codigoBrigada");
+                s= new Siniestro(codSin, tipo, fechaS, fechaR, punt, codBrig);
+                sinResol.add(s);
 
             }
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Hay un error al consultar el siniestro: " + ex.getMessage());
         }
+        return sinResol;
 
     }
 
