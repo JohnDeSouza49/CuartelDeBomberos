@@ -267,7 +267,7 @@ public class IngresarBombero extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
 
         try {
-            int codigo = Integer.parseInt(jTFId.getText());
+           
             int dn = Integer.parseInt(jTFDni.getText());
             String nombreCom = jTFNombreYApellido.getText();
             LocalDate feNac = jDCFechaNacimiento.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
@@ -300,7 +300,7 @@ public class IngresarBombero extends javax.swing.JInternalFrame {
             
 
         } catch (NumberFormatException nfe) {
-            JOptionPane.showMessageDialog(this, "Ingrese valores correctos"+nfe.getMessage());
+            JOptionPane.showMessageDialog(this, "Ingrese valores correctos!!"+nfe.getMessage());
         } catch (NullPointerException npe) {
             JOptionPane.showMessageDialog(this, "Ingrese valores correctos"+npe.getMessage());
         }
@@ -338,8 +338,7 @@ public class IngresarBombero extends javax.swing.JInternalFrame {
 
         try {
           
-
-               
+       
 
                 b = bd.buscarBomberoPorNombre(jTFNombreYApellido.getText());
 
@@ -359,21 +358,17 @@ public class IngresarBombero extends javax.swing.JInternalFrame {
                 jTFDni.setText( "");
                 JOptionPane.showMessageDialog(this, "Ingrese nombre y apellido del bombero a buscar");
             }
-       
-
-      
-
     }//GEN-LAST:event_jBuscarActionPerformed
 
-    
-    
-    
+ 
     private void jTFIdKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTFIdKeyTyped
       char c = evt.getKeyChar();
         if (!(Character.isDigit(c) || (c == KeyEvent.VK_BACK_SPACE) || (c == KeyEvent.VK_DELETE))) {
             evt.consume();
     }//GEN-LAST:event_jTFIdKeyTyped
 }
+    
+   
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBEliminar;
@@ -413,5 +408,7 @@ public class IngresarBombero extends javax.swing.JInternalFrame {
         }
 
     }
+    
+  
 
 }

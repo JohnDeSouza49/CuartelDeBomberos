@@ -50,6 +50,12 @@ public class IngresarBrigada extends javax.swing.JInternalFrame {
 
         jLabel3.setText("Nombre");
 
+        jTFNombreBi.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTFNombreBiKeyTyped(evt);
+            }
+        });
+
         jLabel4.setText("Especialidad");
 
         jLabel5.setText("Estado");
@@ -194,6 +200,12 @@ public class IngresarBrigada extends javax.swing.JInternalFrame {
             evt.consume();
         }        // TODO add your handling code here:
     }//GEN-LAST:event_jTFCodigoBiKeyTyped
+
+    private void jTFNombreBiKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTFNombreBiKeyTyped
+          if(! (Character.isLetter(evt.getKeyChar())) && !(evt.getKeyChar()== KeyEvent.VK_SPACE)){
+            evt.consume();
+        }
+    }//GEN-LAST:event_jTFNombreBiKeyTyped
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

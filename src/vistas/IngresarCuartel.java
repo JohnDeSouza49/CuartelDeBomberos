@@ -62,6 +62,12 @@ public class IngresarCuartel extends javax.swing.JInternalFrame {
 
         jLabel3.setText("Nombre");
 
+        jTFNombre.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTFNombreKeyTyped(evt);
+            }
+        });
+
         jLabel4.setText("Direccion");
 
         jLabel5.setText("Coordenada X");
@@ -363,6 +369,13 @@ public class IngresarCuartel extends javax.swing.JInternalFrame {
             evt.consume();
     }         
     }//GEN-LAST:event_jTFCodigoKeyTyped
+
+    private void jTFNombreKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTFNombreKeyTyped
+        
+        if(! (Character.isLetter(evt.getKeyChar())) && !(evt.getKeyChar()== KeyEvent.VK_SPACE)){
+            evt.consume();
+        }
+    }//GEN-LAST:event_jTFNombreKeyTyped
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
