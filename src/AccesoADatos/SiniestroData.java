@@ -155,7 +155,7 @@ public class SiniestroData {
 
     }
 
-    public List<Siniestro> consultarSiniestroUlt24Hs() {
+   public List<Siniestro> consultarSiniestroUlt24Hs() {
         List<Siniestro> siniestro = new ArrayList<>();
        Siniestro s = null;
         Calendar calendar = Calendar.getInstance();
@@ -163,30 +163,35 @@ public class SiniestroData {
         calendar.add(Calendar.HOUR, -24);
         Timestamp fechaHace24Horas = new Timestamp(calendar.getTimeInMillis());
         try {
-            String sql = "SELECT codigoSiniestro, tipo, fechaSiniestro, codigoBrigada FROM siniestros WHERE fechaSiniestro >= ? AND fechaSiniestro <= ?";
+            String sql = "SELECT codigoSiniestro, tipo, fechaSiniestro, fechaResol, puntuacion, codigoBrigada  FROM siniestros WHERE fechaSiniestro BETWEEN ? AND ?";
             PreparedStatement ps;
 
             ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
 
-            ps.setInt(1, siniestro.getCodigoSiniestro());
-            ps.setString(2, siniestro.getTipo());
-            ps.setDate(3, Date.valueOf(siniestro.getFechaSiniestro()));
+           
+        ps.setTimestamp(1, fechaHace24Horas);
+        ps.setTimestamp(2, fechaActual);
+        ResultSet rs = ps.executeQuery();
 
-            ps.setInt(4, siniestro.getCodigoBrigada());
-            ps.executeUpdate();
-            ResultSet rs = ps.getGeneratedKeys();
 
             while (rs.next()) {
                 int codSin = rs.getInt("codigoSinietro");
                 Timestamp fechaS = rs.getTimestamp("fechaSiniestro");
-                int codBrig = rs.getInt("codigoBrigada");
+                LocalDate fechaR = null;
                 String tipo = rs.getString("tipo");
-
+                int punt = rs.getInt("puntuacion");
+                int codBrig = rs.getInt("codigoBrigada");
+                
+                
+                
+              s = new Siniestro(codSin, tipo, fechaR, fechaR, punt, codBrig);
+               siniestro.add(s);
             }
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "hay un error al consultar el siniestro" + ex.getMessage());
 
         }
+        return siniestro;
     }
 
     public List siniestroSinResolver() {
