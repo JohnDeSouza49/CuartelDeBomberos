@@ -154,11 +154,11 @@ public class SiniestroData {
 
     }
 
-    public void consultarSiniestroUlt24Hs(Siniestro siniestro) {
-
+    public List<Siniestro> consultarSiniestroUlt24Hs() {
+        List<Siniestro> siniestro = new ArrayList<>();
+       Siniestro s = null;
         Calendar calendar = Calendar.getInstance();
         Timestamp fechaActual = new Timestamp(calendar.getTimeInMillis());
-
         calendar.add(Calendar.HOUR, -24);
         Timestamp fechaHace24Horas = new Timestamp(calendar.getTimeInMillis());
         try {
@@ -253,3 +253,20 @@ public class SiniestroData {
 }
 
 
+/*String sql = "SELECT * FROM bombero";
+            PreparedStatement ps = con.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                b = new Bombero();
+                b.setIdBombero(rs.getInt("idBombero"));
+                b.setDni(rs.getInt("dni"));
+                b.setNombreApellido(rs.getString("NombreApellido"));
+                b.setFechaNac(rs.getDate("fechaNac").toLocalDate());
+                b.setCelular(rs.getInt("celular"));
+                b.setCodigoBrigada(rs.getInt("codigoBrigada"));
+                b.setEstado(rs.getBoolean("estado"));
+                b.setGrupoSanguineo(rs.getString("GrupoSanguineo"));
+                b.setCodigoCuartel(rs.getInt("codigoCuartel"));
+                bomberos.add(b);
+            }
+            ps.close();*/
