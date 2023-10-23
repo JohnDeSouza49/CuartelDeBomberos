@@ -279,11 +279,15 @@ public class IngresarSiniestro extends javax.swing.JInternalFrame {
             String tipo = (String) jCBTipoSi.getSelectedItem();
             LocalDate feSi = jDCFechaSi.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
             siniestro = new Siniestro(tipo, feSi, x, y);
+            try{
             brigadaAsignada = sd.AsignarBrigada(siniestro);
             JOptionPane.showMessageDialog(this, "buscando brigada libre...");
-            if (brigadaAsignada== null){
+            }catch(NullPointerException e){
+                 if (brigadaAsignada== null){
           JOptionPane.showMessageDialog(this, "No se encontraron brigadas libres. Por favor, inténtelo de nuevo más tarde.");  
         }
+            }
+           
         
             jTFBrigada.setText(brigadaAsignada.getNombreBrigada());
             Cuartel cuartelAsignado = cu.BuscarCuartelPorCodigo(brigadaAsignada.getNumeroCuartel());
