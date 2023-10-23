@@ -1,17 +1,18 @@
-
 package vistas;
 
+import AccesoADatos.BrigadaData;
+import Entidades.Brigada;
 import java.awt.event.KeyEvent;
-
+import javax.swing.JOptionPane;
 
 public class IngresarBrigada extends javax.swing.JInternalFrame {
 
-    
+    BrigadaData bd = new BrigadaData();
+
     public IngresarBrigada() {
         initComponents();
     }
 
-   
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -50,12 +51,6 @@ public class IngresarBrigada extends javax.swing.JInternalFrame {
 
         jLabel3.setText("Nombre");
 
-        jTFNombreBi.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                jTFNombreBiKeyTyped(evt);
-            }
-        });
-
         jLabel4.setText("Especialidad");
 
         jLabel5.setText("Estado");
@@ -65,6 +60,11 @@ public class IngresarBrigada extends javax.swing.JInternalFrame {
         jBGuardarBi.setText("GUARDAR");
 
         jBBuscarBi.setText("BUSCAR");
+        jBBuscarBi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBBuscarBiActionPerformed(evt);
+            }
+        });
 
         jBModificarBi.setText("MODIFICAR");
 
@@ -77,7 +77,7 @@ public class IngresarBrigada extends javax.swing.JInternalFrame {
             }
         });
 
-        jCBTipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "incendios en viviendas e industrias", "salvamento en derrumbes", "rescates en ámbito montaña", "rescate de personas ", "socorrer inundaciones", "operativos de prevención." }));
+        jCBTipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "incendios en viviendas e industrias", "salvamento en derrumbes", "rescates en ambito montania", "rescate de personas atrapadas  en accidentes de trafico", "socorrer inundaciones", "operativos de prevencion" }));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -190,7 +190,7 @@ public class IngresarBrigada extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jBSalirBiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBSalirBiActionPerformed
-       
+
         this.dispose();
     }//GEN-LAST:event_jBSalirBiActionPerformed
 
@@ -201,11 +201,23 @@ public class IngresarBrigada extends javax.swing.JInternalFrame {
         }        // TODO add your handling code here:
     }//GEN-LAST:event_jTFCodigoBiKeyTyped
 
-    private void jTFNombreBiKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTFNombreBiKeyTyped
-          if(! (Character.isLetter(evt.getKeyChar())) && !(evt.getKeyChar()== KeyEvent.VK_SPACE)){
-            evt.consume();
-        }
-    }//GEN-LAST:event_jTFNombreBiKeyTyped
+    private void jBBuscarBiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBBuscarBiActionPerformed
+
+        String nombre = jCBTipo.getSelectedItem().toString();
+
+       
+
+            Brigada b = bd.buscarBrigada(nombre);
+
+            jTFCodigoBi.setText(b.getCodigoBrigada() + "");
+            jTFNombreBi.setText(b.getNombreBrigada());
+            jRBEstadoBi.setSelected(b.isLibre());
+            jTFIdCuartel.setText(b.getNumeroCuartel() + "");
+           
+
+       
+        
+    }//GEN-LAST:event_jBBuscarBiActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
