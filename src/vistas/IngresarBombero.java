@@ -115,6 +115,11 @@ public class IngresarBombero extends javax.swing.JInternalFrame {
         jBModificar.setText("MODIFICAR");
 
         jBEliminar.setText("ELIMINAR");
+        jBEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBEliminarActionPerformed(evt);
+            }
+        });
 
         jBSalir.setText("SALIR");
         jBSalir.addActionListener(new java.awt.event.ActionListener() {
@@ -361,8 +366,36 @@ public class IngresarBombero extends javax.swing.JInternalFrame {
             evt.consume();
     }//GEN-LAST:event_jTFIdKeyTyped
     }
-
     
+    private void jBEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBEliminarActionPerformed
+      
+       
+
+        try{
+            int id = Integer.parseInt(jTFId.getText());
+            if(jTFId!=null){
+                
+               
+                Bombero bombero = new Bombero();
+                bd.eliminarBombero(id);
+   
+            }
+            
+        }catch(NumberFormatException exc){
+             JOptionPane.showMessageDialog(this, "Debe buscar un bombero para poder eliminarlo");
+        }
+                jTFId.setText("");
+                jTFDni.setText("");
+                jTFNombreYApellido.setText("");
+                jDCFechaNacimiento.setDate(null);
+                jTFCelular.setText("");
+                jTFCodigoBrigada.setText("");
+                jRadioButton1.setSelected(false);
+                jTFGrupo.setText("");
+                jCBCuartel.setSelectedIndex(0);
+    }//GEN-LAST:event_jBEliminarActionPerformed
+    
+
    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBEliminar;

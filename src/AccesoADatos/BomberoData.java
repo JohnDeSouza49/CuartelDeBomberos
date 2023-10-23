@@ -242,5 +242,27 @@ public class BomberoData {
 
         return bomberosFiltrados;
     }
+    
+    public void eliminarBombero(int id){
+        
+        String sql = "DELETE FROM bombero WHERE idBombero=?";
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1,id);
+            int rs = ps.executeUpdate();
+            
+            if(rs==1){
+                JOptionPane.showMessageDialog(null, "Bombero eliminado con éxito");
+                
+            }else{
+                 JOptionPane.showMessageDialog(null, "El bombero no existe");
+            }
+            
+        } catch (SQLException ex) {
+           JOptionPane.showMessageDialog(null, "Error al cargar la tabla bombero");
+            
+        }
+      
+    }
 }
 
