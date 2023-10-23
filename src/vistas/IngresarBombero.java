@@ -345,6 +345,7 @@ public class IngresarBombero extends javax.swing.JInternalFrame {
             jTFCodigoBrigada.setText(b.getCodigoBrigada() + "");
             jRadioButton1.setSelected(b.isEstado());
             jTFGrupo.setText(b.getGrupoSanguineo());
+            jCBCuartel.setSelectedIndex(b.getCodigoCuartel()-1);
 
         } catch (NullPointerException npe) {
             jTFId.setText("");
