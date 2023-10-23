@@ -266,7 +266,7 @@ public class IngresarBombero extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
 
         try {
-            int codigo = Integer.parseInt(jTFId.getText());
+           
             int dn = Integer.parseInt(jTFDni.getText());
             String nombreCom = jTFNombreYApellido.getText();
             LocalDate feNac = jDCFechaNacimiento.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
@@ -277,7 +277,7 @@ public class IngresarBombero extends javax.swing.JInternalFrame {
             int codCu = (Integer) jCBCuartel.getSelectedItem();
 
             if (jTFNombreYApellido.getText().isEmpty() || jTFGrupo.getText().isEmpty()) {
-                JOptionPane.showMessageDialog(this, "Ingrese valores correctos");
+                JOptionPane.showMessageDialog(this, "debe completar todos los campos");
                 return;
             }
             if (!jTFId.getText().isEmpty()) {
@@ -295,11 +295,11 @@ public class IngresarBombero extends javax.swing.JInternalFrame {
             jTFCodigoBrigada.setText("");
             jRadioButton1.setSelected(false);
             jTFGrupo.setText("");
-
-        } catch (NumberFormatException nfe) {
-            JOptionPane.showMessageDialog(this, "Ingrese valores correctos");
+          
+          } catch (NumberFormatException nfe) {
+            JOptionPane.showMessageDialog(this, "Ingrese valores correctos!!"+nfe.getMessage());
         } catch (NullPointerException npe) {
-            JOptionPane.showMessageDialog(this, "Ingrese valores correctos");
+            JOptionPane.showMessageDialog(this, "Ingrese valores correctos"+npe.getMessage());
         }
 
 
@@ -334,9 +334,7 @@ public class IngresarBombero extends javax.swing.JInternalFrame {
         Bombero b = new Bombero();
 
         try {
-
             b = bd.buscarBomberoPorNombre(jTFNombreYApellido.getText());
-
             jTFId.setText(b.getIdBombero() + "");
             jTFDni.setText(b.getDni() + "");
             jTFNombreYApellido.setText(b.getNombreApellido());
@@ -352,12 +350,10 @@ public class IngresarBombero extends javax.swing.JInternalFrame {
             jTFId.setText("");
             jTFDni.setText("");
             JOptionPane.showMessageDialog(this, "Ingrese nombre y apellido del bombero a buscar");
-        }
-
-
+                                           
     }//GEN-LAST:event_jBuscarActionPerformed
-
-
+}
+ 
     private void jTFIdKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTFIdKeyTyped
         char c = evt.getKeyChar();
         if (!(Character.isDigit(c) || (c == KeyEvent.VK_BACK_SPACE) || (c == KeyEvent.VK_DELETE))) {
@@ -365,6 +361,8 @@ public class IngresarBombero extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jTFIdKeyTyped
     }
 
+    
+   
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBEliminar;
     private javax.swing.JButton jBGuardar;
@@ -403,5 +401,8 @@ public class IngresarBombero extends javax.swing.JInternalFrame {
         }
 
     }
+    }
 
-}
+    
+  
+
