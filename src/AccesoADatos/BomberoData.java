@@ -18,7 +18,6 @@ import javax.swing.JOptionPane;
 public class BomberoData {
 
     private Connection con = null;
-    
 
     public BomberoData() {
         con = Conexion.getConexion();
@@ -27,7 +26,7 @@ public class BomberoData {
 
     public void guardarBombero(Bombero bombero) {
 
-        String sql =  "INSERT INTO bombero(dni,nombreApellido,fechaNac,celular,codigoBrigada,estado,grupoSanguineo,codigoCuartel )VALUES (?,?, ?, ?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO bombero(dni,nombreApellido,fechaNac,celular,codigoBrigada,estado,grupoSanguineo,codigoCuartel )VALUES (?,?, ?, ?, ?, ?, ?, ?)";
 
         try {
 
@@ -40,7 +39,7 @@ public class BomberoData {
             ps.setBoolean(6, bombero.isEstado());
             ps.setString(7, bombero.getGrupoSanguineo());
             ps.setInt(8, bombero.getCodigoCuartel());
-            
+
             ps.executeUpdate();
             ResultSet rs = ps.getGeneratedKeys();
             if (rs.next()) {
@@ -50,7 +49,6 @@ public class BomberoData {
             }
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error al cargar el bombero" + ex.getMessage());
-            
 
         }
 
@@ -152,38 +150,37 @@ public class BomberoData {
         }
         return bomberos;
     }
-    
-   
-      public Bombero  buscarBomberoPorNombre(String nombre){
-        
-         String sql = "SELECT * FROM bombero  where nombreApellido=?";
+
+    public Bombero buscarBomberoPorNombre(String nombre) {
+
+        String sql = "SELECT * FROM bombero  where nombreApellido=?";
         Bombero b = new Bombero();
-        try{
-         PreparedStatement ps = con.prepareStatement(sql);
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
             ps.setString(1, nombre);
             ResultSet rs = ps.executeQuery();
-            if(rs.next()){
-                
-               b.setIdBombero(rs.getInt("idBombero"));
-               b.setDni(rs.getInt("dni"));
-               b.setNombreApellido(rs.getString("nombreApellido"));
-               b.setFechaNac(rs.getDate("fechanac").toLocalDate());
-               b.setCelular(rs.getInt("celular"));
-               b.setCodigoBrigada(rs.getInt("codigoBrigada"));
-               b.setEstado(rs.getBoolean("estado"));
-               b.setGrupoSanguineo(rs.getString("gruposanguineo"));
-               b.setCodigoCuartel(rs.getInt("codigoCuartel"));
-                
+            if (rs.next()) {
+
+                b.setIdBombero(rs.getInt("idBombero"));
+                b.setDni(rs.getInt("dni"));
+                b.setNombreApellido(rs.getString("nombreApellido"));
+                b.setFechaNac(rs.getDate("fechanac").toLocalDate());
+                b.setCelular(rs.getInt("celular"));
+                b.setCodigoBrigada(rs.getInt("codigoBrigada"));
+                b.setEstado(rs.getBoolean("estado"));
+                b.setGrupoSanguineo(rs.getString("gruposanguineo"));
+                b.setCodigoCuartel(rs.getInt("codigoCuartel"));
+
             }
-        
-        }catch(SQLException ex){
+
+        } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "El bombero no existe");
         }
         return b;
     }
-      
+
     public List<Bombero> listarBomberosxCuartel(int codigo) {
-      List<Bombero> bomberos = new ArrayList<>();
+        List<Bombero> bomberos = new ArrayList<>();
         Bombero b = null;
         try {
             String sql = "SELECT * FROM `bombero` WHERE codigoCuartel=?";
@@ -205,45 +202,45 @@ public class BomberoData {
             }
             ps.close();
 
-            } catch (SQLException ex) {
+        } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, " Error al acceder a la tabla Alumno " + ex.getMessage());
         }
         return bomberos;
-    } 
-    public List<Bombero> listarBomberoPorCuartelYBrigada(int codigoCuartel, int codigoBrigada) {
-
-    List<Bombero> bomberosFiltrados = new ArrayList<>();
-    Bombero b = null;
-
-    try {
-        String sql = "SELECT * FROM bombero WHERE codigoCuartel = ? AND codigoBrigada = ?";
-        PreparedStatement ps = con.prepareStatement(sql);
-        ps.setInt(1, codigoCuartel);
-        ps.setInt(2, codigoBrigada);
-        ResultSet rs = ps.executeQuery();
-
-        while (rs.next()) {
-            b = new Bombero();
-            b.setIdBombero(rs.getInt("idBombero"));
-            b.setDni(rs.getInt("dni"));
-            b.setNombreApellido(rs.getString("NombreApellido"));
-            b.setFechaNac(rs.getDate("fechaNac").toLocalDate());
-            b.setCelular(rs.getInt("celular"));
-            b.setCodigoBrigada(rs.getInt("codigoBrigada"));
-            b.setEstado(rs.getBoolean("estado"));
-            b.setGrupoSanguineo(rs.getString("GrupoSanguineo"));
-            b.setCodigoCuartel(rs.getInt("codigoCuartel"));
-            bomberosFiltrados.add(b);
-        }
-
-        ps.close();
-
-    } catch (SQLException ex) {
-        JOptionPane.showMessageDialog(null, "Error al acceder a la tabla Bombero: " + ex.getMessage());
     }
 
-    return bomberosFiltrados;
+    public List<Bombero> listarBomberoPorCuartelYBrigada(int codigoCuartel, int codigoBrigada) {
+
+        List<Bombero> bomberosFiltrados = new ArrayList<>();
+        Bombero b = null;
+
+        try {
+            String sql = "SELECT * FROM bombero WHERE codigoCuartel = ? AND codigoBrigada = ?";
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, codigoCuartel);
+            ps.setInt(2, codigoBrigada);
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+                b = new Bombero();
+                b.setIdBombero(rs.getInt("idBombero"));
+                b.setDni(rs.getInt("dni"));
+                b.setNombreApellido(rs.getString("NombreApellido"));
+                b.setFechaNac(rs.getDate("fechaNac").toLocalDate());
+                b.setCelular(rs.getInt("celular"));
+                b.setCodigoBrigada(rs.getInt("codigoBrigada"));
+                b.setEstado(rs.getBoolean("estado"));
+                b.setGrupoSanguineo(rs.getString("GrupoSanguineo"));
+                b.setCodigoCuartel(rs.getInt("codigoCuartel"));
+                bomberosFiltrados.add(b);
+            }
+
+            ps.close();
+
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla Bombero: " + ex.getMessage());
+        }
+
+        return bomberosFiltrados;
+    }
 }
-      }  
-  
 

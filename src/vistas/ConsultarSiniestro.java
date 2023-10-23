@@ -1,7 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JInternalFrame.java to edit this template
- */
+
 package vistas;
 
 import javax.swing.table.DefaultTableModel;
@@ -12,15 +9,13 @@ import javax.swing.table.DefaultTableModel;
  */
 public class ConsultarSiniestro extends javax.swing.JInternalFrame {
 
-   private DefaultTableModel modelo = new DefaultTableModel(){
-      
-        
-       public boolean isCellEditable(int row, int column) {
-                return column == 3 || column == 4;
-       }
-   };
-           
-   
+    private DefaultTableModel modelo = new DefaultTableModel() {
+
+        public boolean isCellEditable(int row, int column) {
+            return column == 3 || column == 4;
+        }
+    };
+
     public ConsultarSiniestro() {
         initComponents();
         armarEncabezado();
@@ -152,5 +147,5 @@ private void armarEncabezado() {
         modelo.addColumn("PUNTUACION");
         modelo.addColumn("CODIGO BRIGADA");
         jTSiniestro.setModel(modelo);
-}
+    }
 }

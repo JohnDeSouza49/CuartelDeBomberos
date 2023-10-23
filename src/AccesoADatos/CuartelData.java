@@ -36,7 +36,7 @@ public class CuartelData {
 
             ps.setString(1, cuartel.getNombreCuartel());
             ps.setString(2, cuartel.getDireccion());
-            
+
             ps.setInt(3, cuartel.getCoordenadaX());
             ps.setInt(4, cuartel.getCoordenadaY());
             ps.setInt(5, cuartel.getTelefono());
@@ -50,7 +50,6 @@ public class CuartelData {
                 JOptionPane.showMessageDialog(null, "Por favor, ingrese un correo electrónico válido.");
                 return;
 
-               
             }
 
             ps.executeUpdate();
@@ -59,16 +58,14 @@ public class CuartelData {
             if (rs.next()) {
                 cuartel.setCodigoCuartel(rs.getInt(1));
             }
-                 int exito = ps.executeUpdate();
-            
+            int exito = ps.executeUpdate();
+
             if (exito == 1) {
-               JOptionPane.showMessageDialog(null, "Cuartel agregado con éxito");
+                JOptionPane.showMessageDialog(null, "Cuartel agregado con éxito");
             } else {
                 JOptionPane.showMessageDialog(null, "verifique los datos ingresados");
             }
-                
 
-            
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "hay un error al cargar el cuartel");
         }
@@ -84,15 +81,15 @@ public class CuartelData {
             PreparedStatement ps = con.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
-                
-               int cod = (rs.getInt("codigoCuartel"));
-                 String nom =(rs.getString("nombreCuartel"));
-                 String dir= (rs.getString("direccion"));
-                 int cooX =(rs.getInt("coordenadax"));
-               int CooY =(rs.getInt("coordenaday"));
-               int tel =(rs.getInt("telefono"));
-              String correo = (rs.getString("correo"));
-                boolean est =(rs.getBoolean("estado"));
+
+                int cod = (rs.getInt("codigoCuartel"));
+                String nom = (rs.getString("nombreCuartel"));
+                String dir = (rs.getString("direccion"));
+                int cooX = (rs.getInt("coordenadax"));
+                int CooY = (rs.getInt("coordenaday"));
+                int tel = (rs.getInt("telefono"));
+                String correo = (rs.getString("correo"));
+                boolean est = (rs.getBoolean("estado"));
                 c = new Cuartel(cod, nom, dir, cooX, CooY, tel, correo, est);
                 cuarteles.add(c);
                 ps.close();
@@ -129,8 +126,8 @@ public class CuartelData {
         return c;
 
     }
-   
-     public Cuartel BuscarCuartelPorCodigo(int cod) {
+
+    public Cuartel BuscarCuartelPorCodigo(int cod) {
         String sql = "SELECT * from cuartel where codigoCuartel=?";
         Cuartel c = null;
         try {
@@ -155,9 +152,6 @@ public class CuartelData {
         return c;
 
     }
-    
-    
-    
 
     public void eliminarCuartel(Cuartel cuartel) {
         String sql = "UPDATE `cuartel` set estado=0 where codigoCuartel=?";
@@ -180,36 +174,35 @@ public class CuartelData {
         }
 
     }
-    
-    public void modificarCuartel(Cuartel cuartel){
-        
+
+    public void modificarCuartel(Cuartel cuartel) {
+
         String sql = "UPDATE cuartel SET nombreCuartel = ?, direccion = ?, "
                 + "coordenadaX = ?, coordenadaY = ?, telefono = ?, correo = ?, estado = ? WHERE codigoCuartel = ?";
         try {
             PreparedStatement ps = con.prepareStatement(sql);
-            
-            ps.setString(1, cuartel.getNombreCuartel() );
+
+            ps.setString(1, cuartel.getNombreCuartel());
             ps.setString(2, cuartel.getDireccion());
             ps.setInt(3, cuartel.getCoordenadaX());
             ps.setInt(4, cuartel.getCoordenadaY());
-            ps.setString(5, cuartel.getTelefono()+"");
+            ps.setString(5, cuartel.getTelefono() + "");
             ps.setString(6, cuartel.getCorreoElectronico());
             ps.setBoolean(7, cuartel.isEstado());
             ps.setInt(8, cuartel.getCodigoCuartel());
-            
+
             int exito = ps.executeUpdate();
-            
-            if(exito == 1){
+
+            if (exito == 1) {
                 JOptionPane.showMessageDialog(null, "Cuartel modificado Exitosamente.");
-            }else{
-                  JOptionPane.showMessageDialog(null, "El cuartel no existe");
+            } else {
+                JOptionPane.showMessageDialog(null, "El cuartel no existe");
             }
-            
+
         } catch (SQLException ex) {
-           JOptionPane.showMessageDialog(null, "Error al acceder a la tabla Cuartel " + ex.getMessage());
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla Cuartel " + ex.getMessage());
         }
-        
-        
+
     }
 
 }

@@ -1,8 +1,7 @@
-
 package Entidades;
 
-
 public class Brigada {
+
     private int codigoBrigada;
     private String nombreBrigada;
     private String especialidad;
@@ -26,7 +25,6 @@ public class Brigada {
 
     public Brigada() {
     }
-    
 
     public int getCodigoBrigada() {
         return codigoBrigada;
@@ -72,12 +70,5 @@ public class Brigada {
     public String toString() {
         return codigoBrigada + ", " + nombreBrigada;
     }
-
-  
-    
-    
-    
-    
-    
 
 }

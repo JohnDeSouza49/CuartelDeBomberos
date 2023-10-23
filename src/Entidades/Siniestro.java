@@ -1,11 +1,10 @@
-
 package Entidades;
 
 import java.sql.Date;
 import java.time.LocalDate;
 
+public class Siniestro {
 
-public class Siniestro{
     private int codigoSiniestro;
     private String tipo;
     private LocalDate fechaSiniestro;
@@ -13,7 +12,7 @@ public class Siniestro{
     private int coordenadaY;
     private String detalles;
     private LocalDate fechaResolucion;
-    private int puntuacion;       
+    private int puntuacion;
     private int codigoBrigada;
 
     public Siniestro(int codigoSiniestro, String tipo, LocalDate fechaSiniestro, int coordenadaX, int coordenadaY, String detalles, LocalDate fechaResolucion, int calificacion, int codigoBrigada) {
@@ -49,7 +48,7 @@ public class Siniestro{
         this.coordenadaY = coordenadaY;
     }
 
-    public Siniestro( String tipo, LocalDate fechaSiniestro, int coordenadaX, int coordenadaY, String detalles, int codigoBrigada) {
+    public Siniestro(String tipo, LocalDate fechaSiniestro, int coordenadaX, int coordenadaY, String detalles, int codigoBrigada) {
         this.tipo = tipo;
         this.fechaSiniestro = fechaSiniestro;
         this.coordenadaX = coordenadaX;
@@ -57,7 +56,6 @@ public class Siniestro{
         this.detalles = detalles;
         this.codigoBrigada = codigoBrigada;
     }
-    
 
     public int getCodigoSiniestro() {
         return codigoSiniestro;
@@ -135,9 +133,5 @@ public class Siniestro{
     public String toString() {
         return "Siniestro{" + "codigoSiniestro=" + codigoSiniestro + ", Tipo=" + tipo + ", fechaSiniestro=" + fechaSiniestro + ", coordenadaX=" + coordenadaX + ", coordenadaY=" + coordenadaY + ", detalles=" + detalles + ", fechaResolucion=" + fechaResolucion + ", calificacion=" + puntuacion + ", codigoBrigada=" + codigoBrigada + '}';
     }
-    
-   
-   
+
 }
-
-

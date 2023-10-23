@@ -1,17 +1,13 @@
-
 package vistas;
 
 import java.awt.event.KeyEvent;
 
-
 public class IngresarBrigada extends javax.swing.JInternalFrame {
 
-    
     public IngresarBrigada() {
         initComponents();
     }
 
-   
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -184,7 +180,7 @@ public class IngresarBrigada extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jBSalirBiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBSalirBiActionPerformed
-       
+
         this.dispose();
     }//GEN-LAST:event_jBSalirBiActionPerformed
 

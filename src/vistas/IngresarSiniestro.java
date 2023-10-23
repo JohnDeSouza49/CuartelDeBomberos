@@ -15,12 +15,13 @@ public class IngresarSiniestro extends javax.swing.JInternalFrame {
 
     private BrigadaData bd;
     private SiniestroData sd;
-    Brigada brigadaAsignada=null;
-    Siniestro siniestro=null;
+    Brigada brigadaAsignada = null;
+    Siniestro siniestro = null;
+
     public IngresarSiniestro(BrigadaData bd, SiniestroData sd) {
         this.bd = bd;
         this.sd = sd;
-      
+
         initComponents();
 
     }
@@ -271,53 +272,52 @@ public class IngresarSiniestro extends javax.swing.JInternalFrame {
     private void jBAsignarCuartelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBAsignarCuartelActionPerformed
         if (jTFCooXSi.getText().isEmpty() || jTFCooYSi.getText().isEmpty()) {
             JOptionPane.showMessageDialog(this, "debe completar las coordenadas del siniestro");
-            } else {
-    CuartelData cu = new CuartelData();
-        int x = Integer.parseInt(jTFCooXSi.getText());
-        int y = Integer.parseInt(jTFCooYSi.getText());
-        String tipo = (String) jCBTipoSi.getSelectedItem();
-        LocalDate feSi = jDCFechaSi.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
-         siniestro = new Siniestro(tipo, feSi, x, y);
-        brigadaAsignada = sd.AsignarBrigada(siniestro);
-        JOptionPane.showMessageDialog(this, "buscando brigada libre...");
-        jTFBrigada.setText(brigadaAsignada.getNombreBrigada());
-        Cuartel cuartelAsignado = cu.BuscarCuartelPorCodigo(brigadaAsignada.getNumeroCuartel());
-        jTFCuartel.setText(cuartelAsignado.getNombreCuartel());
+        } else {
+            CuartelData cu = new CuartelData();
+            int x = Integer.parseInt(jTFCooXSi.getText());
+            int y = Integer.parseInt(jTFCooYSi.getText());
+            String tipo = (String) jCBTipoSi.getSelectedItem();
+            LocalDate feSi = jDCFechaSi.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+            siniestro = new Siniestro(tipo, feSi, x, y);
+            brigadaAsignada = sd.AsignarBrigada(siniestro);
+            JOptionPane.showMessageDialog(this, "buscando brigada libre...");
+            jTFBrigada.setText(brigadaAsignada.getNombreBrigada());
+            Cuartel cuartelAsignado = cu.BuscarCuartelPorCodigo(brigadaAsignada.getNumeroCuartel());
+            jTFCuartel.setText(cuartelAsignado.getNombreCuartel());
 
-    }
+        }
     }//GEN-LAST:event_jBAsignarCuartelActionPerformed
 
     private void jBGuardarSiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBGuardarSiActionPerformed
-      //try{
+        //try{
         bd.brigadaOcupada(brigadaAsignada);
-        SiniestroData sd= new SiniestroData();
-        int x= siniestro.getCoordenadaX();
-        int y= siniestro.getCoordenadaY();
-        String tipo= siniestro.getTipo();
-        String detalles=jTADetalleSi.getText();
-        LocalDate feS=siniestro.getFechaSiniestro();
-       //  LocalDate frS = siniestro.getFechaResolucion();
-         //int puntuacion = siniestro.getPuntuacion();
+        SiniestroData sd = new SiniestroData();
+        int x = siniestro.getCoordenadaX();
+        int y = siniestro.getCoordenadaY();
+        String tipo = siniestro.getTipo();
+        String detalles = jTADetalleSi.getText();
+        LocalDate feS = siniestro.getFechaSiniestro();
+        //  LocalDate frS = siniestro.getFechaResolucion();
+        //int puntuacion = siniestro.getPuntuacion();
         Siniestro s = new Siniestro(tipo, feS, x, y, detalles, brigadaAsignada.getCodigoBrigada());
-        
 
         sd.guardarSiniestro(s);
         JOptionPane.showMessageDialog(this, "Siniestro registrado");
-       //}catch (Exception e) {
-            // Maneja la excepción cuando no se encuentra una brigada libre
-            //JOptionPane.showMessageDialog(this, "No se encontraron brigadas libres. Por favor, inténtelo de nuevo más tarde."+e.getMessage());
-            System.out.println(siniestro.getTipo()+" "+siniestro.getFechaSiniestro()+" "+siniestro.getCoordenadaX()+siniestro.getCoordenadaY()+jTADetalleSi.getText()+brigadaAsignada.getCodigoBrigada());
+        //}catch (Exception e) {
+        // Maneja la excepción cuando no se encuentra una brigada libre
+        //JOptionPane.showMessageDialog(this, "No se encontraron brigadas libres. Por favor, inténtelo de nuevo más tarde."+e.getMessage());
+        System.out.println(siniestro.getTipo() + " " + siniestro.getFechaSiniestro() + " " + siniestro.getCoordenadaX() + siniestro.getCoordenadaY() + jTADetalleSi.getText() + brigadaAsignada.getCodigoBrigada());
     }//GEN-LAST:event_jBGuardarSiActionPerformed
-    
+
     private void jTFCooXSiKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTFCooXSiKeyTyped
- char c = evt.getKeyChar();
+        char c = evt.getKeyChar();
         if (!(Character.isDigit(c) || (c == KeyEvent.VK_BACK_SPACE) || (c == KeyEvent.VK_DELETE || c == '-'))) {
             evt.consume();
-        }        
+        }
     }//GEN-LAST:event_jTFCooXSiKeyTyped
 
     private void jTFCooYSiKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTFCooYSiKeyTyped
-         char c = evt.getKeyChar();
+        char c = evt.getKeyChar();
         if (!(Character.isDigit(c) || (c == KeyEvent.VK_BACK_SPACE) || (c == KeyEvent.VK_DELETE || c == '-'))) {
             evt.consume();
         }

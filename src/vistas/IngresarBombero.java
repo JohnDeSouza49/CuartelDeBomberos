@@ -11,7 +11,6 @@ import java.time.ZoneId;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 
-
 public class IngresarBombero extends javax.swing.JInternalFrame {
 
     BomberoData bd = new BomberoData();
@@ -335,43 +334,36 @@ public class IngresarBombero extends javax.swing.JInternalFrame {
         Bombero b = new Bombero();
 
         try {
-          
 
-               
+            b = bd.buscarBomberoPorNombre(jTFNombreYApellido.getText());
 
-                b = bd.buscarBomberoPorNombre(jTFNombreYApellido.getText());
+            jTFId.setText(b.getIdBombero() + "");
+            jTFDni.setText(b.getDni() + "");
+            jTFNombreYApellido.setText(b.getNombreApellido());
+            LocalDate fechaNa = b.getFechaNac();
+            Date date = java.sql.Date.valueOf(fechaNa);
+            jDCFechaNacimiento.setDate(date);
+            jTFCelular.setText(b.getCelular() + "");
+            jTFCodigoBrigada.setText(b.getCodigoBrigada() + "");
+            jRadioButton1.setSelected(b.isEstado());
+            jTFGrupo.setText(b.getGrupoSanguineo());
 
-                jTFId.setText(b.getIdBombero() + "");
-                jTFDni.setText(b.getDni() + "");
-                jTFNombreYApellido.setText(b.getNombreApellido());
-                LocalDate fechaNa = b.getFechaNac();
-                Date date = java.sql.Date.valueOf(fechaNa);
-                jDCFechaNacimiento.setDate(date);
-                jTFCelular.setText(b.getCelular() + "");
-                jTFCodigoBrigada.setText(b.getCodigoBrigada() + "");
-                jRadioButton1.setSelected(b.isEstado());
-                jTFGrupo.setText(b.getGrupoSanguineo());
+        } catch (NullPointerException npe) {
+            jTFId.setText("");
+            jTFDni.setText("");
+            JOptionPane.showMessageDialog(this, "Ingrese nombre y apellido del bombero a buscar");
+        }
 
-            } catch(NullPointerException  npe){
-                jTFId.setText("");
-                jTFDni.setText( "");
-                JOptionPane.showMessageDialog(this, "Ingrese nombre y apellido del bombero a buscar");
-            }
-       
-
-      
 
     }//GEN-LAST:event_jBuscarActionPerformed
 
-    
-    
-    
+
     private void jTFIdKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTFIdKeyTyped
-      char c = evt.getKeyChar();
+        char c = evt.getKeyChar();
         if (!(Character.isDigit(c) || (c == KeyEvent.VK_BACK_SPACE) || (c == KeyEvent.VK_DELETE))) {
             evt.consume();
     }//GEN-LAST:event_jTFIdKeyTyped
-}
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBEliminar;

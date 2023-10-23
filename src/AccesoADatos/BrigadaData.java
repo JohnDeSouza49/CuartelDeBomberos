@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package AccesoADatos;
 
 import Entidades.Brigada;
@@ -18,44 +14,45 @@ import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 public class BrigadaData {
-    private Connection con=null;
+
+    private Connection con = null;
 
     public BrigadaData() {
-        con=Conexion.getConexion();
+        con = Conexion.getConexion();
     }
-     public void guardarBrigada(Brigada brigada){
-         String sql="INSERT INTO brigada(nombreBrigada, especialidad, libre, numeroCuartel) VALUES (?,?,?,?)";
+
+    public void guardarBrigada(Brigada brigada) {
+        String sql = "INSERT INTO brigada(nombreBrigada, especialidad, libre, numeroCuartel) VALUES (?,?,?,?)";
         try {
-            PreparedStatement ps= con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+            PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             ps.setString(1, brigada.getNombreBrigada());
             ps.setString(2, brigada.getEspecialidad());
             ps.setBoolean(3, brigada.isLibre());
             ps.setInt(4, brigada.getNumeroCuartel());
             ps.executeUpdate();
-            ResultSet rs= ps.getGeneratedKeys();
-            if(rs.next()){
+            ResultSet rs = ps.getGeneratedKeys();
+            if (rs.next()) {
                 brigada.setCodigoBrigada(rs.getInt(1));
-                JOptionPane.showMessageDialog(null,"Brigada Añadida");
-            }else{
+                JOptionPane.showMessageDialog(null, "Brigada Añadida");
+            } else {
                 JOptionPane.showMessageDialog(null, "Error al añadir brigada");
             }
-            
-            
+
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error al añadir la brigada");
         }
-         
-     }
-    
-     public List<Brigada> brigadasLibres() {
-         List<Brigada> brigadas = new ArrayList<>();
-         Brigada b=null;
-         String sql="SELECT codigoBrigada, nombreBrigada, especialidad,  numeroCuartel from brigada where libre=1";
+
+    }
+
+    public List<Brigada> brigadasLibres() {
+        List<Brigada> brigadas = new ArrayList<>();
+        Brigada b = null;
+        String sql = "SELECT codigoBrigada, nombreBrigada, especialidad,  numeroCuartel from brigada where libre=1";
         try {
-            PreparedStatement ps= con.prepareStatement(sql);
-            ResultSet rs= ps.executeQuery();
-            while(rs.next()){
-                b= new Brigada();
+            PreparedStatement ps = con.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                b = new Brigada();
                 b.setCodigoBrigada(rs.getInt("codigoBrigada"));
                 b.setNombreBrigada(rs.getString("nombreBrigada"));
                 b.setEspecialidad(rs.getString("especialidad"));
@@ -64,21 +61,22 @@ public class BrigadaData {
                 brigadas.add(b);
                 ps.close();
             }
-            
+
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null,"error al obtener las brigadas libres");
+            JOptionPane.showMessageDialog(null, "error al obtener las brigadas libres");
         }
         return brigadas;
-     }
-         public List<Brigada> brigadasAsignadas() {
-         List<Brigada> brigadas = new ArrayList<>();
-         Brigada b=null;
-         String sql="SELECT codigoBrigada, nombreBrigada, especialidad, numeroCuartel from brigada where libre=0";
+    }
+
+    public List<Brigada> brigadasAsignadas() {
+        List<Brigada> brigadas = new ArrayList<>();
+        Brigada b = null;
+        String sql = "SELECT codigoBrigada, nombreBrigada, especialidad, numeroCuartel from brigada where libre=0";
         try {
-            PreparedStatement ps= con.prepareStatement(sql);
-            ResultSet rs= ps.executeQuery();
-            while(rs.next()){
-                b= new Brigada();
+            PreparedStatement ps = con.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                b = new Brigada();
                 b.setCodigoBrigada(rs.getInt("codigoBrigada"));
                 b.setNombreBrigada(rs.getString("nombreBrigada"));
                 b.setEspecialidad(rs.getString("especialidad"));
@@ -86,22 +84,23 @@ public class BrigadaData {
                 brigadas.add(b);
                 ps.close();
             }
-            
+
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null,"error al obtener las brigadas libres");
+            JOptionPane.showMessageDialog(null, "error al obtener las brigadas libres");
         }
         return brigadas;
-     }
-         public List<Brigada> brigadaslibresxCuartel(int id){
-             List<Brigada> brigadas = new ArrayList<>();
-             Brigada b=null;
-             String sql="SELECT * FROM brigada WHERE numeroCuartel=? and libre=1";
+    }
+
+    public List<Brigada> brigadaslibresxCuartel(int id) {
+        List<Brigada> brigadas = new ArrayList<>();
+        Brigada b = null;
+        String sql = "SELECT * FROM brigada WHERE numeroCuartel=? and libre=1";
         try {
-            PreparedStatement ps=con.prepareStatement(sql);
+            PreparedStatement ps = con.prepareStatement(sql);
             ps.setInt(1, id);
-             ResultSet rs= ps.executeQuery();
-            while(rs.next()){
-                b= new Brigada();
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                b = new Brigada();
                 b.setCodigoBrigada(rs.getInt("codigoBrigada"));
                 b.setNombreBrigada(rs.getString("nombreBrigada"));
                 b.setEspecialidad(rs.getString("especialidad"));
@@ -109,26 +108,26 @@ public class BrigadaData {
                 b.setLibre(true);
                 brigadas.add(b);
                 ps.close();
-         }   
+            }
         } catch (SQLException ex) {
             Logger.getLogger(BrigadaData.class.getName()).log(Level.SEVERE, null, ex);
         }
         return brigadas;
-             
-         }
-         
-         public List<Brigada>brigadaPorCuartel(int numeroCuartel){
-             
-             List<Brigada>brigadas = new ArrayList<>();
-             Brigada br = null;
-             String consulta = "SELECT * FROM brigada WHERE numeroCuartel=?";
+
+    }
+
+    public List<Brigada> brigadaPorCuartel(int numeroCuartel) {
+
+        List<Brigada> brigadas = new ArrayList<>();
+        Brigada br = null;
+        String consulta = "SELECT * FROM brigada WHERE numeroCuartel=?";
         try {
-            PreparedStatement ps=con.prepareStatement(consulta);
+            PreparedStatement ps = con.prepareStatement(consulta);
             ps.setInt(1, numeroCuartel);
-            ResultSet rs= ps.executeQuery();
-            
-            while (rs.next()){
-                
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+
                 br = new Brigada();
                 br.setCodigoBrigada(rs.getInt("codigoBrigada"));
                 br.setNombreBrigada(rs.getString("nombreBrigada"));
@@ -137,18 +136,18 @@ public class BrigadaData {
                 brigadas.add(br);
                 ps.close();
             }
-           
-            
+
         } catch (SQLException ex) {
             Logger.getLogger(BrigadaData.class.getName()).log(Level.SEVERE, null, ex);
         }
-            return brigadas;  
-             
-         }
-         public void brigadaOcupada(Brigada b){
-             int codigo= b.getCodigoBrigada();
-             String sql="UPDATE brigada SET libre=0 WHERE codigoBrigada=?"; 
-             PreparedStatement ps;
+        return brigadas;
+
+    }
+
+    public void brigadaOcupada(Brigada b) {
+        int codigo = b.getCodigoBrigada();
+        String sql = "UPDATE brigada SET libre=0 WHERE codigoBrigada=?";
+        PreparedStatement ps;
         try {
             ps = con.prepareStatement(sql);
             ps.setInt(1, codigo);
@@ -156,9 +155,7 @@ public class BrigadaData {
         } catch (SQLException ex) {
             Logger.getLogger(BrigadaData.class.getName()).log(Level.SEVERE, null, ex);
         }
-            
-         }
-                 
-         
-    
+
+    }
+
 }
