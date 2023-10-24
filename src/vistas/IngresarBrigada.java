@@ -92,7 +92,7 @@ BrigadaData bd = new BrigadaData();
             }
         });
 
-        jCBTipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "incendios en viviendas e industrias", "salvamento en derrumbes", "rescates en ámbito montaña", "rescate de personas ", "socorrer inundaciones", "operativos de prevención." }));
+        jCBTipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "incendios en viviendas e industrias", "salvamento en derrumbes", "rescates en ámbito montaña", "rescate de personas", "socorrer inundaciones", "operativos de prevención." }));
         jCBTipo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jCBTipoActionPerformed(evt);

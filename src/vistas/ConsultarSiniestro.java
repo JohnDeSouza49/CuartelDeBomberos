@@ -3,6 +3,8 @@ package vistas;
 import AccesoADatos.SiniestroData;
 import Entidades.Siniestro;
 import java.sql.Date;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
@@ -107,24 +109,27 @@ public class ConsultarSiniestro extends javax.swing.JInternalFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 447, Short.MAX_VALUE)
                 .addComponent(jBSinResolver)
                 .addGap(57, 57, 57))
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 440, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(93, 93, 93))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane1)
+                .addGap(22, 22, 22))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap(66, Short.MAX_VALUE)
+                .addContainerGap(70, Short.MAX_VALUE)
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(42, 42, 42)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jBBuscarSiniestro)
                     .addComponent(jBSinResolver))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 312, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGap(30, 30, 30)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jBSalir)
                     .addComponent(jBGuardarCambios))
@@ -186,33 +191,22 @@ public class ConsultarSiniestro extends javax.swing.JInternalFrame {
         
     int filas = jTSiniestro.getRowCount();
     boolean exitoTotal = true; // Variable para rastrear el éxito general de la actualización de todas las filas
-
+DateTimeFormatter format = DateTimeFormatter.ofPattern("yyyy-MM-dd");
     for (int fila = 0; fila < filas; fila++) {
         int codigoSiniestro = (int) jTSiniestro.getValueAt(fila, 0);
         String tipo = (String) jTSiniestro.getValueAt(fila, 1);
-        Date fechaSiniestro = (Date) jTSiniestro.getValueAt(fila, 2);
-        Date fechaResolucion = (Date) jTSiniestro.getValueAt(fila, 3);
-        int puntuacion = (int) jTSiniestro.getValueAt(fila, 4);
+        String lc= jTSiniestro.getValueAt(fila, 2).toString();
+        String lc2= jTSiniestro.getValueAt(fila, 3).toString();
+        LocalDate fechaSiniestro= LocalDate.parse(lc, DateTimeFormatter.ISO_DATE);
+        LocalDate fechaResolucion =  LocalDate.parse(lc2, DateTimeFormatter.ISO_DATE);
+        int puntuacion = Integer.parseInt(jTSiniestro.getValueAt(fila, 4).toString());
         int codigoBrigada = (int) jTSiniestro.getValueAt(fila, 5);
         Siniestro siniestro = new Siniestro(codigoSiniestro, tipo, fechaSiniestro, fechaResolucion, puntuacion, codigoBrigada);
 
         // Realiza la lógica para guardar los cambios en la base de datos
-        boolean exito = sd.actualizarSiniestro(siniestro);
+        sd.actualizarSiniestro(siniestro);
 
-        if (!exito) {
-            // Ocurrió un error al intentar actualizar un siniestro
-            // Puedes mostrar un mensaje de error o realizar alguna acción de manejo de errores
-            exitoTotal = false; // Establece el éxito total en falso si al menos una actualización falla
-        }
-    }
-
-    if (exitoTotal) {
-        // Todos los siniestros se actualizaron correctamente en la base de datos
-        // Puedes mostrar un mensaje de éxito general o realizar alguna otra acción si es necesario
-    } else {
-        // Al menos una actualización de siniestro falló
-        // Puedes mostrar un mensaje de error general o realizar alguna acción de manejo de errores
-    }
+    }    
     }//GEN-LAST:event_jBGuardarCambiosActionPerformed
 
 
