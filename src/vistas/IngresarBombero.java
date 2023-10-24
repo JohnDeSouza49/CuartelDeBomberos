@@ -295,6 +295,9 @@ public class IngresarBombero extends javax.swing.JInternalFrame {
                 JOptionPane.showMessageDialog(this, "El campo (Codigo) debe estar vacio");
                 return;
             }
+            if(gruSan!="AB+"&&gruSan!="AB-"&&gruSan!="A+"&&gruSan!="A-"&&gruSan!="B+"&&gruSan!="B-"&&gruSan!="O+"&&gruSan!="O-"){
+                
+            JOptionPane.showMessageDialog(this, "debe ingresar el grupo sanguineo Correcto");
 
             Bombero b = new Bombero(dn, nombreCom, feNac, cel, codBri, est, gruSan, codCu);
             bd.guardarBombero(b);
@@ -306,7 +309,9 @@ public class IngresarBombero extends javax.swing.JInternalFrame {
             jTFCodigoBrigada.setText("");
             jRadioButton1.setSelected(false);
             jTFGrupo.setText("");
-          
+            
+                
+            }
           } catch (NumberFormatException nfe) {
             JOptionPane.showMessageDialog(this, "Ingrese valores correctos!!"+nfe.getMessage());
         } catch (NullPointerException npe) {

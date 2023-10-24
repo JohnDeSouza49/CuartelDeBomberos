@@ -262,7 +262,8 @@ public class BomberoData {
            JOptionPane.showMessageDialog(null, "Error al cargar la tabla bombero");
             
         }
-      
     }
-}
+        
+    }
+
 
