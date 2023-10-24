@@ -66,9 +66,19 @@ public class Siniestro {
         this.codigoBrigada = codigoBrigada;
     }
 
-  
-  
- 
+    public Siniestro(int codigoSiniestro, LocalDate fechaSiniestro, LocalDate fechaResolucion, int puntuacion, int codigoBrigada) {
+        this.codigoSiniestro = codigoSiniestro;
+        this.fechaSiniestro = fechaSiniestro;
+        this.fechaResolucion = fechaResolucion;
+        this.puntuacion = puntuacion;
+        this.codigoBrigada = codigoBrigada;
+    }
+
+    public Siniestro(int codigoSiniestro, String tipo, Date fechaSiniestro, Date fechaResolucion, int puntuacion, int codigoBrigada) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    
     public int getCodigoSiniestro() {
         return codigoSiniestro;
     }

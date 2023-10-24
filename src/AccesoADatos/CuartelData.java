@@ -205,4 +205,23 @@ public class CuartelData {
 
     }
 
+    public boolean existeCuartelConNombre(String nombreCuartel) {
+       try {
+        String query = "SELECT COUNT(*) FROM cuartel WHERE nombreCuartel = ?";
+        PreparedStatement ps = con.prepareStatement(query);
+        ps.setString(1, nombreCuartel);
+
+        ResultSet rs = ps.executeQuery();
+
+        if (rs.next()) {
+            int count = rs.getInt(1);
+            return count > 0;
+        }
+    } catch (SQLException ex) {
+        JOptionPane.showMessageDialog(null, "Cuartel ya Existe " + ex.getMessage());
+    }
+    return false;
+
 }
+}
+
