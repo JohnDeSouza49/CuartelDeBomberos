@@ -87,6 +87,11 @@ BrigadaData bd = new BrigadaData();
         });
 
         jCBTipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "incendios en viviendas e industrias", "salvamento en derrumbes", "rescates en ámbito montaña", "rescate de personas ", "socorrer inundaciones", "operativos de prevención." }));
+        jCBTipo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCBTipoActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -243,24 +248,29 @@ BrigadaData bd = new BrigadaData();
     }//GEN-LAST:event_jBGuardarBiActionPerformed
 
     private void jBBuscarBiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBBuscarBiActionPerformed
+       Brigada b = new Brigada();
        try {
         
-        String nombreBrigada = jTFNombreBi.getText();
-      bd.buscarBrigada(nombreBrigada);
-      Brigada b = new Brigada();
+      int codigoBrigada = Integer.parseInt(jTFCodigoBi.getText());
+       b =  bd.buscarBrigada(codigoBrigada);
+      
       
             jTFCodigoBi.setText(b.getCodigoBrigada() + "");
             jTFNombreBi.setText(b.getNombreBrigada());
             jCBTipo.setSelectedItem(b.getEspecialidad());
             jTFIdCuartel.setText(b.getNumeroCuartel() + "");
             jRBEstadoBi.setSelected(b.isLibre());
+            
        }catch(Exception ex){
-           JOptionPane.showMessageDialog(this, " debe completar correctamente el nombre de la brigada");
+         JOptionPane.showMessageDialog(this, " debe completar correctamente el codigo de la brigada"+ex.getMessage());
        }
         
-        //Brigada b = new Brigada(codigoBrigada, nombreBrigada, tipo, estado, numeroCuartel); 
         
     }//GEN-LAST:event_jBBuscarBiActionPerformed
+
+    private void jCBTipoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCBTipoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jCBTipoActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
