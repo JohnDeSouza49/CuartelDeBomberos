@@ -129,6 +129,11 @@ public class IngresarSiniestro extends javax.swing.JInternalFrame {
         });
 
         jCBTipoSi.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "incendios en viviendas e industrias", "salvamento en derrumbes", "rescates en ámbito montaña", "rescate de personas", "socorrer inundaciones", "operativos de prevención", " " }));
+        jCBTipoSi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCBTipoSiActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -296,16 +301,7 @@ public class IngresarSiniestro extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jBAsignarCuartelActionPerformed
 
     private void jBGuardarSiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBGuardarSiActionPerformed
-        //try{
-        //bd.brigadaOcupada(brigadaAsignada);
-        //SiniestroData sd = new SiniestroData();
-        //int x = siniestro.getCoordenadaX();
-        //int y = siniestro.getCoordenadaY();
-        //String tipo = siniestro.getTipo();
-        //String detalles = jTADetalleSi.getText();
-        //LocalDate feS = siniestro.getFechaSiniestro();
-        //  LocalDate frS = siniestro.getFechaResolucion();
-        //int puntuacion = siniestro.getPuntuacion();
+       
       try{
         bd.brigadaOcupada(brigadaAsignada);
         SiniestroData sd= new SiniestroData();
@@ -319,9 +315,7 @@ public class IngresarSiniestro extends javax.swing.JInternalFrame {
 
         sd.guardarSiniestro(s);
         JOptionPane.showMessageDialog(this, "Siniestro registrado");
-        //}catch (Exception e) {
-        // Maneja la excepción cuando no se encuentra una brigada libre
-        //JOptionPane.showMessageDialog(this, "No se encontraron brigadas libres. Por favor, inténtelo de nuevo más tarde."+e.getMessage());
+      
         System.out.println(siniestro.getTipo() + " " + siniestro.getFechaSiniestro() + " " + siniestro.getCoordenadaX() + siniestro.getCoordenadaY() + jTADetalleSi.getText() + brigadaAsignada.getCodigoBrigada());
 
        }catch (Exception e) {
@@ -344,6 +338,10 @@ public class IngresarSiniestro extends javax.swing.JInternalFrame {
             evt.consume();
         }
     }//GEN-LAST:event_jTFCooYSiKeyTyped
+
+    private void jCBTipoSiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCBTipoSiActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jCBTipoSiActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

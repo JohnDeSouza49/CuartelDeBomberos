@@ -1,9 +1,13 @@
 package vistas;
 
+import AccesoADatos.BrigadaData;
+import Entidades.Brigada;
+import Entidades.Cuartel;
 import java.awt.event.KeyEvent;
+import javax.swing.JOptionPane;
 
 public class IngresarBrigada extends javax.swing.JInternalFrame {
-
+BrigadaData bd = new BrigadaData();
     public IngresarBrigada() {
         initComponents();
     }
@@ -38,6 +42,11 @@ public class IngresarBrigada extends javax.swing.JInternalFrame {
 
         jLabel2.setText("Codigo");
 
+        jTFCodigoBi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTFCodigoBiActionPerformed(evt);
+            }
+        });
         jTFCodigoBi.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 jTFCodigoBiKeyTyped(evt);
@@ -53,6 +62,11 @@ public class IngresarBrigada extends javax.swing.JInternalFrame {
         jLabel6.setText("Numero Cuartel");
 
         jBGuardarBi.setText("GUARDAR");
+        jBGuardarBi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBGuardarBiActionPerformed(evt);
+            }
+        });
 
         jBBuscarBi.setText("BUSCAR");
 
@@ -190,6 +204,38 @@ public class IngresarBrigada extends javax.swing.JInternalFrame {
             evt.consume();
         }        // TODO add your handling code here:
     }//GEN-LAST:event_jTFCodigoBiKeyTyped
+
+    private void jTFCodigoBiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTFCodigoBiActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTFCodigoBiActionPerformed
+
+    private void jBGuardarBiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBGuardarBiActionPerformed
+ try {
+           //verificar que en el cuartel no haya brigadas repetidas???
+            String nombreBrigada = jTFNombreBi.getText();
+            String tipo = (String) jCBTipo.getSelectedItem();
+            
+            int numeroCuartel = Integer.parseInt(jTFIdCuartel.getText());
+            
+            boolean estado = jRBEstadoBi.isSelected();
+
+           Brigada b = new Brigada(nombreBrigada, tipo, estado, numeroCuartel);
+            
+            bd.guardarBrigada(b);
+            jTFNombreBi.setText("");
+            jCBTipo.setSelectedItem("");
+            jTFIdCuartel.setText("");
+            
+           
+            jRBEstadoBi.setSelected(false);
+    
+
+        } catch (Exception e) {
+
+            JOptionPane.showMessageDialog(this, "error");
+    
+        }           
+    }//GEN-LAST:event_jBGuardarBiActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -98,6 +98,12 @@ public class IngresarBombero extends javax.swing.JInternalFrame {
 
         jLabel8.setText("Estado");
 
+        jRadioButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButton1ActionPerformed(evt);
+            }
+        });
+
         jBGuardar.setText("GUARDAR");
         jBGuardar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -394,6 +400,10 @@ public class IngresarBombero extends javax.swing.JInternalFrame {
                 jTFGrupo.setText("");
                 jCBCuartel.setSelectedIndex(0);
     }//GEN-LAST:event_jBEliminarActionPerformed
+
+    private void jRadioButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jRadioButton1ActionPerformed
     
 
    

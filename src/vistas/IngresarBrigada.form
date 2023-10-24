@@ -175,6 +175,7 @@
         </Component>
         <Component class="javax.swing.JTextField" name="jTFCodigoBi">
           <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTFCodigoBiActionPerformed"/>
             <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jTFCodigoBiKeyTyped"/>
           </Events>
         </Component>
@@ -208,6 +209,9 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="GUARDAR"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jBGuardarBiActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="jBBuscarBi">
           <Properties>
