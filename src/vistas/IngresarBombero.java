@@ -298,7 +298,8 @@ public class IngresarBombero extends javax.swing.JInternalFrame {
             if(gruSan!="AB+"&&gruSan!="AB-"&&gruSan!="A+"&&gruSan!="A-"&&gruSan!="B+"&&gruSan!="B-"&&gruSan!="O+"&&gruSan!="O-"){
                 
             JOptionPane.showMessageDialog(this, "debe ingresar el grupo sanguineo Correcto");
-
+           gruSan = null;
+            }
             Bombero b = new Bombero(dn, nombreCom, feNac, cel, codBri, est, gruSan, codCu);
             bd.guardarBombero(b);
 
@@ -311,11 +312,11 @@ public class IngresarBombero extends javax.swing.JInternalFrame {
             jTFGrupo.setText("");
             
                 
-            }
+            
           } catch (NumberFormatException nfe) {
-            JOptionPane.showMessageDialog(this, "Ingrese valores correctos!!"+nfe.getMessage());
+            JOptionPane.showMessageDialog(this, "Ingrese valores correctos!!");
         } catch (NullPointerException npe) {
-            JOptionPane.showMessageDialog(this, "Ingrese valores correctos"+npe.getMessage());
+            JOptionPane.showMessageDialog(this, "Ingrese valores correctos");
         }
 
 
