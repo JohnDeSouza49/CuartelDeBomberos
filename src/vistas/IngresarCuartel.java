@@ -257,13 +257,6 @@ public class IngresarCuartel extends javax.swing.JInternalFrame {
                 return;
             }
             String nombreCuartel = jTFNombre.getText();
-        
-        // Verificar si ya existe un cuartel con el mismo nombre
-            if (cd.existeCuartelConNombre(nombreCuartel)) {
-            JOptionPane.showMessageDialog(this, "Ya existe un cuartel con el mismo nombre");
-            return;
-        }
-            /*String nombreCuartel = jTFNombre.getText();*/
             String direccion = jTFDireccion.getText();
             int telefono = Integer.parseInt(jtFTelefono.getText());
             int coordenadaX = Integer.parseInt(jTFCooX.getText());
