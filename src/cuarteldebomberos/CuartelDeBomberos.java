@@ -34,7 +34,8 @@ public class CuartelDeBomberos {
         //System.out.println(bd.listarBomberosxCuartel(2));
         //System.out.println(bd.listarBomberoPorCuartelYBrigada(1, 1));
         //bd.guardarBombero(bob);
-        // BrigadaData bd= new BrigadaData();
+        BrigadaData bd= new BrigadaData();
+        System.out.println(bd.buscarBrigada(4));
         //bd.guardarBrigada(nueva);
         // System.out.println(bd.brigadaslibresxCuartel(1));
         // System.out.println(bd.brigadasAsignadas());
@@ -46,8 +47,8 @@ public class CuartelDeBomberos {
         // cu3.guardarCuartel(c3);
         //System.out.println(cu3.BuscarCuartel(1145678921));
         //Siniestro siniestro = new Siniestro("incendios", LocalDate.of(2020,2,21), 2, 2, "incendio en departamento", LocalDate.of(2020,2,21),9,1);
-        SiniestroData sd = new SiniestroData();
-        System.out.println(sd.siniestroSinResolver());
+        //SiniestroData sd = new SiniestroData();
+        //System.out.println(sd.siniestroSinResolver());
         //
         // Brigada nueva= new Brigada("Beta", "Incendios", true, 2);
         //bd.guardarBrigada(nueva);

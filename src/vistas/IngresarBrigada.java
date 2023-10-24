@@ -257,13 +257,26 @@ BrigadaData bd = new BrigadaData();
 
             int codigoBrigada = Integer.parseInt(jTFCodigoBi.getText());
             b = bd.buscarBrigada(codigoBrigada);
-
+           String a=b.getEspecialidad();
             jTFCodigoBi.setText(b.getCodigoBrigada() + "");
             jTFNombreBi.setText(b.getNombreBrigada());
             jCBTipo.setSelectedItem(b.getEspecialidad());
+            /*for (int i = 0; i<jCBTipo.getItemCount(); i++){
+                 jCBTipo.setSelectedIndex(i);
+                String esp=(String) jCBTipo.getSelectedItem();
+               if(esp.equals(b.getEspecialidad())){
+                   JOptionPane.showMessageDialog(null, b.getEspecialidad());
+                 break;
+               }
+                JOptionPane.showMessageDialog(null, i);
+                
+               
+            }
+            */    
+              
             jTFIdCuartel.setText(b.getNumeroCuartel() + "");
             jRBEstadoBi.setSelected(b.isLibre());
-
+ 
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(this, " debe completar correctamente el codigo de la brigada" + ex.getMessage());
         }
