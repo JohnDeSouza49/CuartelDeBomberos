@@ -61,6 +61,12 @@ BrigadaData bd = new BrigadaData();
 
         jLabel6.setText("Numero Cuartel");
 
+        jTFIdCuartel.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTFIdCuartelKeyTyped(evt);
+            }
+        });
+
         jBGuardarBi.setText("GUARDAR");
         jBGuardarBi.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -236,41 +242,45 @@ BrigadaData bd = new BrigadaData();
             jCBTipo.setSelectedItem("");
             jTFIdCuartel.setText("");
             
-           
             jRBEstadoBi.setSelected(false);
-    
 
         } catch (Exception e) {
 
             JOptionPane.showMessageDialog(this, "error");
-    
-        }           
+
+        }
     }//GEN-LAST:event_jBGuardarBiActionPerformed
 
     private void jBBuscarBiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBBuscarBiActionPerformed
-       Brigada b = new Brigada();
-       try {
-        
-      int codigoBrigada = Integer.parseInt(jTFCodigoBi.getText());
-       b =  bd.buscarBrigada(codigoBrigada);
-      
-      
+        Brigada b = new Brigada();
+        try {
+
+            int codigoBrigada = Integer.parseInt(jTFCodigoBi.getText());
+            b = bd.buscarBrigada(codigoBrigada);
+
             jTFCodigoBi.setText(b.getCodigoBrigada() + "");
             jTFNombreBi.setText(b.getNombreBrigada());
             jCBTipo.setSelectedItem(b.getEspecialidad());
             jTFIdCuartel.setText(b.getNumeroCuartel() + "");
             jRBEstadoBi.setSelected(b.isLibre());
-            
-       }catch(Exception ex){
-         JOptionPane.showMessageDialog(this, " debe completar correctamente el codigo de la brigada"+ex.getMessage());
-       }
-        
-        
+
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(this, " debe completar correctamente el codigo de la brigada" + ex.getMessage());
+        }
+
+
     }//GEN-LAST:event_jBBuscarBiActionPerformed
 
     private void jCBTipoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCBTipoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jCBTipoActionPerformed
+
+    private void jTFIdCuartelKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTFIdCuartelKeyTyped
+        char c = evt.getKeyChar();
+        if (!(Character.isDigit(c) || (c == KeyEvent.VK_BACK_SPACE) || (c == KeyEvent.VK_DELETE))) {
+            evt.consume();
+        }        // TODO add your handling code here:
+    }//GEN-LAST:event_jTFIdCuartelKeyTyped
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
