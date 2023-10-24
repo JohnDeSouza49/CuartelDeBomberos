@@ -250,13 +250,20 @@ public class IngresarCuartel extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jBSalirActionPerformed
 
     private void jBGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBGuardarActionPerformed
-        // TODO add your handling code here:
+        
         try {
             if (jTFNombre.getText().isEmpty() || jTFDireccion.getText().isEmpty() || jTFCorreo.getText().isEmpty()) {
                 JOptionPane.showMessageDialog(this, "Debe completar todos los campos");
                 return;
             }
             String nombreCuartel = jTFNombre.getText();
+        
+        // Verificar si ya existe un cuartel con el mismo nombre
+            if (cd.existeCuartelConNombre(nombreCuartel)) {
+            JOptionPane.showMessageDialog(this, "Ya existe un cuartel con el mismo nombre");
+            return;
+        }
+            /*String nombreCuartel = jTFNombre.getText();*/
             String direccion = jTFDireccion.getText();
             int telefono = Integer.parseInt(jtFTelefono.getText());
             int coordenadaX = Integer.parseInt(jTFCooX.getText());
@@ -306,8 +313,7 @@ public class IngresarCuartel extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jTFCooYKeyTyped
 
     private void jBBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBBuscarActionPerformed
-        // TODO add your handling code here:
-
+       
         Cuartel c = new Cuartel();
 
         try {
@@ -332,7 +338,7 @@ public class IngresarCuartel extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jBBuscarActionPerformed
 
     private void jBModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBModificarActionPerformed
-        // TODO add your handling code here:
+       
         try {
             int codigo = Integer.parseInt(jTFCodigo.getText());
             String nombre = jTFNombre.getText();
@@ -351,7 +357,7 @@ public class IngresarCuartel extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jBModificarActionPerformed
 
     private void jTFCodigoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTFCodigoActionPerformed
-        // TODO add your handling code here:
+       
     }//GEN-LAST:event_jTFCodigoActionPerformed
 
     private void jTFCodigoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTFCodigoKeyTyped

@@ -1,8 +1,8 @@
-
 package vistas;
 
 import AccesoADatos.SiniestroData;
 import Entidades.Siniestro;
+import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
@@ -12,16 +12,17 @@ import javax.swing.table.DefaultTableModel;
  * @author Ivan Martin
  */
 public class ConsultarSiniestro extends javax.swing.JInternalFrame {
-private SiniestroData sd;
+
+    private SiniestroData sd;
     private DefaultTableModel modelo = new DefaultTableModel() {
-    
+
         public boolean isCellEditable(int row, int column) {
             return column == 3 || column == 4;
         }
     };
 
     public ConsultarSiniestro(SiniestroData sd) {
-        this.sd=sd;
+        this.sd = sd;
         initComponents();
         armarEncabezado();
     }
@@ -67,6 +68,11 @@ private SiniestroData sd;
         });
 
         jBGuardarCambios.setText("GUARDAR CAMBIOS");
+        jBGuardarCambios.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBGuardarCambiosActionPerformed(evt);
+            }
+        });
 
         jBSalir.setText("SALIR");
         jBSalir.addActionListener(new java.awt.event.ActionListener() {
@@ -147,34 +153,67 @@ private SiniestroData sd;
         // TODO add your handling code here:
         List<Siniestro> sin = new ArrayList<>();
         borrarFilas();
-        sin= sd.siniestroSinResolver();
-        for(Siniestro aux:sin){
-             modelo.addRow(new Object[]{
-                   aux.getCodigoSiniestro(),
-                 aux.getTipo(),
-                 aux.getFechaSiniestro(),
-                 aux.getFechaResolucion(),
-                 aux.getPuntuacion(),
-                 aux.getCodigoBrigada()
-                });
+        sin = sd.siniestroSinResolver();
+        for (Siniestro aux : sin) {
+            modelo.addRow(new Object[]{
+                aux.getCodigoSiniestro(),
+                aux.getTipo(),
+                aux.getFechaSiniestro(),
+                aux.getFechaResolucion(),
+                aux.getPuntuacion(),
+                aux.getCodigoBrigada()
+            });
         }
     }//GEN-LAST:event_jBSinResolverActionPerformed
 
     private void jBBuscarSiniestroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBBuscarSiniestroActionPerformed
         List<Siniestro> sin = new ArrayList<>();
         borrarFilas();
-        sin= sd.consultarSiniestroUlt24Hs();
-        for(Siniestro aux:sin){
-             modelo.addRow(new Object[]{
-                   aux.getCodigoSiniestro(),
-                 aux.getTipo(),
-                 aux.getFechaSiniestro(),
-                 aux.getFechaResolucion(),
-                 aux.getPuntuacion(),
-                 aux.getCodigoBrigada()
-                });
+        sin = sd.consultarSiniestroUlt24Hs();
+        for (Siniestro aux : sin) {
+            modelo.addRow(new Object[]{
+                aux.getCodigoSiniestro(),
+                aux.getTipo(),
+                aux.getFechaSiniestro(),
+                aux.getFechaResolucion(),
+                aux.getPuntuacion(),
+                aux.getCodigoBrigada()
+            });
         }
     }//GEN-LAST:event_jBBuscarSiniestroActionPerformed
+
+    private void jBGuardarCambiosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBGuardarCambiosActionPerformed
+        
+    int filas = jTSiniestro.getRowCount();
+    boolean exitoTotal = true; // Variable para rastrear el éxito general de la actualización de todas las filas
+
+    for (int fila = 0; fila < filas; fila++) {
+        int codigoSiniestro = (int) jTSiniestro.getValueAt(fila, 0);
+        String tipo = (String) jTSiniestro.getValueAt(fila, 1);
+        Date fechaSiniestro = (Date) jTSiniestro.getValueAt(fila, 2);
+        Date fechaResolucion = (Date) jTSiniestro.getValueAt(fila, 3);
+        int puntuacion = (int) jTSiniestro.getValueAt(fila, 4);
+        int codigoBrigada = (int) jTSiniestro.getValueAt(fila, 5);
+        Siniestro siniestro = new Siniestro(codigoSiniestro, tipo, fechaSiniestro, fechaResolucion, puntuacion, codigoBrigada);
+
+        // Realiza la lógica para guardar los cambios en la base de datos
+        boolean exito = sd.actualizarSiniestro(siniestro);
+
+        if (!exito) {
+            // Ocurrió un error al intentar actualizar un siniestro
+            // Puedes mostrar un mensaje de error o realizar alguna acción de manejo de errores
+            exitoTotal = false; // Establece el éxito total en falso si al menos una actualización falla
+        }
+    }
+
+    if (exitoTotal) {
+        // Todos los siniestros se actualizaron correctamente en la base de datos
+        // Puedes mostrar un mensaje de éxito general o realizar alguna otra acción si es necesario
+    } else {
+        // Al menos una actualización de siniestro falló
+        // Puedes mostrar un mensaje de error general o realizar alguna acción de manejo de errores
+    }
+    }//GEN-LAST:event_jBGuardarCambiosActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -196,7 +235,8 @@ private void armarEncabezado() {
         modelo.addColumn("CODIGO BRIGADA");
         jTSiniestro.setModel(modelo);
     }
-   private void borrarFilas() {
+
+    private void borrarFilas() {
         int filas = jTSiniestro.getRowCount() - 1;
         for (int f = filas; f >= 0; f--) {
             modelo.removeRow(f);

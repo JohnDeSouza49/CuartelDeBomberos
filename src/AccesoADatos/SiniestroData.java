@@ -272,7 +272,36 @@ public class SiniestroData {
             JOptionPane.showMessageDialog(null, "Hay un error al asignar puntuación al siniestro: " + ex.getMessage());
         }
     }
+
+    public boolean actualizarSiniestro(Siniestro siniestro) {
+    PreparedStatement ps = null;
+    
+
+    try {
+        String sql = "UPDATE siniestro SET tipo = ?, fechaSiniestro = ?, fechaResol = ?, puntuacion = ?, codigoBrigada = ? WHERE codigoSiniestro = ?";
+        ps = con.prepareStatement(sql);
+        ps.setString (1,siniestro.getTipo());
+        ps.setDate(2, Date.valueOf(siniestro.getFechaSiniestro()));
+        ps.setDate(3, Date.valueOf(siniestro.getFechaResolucion()));
+        ps.setInt(4, siniestro.getPuntuacion());
+        ps.setInt(5, siniestro.getCodigoBrigada());
+        ps.setInt(6, siniestro.getCodigoSiniestro());
+
+        int filasAfectadas = ps.executeUpdate();
+
+        if (filasAfectadas > 0) {
+            return true; // La actualización fue exitosa.
+        }
+    } catch (SQLException ex) {
+        ex.printStackTrace();
+    } finally {
+       
+
+    return false; // La actualización no fue exitosa.
 }
+}
+}
+
 
 
 /*String sql = "SELECT * FROM bombero";
