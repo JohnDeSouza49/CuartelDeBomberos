@@ -193,6 +193,8 @@ public class ConsultarSiniestro extends javax.swing.JInternalFrame {
     private void jBGuardarCambiosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBGuardarCambiosActionPerformed
         
     int filas = jTSiniestro.getRowCount();
+    Siniestro siniestro=null;
+    int codigoBrigada=0;
     for (int fila = 0; fila < filas; fila++) {
         int codigoSiniestro = (int) jTSiniestro.getValueAt(fila, 0);
         String tipo = (String) jTSiniestro.getValueAt(fila, 1);
@@ -201,8 +203,8 @@ public class ConsultarSiniestro extends javax.swing.JInternalFrame {
         LocalDate fechaSiniestro= LocalDate.parse(lc, DateTimeFormatter.ISO_DATE);
         LocalDate fechaResolucion =  LocalDate.parse(lc2, DateTimeFormatter.ISO_DATE);
         int puntuacion = Integer.parseInt(jTSiniestro.getValueAt(fila, 4).toString());
-        int codigoBrigada = (int) jTSiniestro.getValueAt(fila, 5);
-        Siniestro siniestro = new Siniestro(codigoSiniestro, tipo, fechaSiniestro, fechaResolucion, puntuacion, codigoBrigada);
+        codigoBrigada = (int) jTSiniestro.getValueAt(fila, 5);
+        siniestro = new Siniestro(codigoSiniestro, tipo, fechaSiniestro, fechaResolucion, puntuacion, codigoBrigada);
     }  
     sd.actualizarSiniestro(siniestro);
         BrigadaData bd= new BrigadaData();
