@@ -69,6 +69,11 @@ BrigadaData bd = new BrigadaData();
         });
 
         jBBuscarBi.setText("BUSCAR");
+        jBBuscarBi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBBuscarBiActionPerformed(evt);
+            }
+        });
 
         jBModificarBi.setText("MODIFICAR");
 
@@ -236,6 +241,26 @@ BrigadaData bd = new BrigadaData();
     
         }           
     }//GEN-LAST:event_jBGuardarBiActionPerformed
+
+    private void jBBuscarBiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBBuscarBiActionPerformed
+       try {
+        
+        String nombreBrigada = jTFNombreBi.getText();
+      bd.buscarBrigada(nombreBrigada);
+      Brigada b = new Brigada();
+      
+            jTFCodigoBi.setText(b.getCodigoBrigada() + "");
+            jTFNombreBi.setText(b.getNombreBrigada());
+            jCBTipo.setSelectedItem(b.getEspecialidad());
+            jTFIdCuartel.setText(b.getNumeroCuartel() + "");
+            jRBEstadoBi.setSelected(b.isLibre());
+       }catch(Exception ex){
+           JOptionPane.showMessageDialog(this, " debe completar correctamente el nombre de la brigada");
+       }
+        
+        //Brigada b = new Brigada(codigoBrigada, nombreBrigada, tipo, estado, numeroCuartel); 
+        
+    }//GEN-LAST:event_jBBuscarBiActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
