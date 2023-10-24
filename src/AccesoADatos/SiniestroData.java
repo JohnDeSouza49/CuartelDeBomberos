@@ -273,8 +273,8 @@ public class SiniestroData {
         }
     }
 
-    public boolean actualizarSiniestro(Siniestro siniestro) {
-    PreparedStatement ps = null;
+    public void actualizarSiniestro(Siniestro siniestro) {
+            PreparedStatement ps = null;
     
 
     try {
@@ -288,19 +288,16 @@ public class SiniestroData {
         ps.setInt(6, siniestro.getCodigoSiniestro());
 
         int filasAfectadas = ps.executeUpdate();
-
-        if (filasAfectadas > 0) {
-            return true; // La actualización fue exitosa.
+        if(filasAfectadas==1){
+         JOptionPane.showMessageDialog(null, "Datos actualizados con exito");
         }
     } catch (SQLException ex) {
-        ex.printStackTrace();
-    } finally {
-       
+        
+    }
+    }
 
-    return false; // La actualización no fue exitosa.
 }
-}
-}
+
 
 
 
