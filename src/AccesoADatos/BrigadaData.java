@@ -170,12 +170,11 @@ public class BrigadaData {
             if (rs.next()) {
                 br = new Brigada();
                 br.setCodigoBrigada(rs.getInt("codigoBrigada"));
-                br.setEspecialidad("especialidad");
+                br.setEspecialidad(rs.getString("especialidad"));
                 br.setNombreBrigada(rs.getString("nombreBrigada"));
                 br.setLibre(rs.getBoolean("libre"));
                 br.setNumeroCuartel(rs.getInt("numeroCuartel"));
-            }
-           br = new Brigada (br.getCodigoBrigada(), br.getNombreBrigada(), br.getEspecialidad(), br.isLibre(),br.getNumeroCuartel()); 
+            }  
 
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "la brigada no existe");
