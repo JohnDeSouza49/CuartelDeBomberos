@@ -30,7 +30,6 @@ BrigadaData bd = new BrigadaData();
         jTFIdCuartel = new javax.swing.JTextField();
         jBGuardarBi = new javax.swing.JButton();
         jBBuscarBi = new javax.swing.JButton();
-        jBModificarBi = new javax.swing.JButton();
         jBEliminarBi = new javax.swing.JButton();
         jBSalirBi = new javax.swing.JButton();
         jCBTipo = new javax.swing.JComboBox<>();
@@ -81,8 +80,6 @@ BrigadaData bd = new BrigadaData();
             }
         });
 
-        jBModificarBi.setText("MODIFICAR");
-
         jBEliminarBi.setText("ELIMINAR");
 
         jBSalirBi.setText("SALIR");
@@ -104,7 +101,7 @@ BrigadaData bd = new BrigadaData();
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(jPanel1Layout.createSequentialGroup()
                             .addGap(186, 186, 186)
@@ -119,27 +116,19 @@ BrigadaData bd = new BrigadaData();
                                     .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGap(18, 18, 18)
                                     .addComponent(jTFIdCuartel, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                                        .addComponent(jBGuardarBi)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(jBBuscarBi)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(jBModificarBi)
-                                        .addGap(30, 30, 30)
-                                        .addComponent(jBEliminarBi))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jLabel4)
-                                            .addComponent(jLabel5))
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                                .addComponent(jRBEstadoBi)
-                                                .addGap(324, 324, 324))
-                                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                                .addComponent(jCBTipo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                .addGap(7, 7, 7)))))
+                                .addComponent(jBGuardarBi)
+                                .addGroup(jPanel1Layout.createSequentialGroup()
+                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jLabel4)
+                                        .addComponent(jLabel5))
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addGroup(jPanel1Layout.createSequentialGroup()
+                                            .addComponent(jRBEstadoBi)
+                                            .addGap(324, 324, 324))
+                                        .addGroup(jPanel1Layout.createSequentialGroup()
+                                            .addComponent(jCBTipo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addGap(7, 7, 7))))
                                 .addGroup(jPanel1Layout.createSequentialGroup()
                                     .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGap(25, 25, 25)
@@ -150,7 +139,13 @@ BrigadaData bd = new BrigadaData();
                                     .addComponent(jTFNombreBi, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(188, 188, 188)
-                        .addComponent(jBSalirBi)))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jBSalirBi)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jBBuscarBi)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jBEliminarBi)
+                                .addGap(25, 25, 25)))))
                 .addContainerGap(16, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -183,7 +178,6 @@ BrigadaData bd = new BrigadaData();
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jBGuardarBi)
                     .addComponent(jBBuscarBi)
-                    .addComponent(jBModificarBi)
                     .addComponent(jBEliminarBi))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
                 .addComponent(jBSalirBi)
@@ -261,18 +255,7 @@ BrigadaData bd = new BrigadaData();
             jTFCodigoBi.setText(b.getCodigoBrigada() + "");
             jTFNombreBi.setText(b.getNombreBrigada());
             jCBTipo.setSelectedItem(b.getEspecialidad());
-            /*for (int i = 0; i<jCBTipo.getItemCount(); i++){
-                 jCBTipo.setSelectedIndex(i);
-                String esp=(String) jCBTipo.getSelectedItem();
-               if(esp.equals(b.getEspecialidad())){
-                   JOptionPane.showMessageDialog(null, b.getEspecialidad());
-                 break;
-               }
-                JOptionPane.showMessageDialog(null, i);
-                
                
-            }
-            */    
               
             jTFIdCuartel.setText(b.getNumeroCuartel() + "");
             jRBEstadoBi.setSelected(b.isLibre());
@@ -300,7 +283,6 @@ BrigadaData bd = new BrigadaData();
     private javax.swing.JButton jBBuscarBi;
     private javax.swing.JButton jBEliminarBi;
     private javax.swing.JButton jBGuardarBi;
-    private javax.swing.JButton jBModificarBi;
     private javax.swing.JButton jBSalirBi;
     private javax.swing.JComboBox<String> jCBTipo;
     private javax.swing.JLabel jLabel1;
