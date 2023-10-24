@@ -203,11 +203,11 @@ public class ConsultarSiniestro extends javax.swing.JInternalFrame {
         int puntuacion = Integer.parseInt(jTSiniestro.getValueAt(fila, 4).toString());
         int codigoBrigada = (int) jTSiniestro.getValueAt(fila, 5);
         Siniestro siniestro = new Siniestro(codigoSiniestro, tipo, fechaSiniestro, fechaResolucion, puntuacion, codigoBrigada);
-        sd.actualizarSiniestro(siniestro);
+    }  
+    sd.actualizarSiniestro(siniestro);
         BrigadaData bd= new BrigadaData();
         Brigada selec= bd.buscarBrigada(codigoBrigada);
         bd.brigadaLibre(selec);
-    }    
     }//GEN-LAST:event_jBGuardarCambiosActionPerformed
 
 
