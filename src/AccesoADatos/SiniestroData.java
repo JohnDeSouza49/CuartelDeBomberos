@@ -181,7 +181,7 @@ public class SiniestroData {
                 try{
                     fechaR = rs.getDate("fechaResol").toLocalDate();
                 }catch (NullPointerException e){
-                    JOptionPane.showMessageDialog(null,"la fecha de resolucion debe completarse " +e.getMessage());
+                   
                 fechaR = null;
                 
                 
