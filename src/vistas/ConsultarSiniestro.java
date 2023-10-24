@@ -1,12 +1,15 @@
 package vistas;
 
+import AccesoADatos.BrigadaData;
 import AccesoADatos.SiniestroData;
+import Entidades.Brigada;
 import Entidades.Siniestro;
 import java.sql.Date;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -190,8 +193,6 @@ public class ConsultarSiniestro extends javax.swing.JInternalFrame {
     private void jBGuardarCambiosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBGuardarCambiosActionPerformed
         
     int filas = jTSiniestro.getRowCount();
-    boolean exitoTotal = true; // Variable para rastrear el éxito general de la actualización de todas las filas
-DateTimeFormatter format = DateTimeFormatter.ofPattern("yyyy-MM-dd");
     for (int fila = 0; fila < filas; fila++) {
         int codigoSiniestro = (int) jTSiniestro.getValueAt(fila, 0);
         String tipo = (String) jTSiniestro.getValueAt(fila, 1);
@@ -202,10 +203,10 @@ DateTimeFormatter format = DateTimeFormatter.ofPattern("yyyy-MM-dd");
         int puntuacion = Integer.parseInt(jTSiniestro.getValueAt(fila, 4).toString());
         int codigoBrigada = (int) jTSiniestro.getValueAt(fila, 5);
         Siniestro siniestro = new Siniestro(codigoSiniestro, tipo, fechaSiniestro, fechaResolucion, puntuacion, codigoBrigada);
-
-        // Realiza la lógica para guardar los cambios en la base de datos
         sd.actualizarSiniestro(siniestro);
-
+        BrigadaData bd= new BrigadaData();
+        Brigada selec= bd.buscarBrigada(codigoBrigada);
+        bd.brigadaLibre(selec);
     }    
     }//GEN-LAST:event_jBGuardarCambiosActionPerformed
 

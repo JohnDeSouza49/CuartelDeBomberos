@@ -183,5 +183,17 @@ public class BrigadaData {
 
         return br;
     }
+ public void brigadaLibre(Brigada b) {
+        int codigo = b.getCodigoBrigada();
+        String sql = "UPDATE brigada SET libre=1 WHERE codigoBrigada=?";
+        PreparedStatement ps;
+        try {
+            ps = con.prepareStatement(sql);
+            ps.setInt(1, codigo);
+            ps.executeUpdate();
+        } catch (SQLException ex) {
+            Logger.getLogger(BrigadaData.class.getName()).log(Level.SEVERE, null, ex);
+        }
 
+    }
 }
