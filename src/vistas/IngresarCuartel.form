@@ -50,11 +50,8 @@
                                   <Group type="102" attributes="0">
                                       <Component id="jBGuardar" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace max="32767" attributes="0"/>
-                                      <Component id="jBBuscar" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace type="separate" max="-2" attributes="0"/>
                                       <Component id="jBModificar" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                                      <Component id="jBEliminar" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
                                   </Group>
                                   <Component id="jSeparator1" min="-2" pref="388" max="-2" attributes="0"/>
                                   <Group type="102" attributes="0">
@@ -106,8 +103,11 @@
                           </Group>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="177" max="-2" attributes="0"/>
-                          <Component id="jBSalir" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="175" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="1" attributes="0">
+                              <Component id="jBBuscar" min="-2" max="-2" attributes="0"/>
+                              <Component id="jBSalir" min="-2" max="-2" attributes="0"/>
+                          </Group>
                       </Group>
                   </Group>
                   <EmptySpace max="32767" attributes="0"/>
@@ -159,7 +159,6 @@
                               <Component id="jBGuardar" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="jBBuscar" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="jBModificar" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jBEliminar" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
                       </Group>
@@ -266,11 +265,6 @@
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jBModificarActionPerformed"/>
           </Events>
-        </Component>
-        <Component class="javax.swing.JButton" name="jBEliminar">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="ELIMINAR"/>
-          </Properties>
         </Component>
         <Component class="javax.swing.JButton" name="jBSalir">
           <Properties>
