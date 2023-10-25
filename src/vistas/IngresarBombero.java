@@ -295,11 +295,11 @@ public class IngresarBombero extends javax.swing.JInternalFrame {
                 JOptionPane.showMessageDialog(this, "El campo (Codigo) debe estar vacio");
                 return;
             }
-            if(gruSan!="AB+"&&gruSan!="AB-"&&gruSan!="A+"&&gruSan!="A-"&&gruSan!="B+"&&gruSan!="B-"&&gruSan!="O+"&&gruSan!="O-"){
-                
-            JOptionPane.showMessageDialog(this, "debe ingresar el grupo sanguineo Correcto");
-           gruSan = null;
+            if (!("O-".equals(gruSan) || "AB+".equals(gruSan) || "AB-".equals(gruSan) || "A+".equals(gruSan) || "A-".equals(gruSan) || "B+".equals(gruSan) || "B-".equals(gruSan) || "O+".equals(gruSan) || jTFGrupo.getText().equals(gruSan))) {
+                JOptionPane.showMessageDialog(this, "Debe ingresar el grupo sanguíneo correcto");
+                gruSan = null;
             }
+
             Bombero b = new Bombero(dn, nombreCom, feNac, cel, codBri, est, gruSan, codCu);
             bd.guardarBombero(b);
 
