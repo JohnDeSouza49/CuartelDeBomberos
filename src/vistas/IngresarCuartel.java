@@ -37,7 +37,6 @@ public class IngresarCuartel extends javax.swing.JInternalFrame {
         jBGuardar = new javax.swing.JButton();
         jBBuscar = new javax.swing.JButton();
         jBModificar = new javax.swing.JButton();
-        jBEliminar = new javax.swing.JButton();
         jBSalir = new javax.swing.JButton();
         jLEstado = new javax.swing.JLabel();
         jRBEstado = new javax.swing.JRadioButton();
@@ -111,8 +110,6 @@ public class IngresarCuartel extends javax.swing.JInternalFrame {
             }
         });
 
-        jBEliminar.setText("ELIMINAR");
-
         jBSalir.setText("SALIR");
         jBSalir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -138,11 +135,8 @@ public class IngresarCuartel extends javax.swing.JInternalFrame {
                                 .addGroup(jPanel1Layout.createSequentialGroup()
                                     .addComponent(jBGuardar)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jBBuscar)
-                                    .addGap(18, 18, 18)
                                     .addComponent(jBModificar)
-                                    .addGap(18, 18, 18)
-                                    .addComponent(jBEliminar))
+                                    .addGap(42, 42, 42))
                                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 388, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGroup(jPanel1Layout.createSequentialGroup()
                                     .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -181,8 +175,10 @@ public class IngresarCuartel extends javax.swing.JInternalFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jRBEstado))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(177, 177, 177)
-                        .addComponent(jBSalir)))
+                        .addGap(175, 175, 175)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jBBuscar)
+                            .addComponent(jBSalir))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -224,8 +220,7 @@ public class IngresarCuartel extends javax.swing.JInternalFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jBGuardar)
                             .addComponent(jBBuscar)
-                            .addComponent(jBModificar)
-                            .addComponent(jBEliminar))
+                            .addComponent(jBModificar))
                         .addGap(26, 26, 26)))
                 .addComponent(jBSalir)
                 .addGap(18, 18, 18))
@@ -363,7 +358,6 @@ public class IngresarCuartel extends javax.swing.JInternalFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBBuscar;
-    private javax.swing.JButton jBEliminar;
     private javax.swing.JButton jBGuardar;
     private javax.swing.JButton jBModificar;
     private javax.swing.JButton jBSalir;

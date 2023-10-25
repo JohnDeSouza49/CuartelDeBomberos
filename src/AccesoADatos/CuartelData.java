@@ -204,6 +204,9 @@ public class CuartelData {
         }
 
     }
+    public void eliminarCuartelBD (int id){
+        
+    }
 
     }
 

@@ -35,7 +35,7 @@ public class CuartelDeBomberos {
         //System.out.println(bd.listarBomberoPorCuartelYBrigada(1, 1));
         //bd.guardarBombero(bob);
         BrigadaData bd= new BrigadaData();
-        System.out.println(bd.buscarBrigada(4));
+        System.out.println(bd.cantBomberos(2));
         //bd.guardarBrigada(nueva);
         // System.out.println(bd.brigadaslibresxCuartel(1));
         // System.out.println(bd.brigadasAsignadas());
