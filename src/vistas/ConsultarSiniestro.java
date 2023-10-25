@@ -191,7 +191,8 @@ public class ConsultarSiniestro extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jBBuscarSiniestroActionPerformed
 
     private void jBGuardarCambiosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBGuardarCambiosActionPerformed
-        
+     
+    try{    
     int filas = jTSiniestro.getRowCount();
     Siniestro siniestro=null;
     int codigoBrigada=0;
@@ -210,6 +211,10 @@ public class ConsultarSiniestro extends javax.swing.JInternalFrame {
         BrigadaData bd= new BrigadaData();
         Brigada selec= bd.buscarBrigada(codigoBrigada);
         bd.brigadaLibre(selec);
+    }catch(NullPointerException npe){
+        JOptionPane.showMessageDialog(null, "No se han ingresado cambios");
+    }  
+        
     }//GEN-LAST:event_jBGuardarCambiosActionPerformed
 
 
