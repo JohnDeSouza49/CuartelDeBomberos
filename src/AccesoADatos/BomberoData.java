@@ -151,13 +151,13 @@ public class BomberoData {
         return bomberos;
     }
 
-    public Bombero buscarBomberoPorNombre(String nombre) {
+    public Bombero buscarBomberoPorDni(int dni) {
 
-        String sql = "SELECT * FROM bombero  where nombreApellido=?";
+        String sql = "SELECT * FROM bombero  where dni=?";
         Bombero b = new Bombero();
         try {
             PreparedStatement ps = con.prepareStatement(sql);
-            ps.setString(1, nombre);
+            ps.setInt(1, dni);
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {
 
