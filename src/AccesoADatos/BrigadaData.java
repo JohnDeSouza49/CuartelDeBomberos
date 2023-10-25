@@ -196,4 +196,23 @@ public class BrigadaData {
         }
 
     }
+ public int cantBomberos(int cod){
+        String sql="SELECT COUNT(*) from bombero where codigoBrigada=? AND estado=1";
+        int cant=0;
+        try {
+            PreparedStatement ps= con.prepareStatement(sql);
+            ps.setInt(1, cod);
+            ResultSet rs = ps.executeQuery();
+            while(rs.next()){
+                cant=rs.getInt(1);
+            }
+            
+        }catch (SQLException ex) {
+            
+        }
+     
+     
+     return cant;
+    
+}
 }

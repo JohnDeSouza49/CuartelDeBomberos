@@ -1,6 +1,7 @@
 package vistas;
 
 import AccesoADatos.BomberoData;
+import AccesoADatos.BrigadaData;
 import AccesoADatos.CuartelData;
 import Entidades.Bombero;
 import Entidades.Cuartel;
@@ -263,7 +264,7 @@ public class IngresarBombero extends javax.swing.JInternalFrame {
 
     private void jBGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBGuardarActionPerformed
         // TODO add your handling code here:
-
+        BrigadaData brid=new BrigadaData();
         try {
            
             int dn = Integer.parseInt(jTFDni.getText());
@@ -283,14 +284,18 @@ public class IngresarBombero extends javax.swing.JInternalFrame {
                 JOptionPane.showMessageDialog(this, "El campo (Codigo) debe estar vacio");
                 return;
             }
-            if(gruSan!="AB+"&&gruSan!="AB-"&&gruSan!="A+"&&gruSan!="A-"&&gruSan!="B+"&&gruSan!="B-"&&gruSan!="O+"&&gruSan!="O-"){
+            //if(gruSan!="AB+"&&gruSan!="AB-"&&gruSan!="A+"&&gruSan!="A-"&&gruSan!="B+"&&gruSan!="B-"&&gruSan!="O+"&&gruSan!="O-"){
                 
-            JOptionPane.showMessageDialog(this, "debe ingresar el grupo sanguineo Correcto");
-           gruSan = null;
-            }
-            Bombero b = new Bombero(dn, nombreCom, feNac, cel, codBri, est, gruSan, codCu);
-            bd.guardarBombero(b);
-
+            //JOptionPane.showMessageDialog(this, "debe ingresar el grupo sanguineo Correcto");
+           //gruSan = null;
+            //}
+            int cant=brid.cantBomberos(codBri);
+            if(cant==5){
+                JOptionPane.showMessageDialog(null, "Esta brigada se encuentra completa");
+            }else{
+              Bombero b = new Bombero(dn, nombreCom, feNac, cel, codBri, est, gruSan, codCu);
+            bd.guardarBombero(b);  
+            } 
             jTFDni.setText("");
             jTFNombreYApellido.setText("");
             jDCFechaNacimiento.setDate(null);
