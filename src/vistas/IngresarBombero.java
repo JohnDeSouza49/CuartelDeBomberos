@@ -369,10 +369,10 @@ public class IngresarBombero extends javax.swing.JInternalFrame {
             jTFGrupo.setText(b.getGrupoSanguineo());
             jCBCuartel.setSelectedIndex(b.getCodigoCuartel()-1);
 
-        } catch (NullPointerException npe) {
-            jTFId.setText("");
-            jTFDni.setText("");
-            JOptionPane.showMessageDialog(this, "Ingrese nombre y apellido del bombero a buscar");
+        } catch (NumberFormatException nfe) {
+            //jTFId.setText("");
+            //jTFDni.setText("");
+            JOptionPane.showMessageDialog(this, "Ingrese el din del bombero a buscar");
                                            
     }//GEN-LAST:event_jBuscarActionPerformed
 }
