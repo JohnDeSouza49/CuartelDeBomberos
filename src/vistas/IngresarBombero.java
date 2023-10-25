@@ -355,8 +355,8 @@ public class IngresarBombero extends javax.swing.JInternalFrame {
         Bombero b = new Bombero();
 
         try {
-            
-            b = bd.buscarBomberoPorDni(jTFDni.getText());
+            int dni = Integer.parseInt(jTFDni.getText());
+            b = bd.buscarBomberoPorDni(dni);
             jTFId.setText(b.getIdBombero() + "");
             jTFDni.setText(b.getDni() + "");
             jTFNombreYApellido.setText(b.getNombreApellido());
