@@ -43,7 +43,6 @@ public class ConsultarBomberos extends javax.swing.JInternalFrame {
         jLabel2 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTBomberos = new javax.swing.JTable();
-        jBBuscar = new javax.swing.JButton();
         jCBCuarteles = new javax.swing.JComboBox<>();
         jCBBrigada = new javax.swing.JComboBox<>();
         jBSalir = new javax.swing.JButton();
@@ -77,8 +76,6 @@ public class ConsultarBomberos extends javax.swing.JInternalFrame {
         });
         jScrollPane1.setViewportView(jTBomberos);
 
-        jBBuscar.setText("BUSCAR");
-
         jCBCuarteles.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jCBCuartelesActionPerformed(evt);
@@ -110,9 +107,7 @@ public class ConsultarBomberos extends javax.swing.JInternalFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(65, 65, 65)
-                .addComponent(jBBuscar)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(65, 755, Short.MAX_VALUE)
                 .addComponent(jBSalir)
                 .addGap(64, 64, 64))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
@@ -154,9 +149,7 @@ public class ConsultarBomberos extends javax.swing.JInternalFrame {
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 386, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jBBuscar)
-                    .addComponent(jBSalir))
+                .addComponent(jBSalir)
                 .addGap(27, 27, 27))
         );
 
@@ -216,7 +209,6 @@ public class ConsultarBomberos extends javax.swing.JInternalFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jBBuscar;
     private javax.swing.JButton jBSalir;
     private javax.swing.JComboBox<String> jCBBrigada;
     private javax.swing.JComboBox<String> jCBCuarteles;
