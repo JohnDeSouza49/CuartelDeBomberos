@@ -339,6 +339,14 @@ public class IngresarCuartel extends javax.swing.JInternalFrame {
 
             Cuartel c = new Cuartel(codigo, nombre, dir, cooX, cooY, tel, correo, est);
             cd.modificarCuartel(c);
+             jTFCodigo.setText("");
+            jTFNombre.setText("");
+            jTFDireccion.setText("");
+            jtFTelefono.setText("");
+            jTFCooX.setText("");
+            jTFCooY.setText("");
+            jTFCorreo.setText("");
+            jRBEstado.setSelected(false);
         } catch (NumberFormatException nfe) {
             JOptionPane.showMessageDialog(this, "Error... no se puede modificar cuartel");
         }

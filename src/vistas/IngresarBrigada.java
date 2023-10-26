@@ -81,6 +81,11 @@ BrigadaData bd = new BrigadaData();
         });
 
         jBEliminarBi.setText("ELIMINAR");
+        jBEliminarBi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBEliminarBiActionPerformed(evt);
+            }
+        });
 
         jBSalirBi.setText("SALIR");
         jBSalirBi.addActionListener(new java.awt.event.ActionListener() {
@@ -221,7 +226,7 @@ BrigadaData bd = new BrigadaData();
 
     private void jBGuardarBiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBGuardarBiActionPerformed
  try {
-           //verificar que en el cuartel no haya brigadas repetidas???
+           
             String nombreBrigada = jTFNombreBi.getText();
             String tipo = (String) jCBTipo.getSelectedItem();
             
@@ -277,6 +282,26 @@ BrigadaData bd = new BrigadaData();
             evt.consume();
         }        // TODO add your handling code here:
     }//GEN-LAST:event_jTFIdCuartelKeyTyped
+
+    private void jBEliminarBiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBEliminarBiActionPerformed
+     String nombreBrigada = jTFNombreBi.getText();
+            String tipo = (String) jCBTipo.getSelectedItem();
+            
+            int numeroCuartel = Integer.parseInt(jTFIdCuartel.getText());
+            
+            boolean estado = jRBEstadoBi.isSelected();
+
+           Brigada b = new Brigada(nombreBrigada, tipo, estado, numeroCuartel);
+            
+            bd.brigadaOcupada(b);
+            JOptionPane.showMessageDialog(this, "La brigada cambio su estado por inactividad");
+            jTFNombreBi.setText("");
+            jCBTipo.setSelectedItem("");
+            jTFIdCuartel.setText("");
+            
+            jRBEstadoBi.setSelected(false);   
+            
+    }//GEN-LAST:event_jBEliminarBiActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
