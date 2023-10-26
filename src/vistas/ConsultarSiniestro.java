@@ -194,9 +194,10 @@ public class ConsultarSiniestro extends javax.swing.JInternalFrame {
      
     try{    
     int filas = jTSiniestro.getRowCount();
-    Siniestro siniestro=null;
+    
     int codigoBrigada=0;
     for (int fila = 0; fila < filas; fila++) {
+        Siniestro siniestro=null;
         int codigoSiniestro = (int) jTSiniestro.getValueAt(fila, 0);
         String tipo = (String) jTSiniestro.getValueAt(fila, 1);
         String lc= jTSiniestro.getValueAt(fila, 2).toString();
@@ -206,11 +207,14 @@ public class ConsultarSiniestro extends javax.swing.JInternalFrame {
         int puntuacion = Integer.parseInt(jTSiniestro.getValueAt(fila, 4).toString());
         codigoBrigada = (int) jTSiniestro.getValueAt(fila, 5);
         siniestro = new Siniestro(codigoSiniestro, tipo, fechaSiniestro, fechaResolucion, puntuacion, codigoBrigada);
+         sd.actualizarSiniestro(siniestro);
+         break;
     }  
-    sd.actualizarSiniestro(siniestro);
+    
         BrigadaData bd= new BrigadaData();
         Brigada selec= bd.buscarBrigada(codigoBrigada);
         bd.brigadaLibre(selec);
+       
     }catch(NullPointerException npe){
         JOptionPane.showMessageDialog(null, "No se han ingresado cambios");
     }  
