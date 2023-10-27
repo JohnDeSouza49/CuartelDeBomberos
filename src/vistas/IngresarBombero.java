@@ -4,6 +4,7 @@ import AccesoADatos.BomberoData;
 import AccesoADatos.BrigadaData;
 import AccesoADatos.CuartelData;
 import Entidades.Bombero;
+import Entidades.Brigada;
 import Entidades.Cuartel;
 import java.awt.event.KeyEvent;
 import java.sql.Date;
@@ -265,6 +266,8 @@ public class IngresarBombero extends javax.swing.JInternalFrame {
     private void jBGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBGuardarActionPerformed
         // TODO add your handling code here:
         BrigadaData brid=new BrigadaData();
+        Boolean bandera=false;
+        
         try {
            
             int dn = Integer.parseInt(jTFDni.getText());
@@ -300,12 +303,19 @@ public class IngresarBombero extends javax.swing.JInternalFrame {
            //gruSan = null;
             //}
             int cant=brid.cantBomberos(codBri);
-            if(cant==5){
+            Brigada brigada= brid.buscarBrigada(codBri);
+            
+            if(codCu!=brigada.getNumeroCuartel()){
+                JOptionPane.showMessageDialog(null, "Cuartel erroneo, la brigada ingresada pertenece al cuartel "+brigada.getNumeroCuartel());
+               
+            }else if(cant==5){
                 JOptionPane.showMessageDialog(null, "Esta brigada se encuentra completa");
-            }else{
+               
+            } else {
             Bombero b = new Bombero(dn, nombreCom, feNac, cel, codBri, est, gruSan, codCu);
             bd.guardarBombero(b);  
             } 
+           
 
             jTFDni.setText("");
             jTFNombreYApellido.setText("");
