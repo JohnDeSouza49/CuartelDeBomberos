@@ -5,6 +5,7 @@ import AccesoADatos.SiniestroData;
 import Entidades.Brigada;
 import Entidades.Siniestro;
 import java.sql.Date;
+import java.text.NumberFormat;
 import java.text.ParseException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -17,6 +18,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.text.MaskFormatter;
+import javax.swing.text.NumberFormatter;
 
 /**
  *
@@ -201,8 +203,23 @@ public class ConsultarSiniestro extends javax.swing.JInternalFrame {
     JTextField dateField = new JFormattedTextField(dateMask);
     jTSiniestro.getColumnModel().getColumn(2).setCellEditor(new DefaultCellEditor(dateField));
 } catch (ParseException e) {
-   JOptionPane.showMessageDialog(null, "debe colocar la fecha correctamente con el formato correcto " );
+   //JOptionPane.showMessageDialog(null, "debe colocar la fecha correctamente con el formato correcto " );
 }
+        try {
+    NumberFormat format = NumberFormat.getInstance();
+    format.setGroupingUsed(false);
+    NumberFormatter numberFormatter = new NumberFormatter(format);
+    numberFormatter.setValueClass(Integer.class);
+    numberFormatter.setMinimum(1); // Establecer el valor mínimo a 1
+    numberFormatter.setMaximum(10); // Establecer el valor máximo a 10
+    numberFormatter.setAllowsInvalid(false);
+
+    JFormattedTextField numberField = new JFormattedTextField(numberFormatter);
+    jTSiniestro.getColumnModel().getColumn(3).setCellEditor(new DefaultCellEditor(numberField));
+} catch (Exception e) {
+  
+}
+
 
         
     }//GEN-LAST:event_jBBuscarSiniestroActionPerformed
