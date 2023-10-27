@@ -5,13 +5,18 @@ import AccesoADatos.SiniestroData;
 import Entidades.Brigada;
 import Entidades.Siniestro;
 import java.sql.Date;
+import java.text.ParseException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import javax.management.Query;
+import javax.swing.DefaultCellEditor;
+import javax.swing.JFormattedTextField;
 import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.text.MaskFormatter;
 
 /**
  *
@@ -188,7 +193,18 @@ public class ConsultarSiniestro extends javax.swing.JInternalFrame {
                 aux.getPuntuacion(),
                 aux.getCodigoBrigada()
             });
+            
         }
+        try {
+    MaskFormatter dateMask = new MaskFormatter("####-##-##");
+    dateMask.setPlaceholderCharacter('_');
+    JTextField dateField = new JFormattedTextField(dateMask);
+    jTSiniestro.getColumnModel().getColumn(2).setCellEditor(new DefaultCellEditor(dateField));
+} catch (ParseException e) {
+   JOptionPane.showMessageDialog(null, "debe colocar la fecha correctamente con el formato correcto " );
+}
+
+        
     }//GEN-LAST:event_jBBuscarSiniestroActionPerformed
 
     private void jBGuardarCambiosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBGuardarCambiosActionPerformed

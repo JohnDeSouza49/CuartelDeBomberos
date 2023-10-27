@@ -65,6 +65,11 @@ public class IngresarCuartel extends javax.swing.JInternalFrame {
 
         jLabel5.setText("Coordenada X");
 
+        jTFCooX.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTFCooXActionPerformed(evt);
+            }
+        });
         jTFCooX.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 jTFCooXKeyTyped(evt);
@@ -362,6 +367,10 @@ public class IngresarCuartel extends javax.swing.JInternalFrame {
             evt.consume();
         }
     }//GEN-LAST:event_jTFCodigoKeyTyped
+
+    private void jTFCooXActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTFCooXActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTFCooXActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
