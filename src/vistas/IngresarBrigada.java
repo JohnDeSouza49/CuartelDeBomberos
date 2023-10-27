@@ -289,7 +289,7 @@ BrigadaData bd = new BrigadaData();
     private void jBEliminarBiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBEliminarBiActionPerformed
      String nombreBrigada = jTFNombreBi.getText();
             String tipo = (String) jCBTipo.getSelectedItem();
-            
+          try{  
             int numeroCuartel = Integer.parseInt(jTFIdCuartel.getText());
             
             boolean estado = jRBEstadoBi.isSelected();
@@ -302,7 +302,10 @@ BrigadaData bd = new BrigadaData();
             jCBTipo.setSelectedItem("");
             jTFIdCuartel.setText("");
             
-            jRBEstadoBi.setSelected(false);   
+            jRBEstadoBi.setSelected(false);  
+          }catch(Exception e){
+              JOptionPane.showMessageDialog(this, "la brigada debe estar activa para poder darla de baja");
+          }
            
     }//GEN-LAST:event_jBEliminarBiActionPerformed
 
