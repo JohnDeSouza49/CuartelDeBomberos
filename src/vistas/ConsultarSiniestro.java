@@ -180,6 +180,28 @@ public class ConsultarSiniestro extends javax.swing.JInternalFrame {
                 aux.getCodigoBrigada()
             });
         }
+         try {
+    MaskFormatter dateMask = new MaskFormatter("####-##-##");
+    dateMask.setPlaceholderCharacter('_');
+    JTextField dateField = new JFormattedTextField(dateMask);
+    jTSiniestro.getColumnModel().getColumn(3).setCellEditor(new DefaultCellEditor(dateField));
+} catch (ParseException e) {
+  
+}
+        try {
+    NumberFormat format = NumberFormat.getInstance();
+    format.setGroupingUsed(false);
+    NumberFormatter numberFormatter = new NumberFormatter(format);
+    numberFormatter.setValueClass(Integer.class);
+    numberFormatter.setMinimum(1); // Establecer el valor mínimo a 1
+    numberFormatter.setMaximum(10); // Establecer el valor máximo a 10
+    numberFormatter.setAllowsInvalid(false);
+
+    JFormattedTextField numberField = new JFormattedTextField(numberFormatter);
+    jTSiniestro.getColumnModel().getColumn(4).setCellEditor(new DefaultCellEditor(numberField));
+} catch (Exception e) {
+ 
+}
     }//GEN-LAST:event_jBSinResolverActionPerformed
 
     private void jBBuscarSiniestroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBBuscarSiniestroActionPerformed
@@ -201,9 +223,9 @@ public class ConsultarSiniestro extends javax.swing.JInternalFrame {
     MaskFormatter dateMask = new MaskFormatter("####-##-##");
     dateMask.setPlaceholderCharacter('_');
     JTextField dateField = new JFormattedTextField(dateMask);
-    jTSiniestro.getColumnModel().getColumn(2).setCellEditor(new DefaultCellEditor(dateField));
+    jTSiniestro.getColumnModel().getColumn(3).setCellEditor(new DefaultCellEditor(dateField));
 } catch (ParseException e) {
-   //JOptionPane.showMessageDialog(null, "debe colocar la fecha correctamente con el formato correcto " );
+  
 }
         try {
     NumberFormat format = NumberFormat.getInstance();
@@ -215,9 +237,8 @@ public class ConsultarSiniestro extends javax.swing.JInternalFrame {
     numberFormatter.setAllowsInvalid(false);
 
     JFormattedTextField numberField = new JFormattedTextField(numberFormatter);
-    jTSiniestro.getColumnModel().getColumn(3).setCellEditor(new DefaultCellEditor(numberField));
+    jTSiniestro.getColumnModel().getColumn(4).setCellEditor(new DefaultCellEditor(numberField));
 } catch (Exception e) {
-  
 }
 
 

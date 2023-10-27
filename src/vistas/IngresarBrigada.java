@@ -303,7 +303,7 @@ BrigadaData bd = new BrigadaData();
             jTFIdCuartel.setText("");
             
             jRBEstadoBi.setSelected(false);   
-            
+           
     }//GEN-LAST:event_jBEliminarBiActionPerformed
 
 
