@@ -94,7 +94,7 @@ BrigadaData bd = new BrigadaData();
             }
         });
 
-        jCBTipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "incendios en viviendas e industrias", "salvamento en derrumbes", "rescates en ámbito montaña", "rescate de personas", "socorrer inundaciones", "operativos de prevención." }));
+        jCBTipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "incendios en viviendas e industrias", "salvamento en derrumbes", "rescates en ámbito montaña", "rescate de personas", "socorrer inundaciones", "operativos de prevención" }));
         jCBTipo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jCBTipoActionPerformed(evt);
@@ -233,10 +233,13 @@ BrigadaData bd = new BrigadaData();
             int numeroCuartel = Integer.parseInt(jTFIdCuartel.getText());
             
             boolean estado = jRBEstadoBi.isSelected();
-
+           int ver= bd.verificar(nombreBrigada, tipo);
+           if(ver==1){
+              JOptionPane.showMessageDialog(null, "Ya existe una brigada con estos datos.");
+           }else{
            Brigada b = new Brigada(nombreBrigada, tipo, estado, numeroCuartel);
-            
             bd.guardarBrigada(b);
+            } 
             jTFNombreBi.setText("");
             jCBTipo.setSelectedItem("");
             jTFIdCuartel.setText("");
@@ -266,7 +269,7 @@ BrigadaData bd = new BrigadaData();
             jRBEstadoBi.setSelected(b.isLibre());
  
         } catch (Exception ex) {
-            JOptionPane.showMessageDialog(this, " debe completar correctamente el codigo de la brigada" + ex.getMessage());
+            JOptionPane.showMessageDialog(this, " debe completar correctamente el codigo de la brigada");
         }
 
 

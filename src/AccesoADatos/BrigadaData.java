@@ -183,8 +183,7 @@ public class BrigadaData {
 
         return br;
     }
- public void brigadaLibre(Brigada b) {
-        int codigo = b.getCodigoBrigada();
+ public void brigadaLibre(int codigo ) {
         String sql = "UPDATE brigada SET libre=1 WHERE codigoBrigada=?";
         PreparedStatement ps;
         try {
@@ -215,4 +214,26 @@ public class BrigadaData {
      return cant;
     
 }
+ public int verificar(String nombre, String esp){
+        String sql="SELECT COUNT(*) FROM brigada where nombreBrigada=? AND especialidad=?";
+        int cant=0;
+        try {
+            PreparedStatement ps= con.prepareStatement(sql);
+            ps.setString(1, nombre);
+            ps.setString(2, esp);
+            ResultSet rs = ps.executeQuery();
+            while(rs.next()){
+                cant=rs.getInt(1);
+            }
+            
+        }catch (SQLException ex) {
+            
+        }
+     
+     
+     return cant;
+    
 }
+     }
+ 
+
