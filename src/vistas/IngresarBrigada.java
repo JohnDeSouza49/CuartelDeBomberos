@@ -234,7 +234,6 @@ BrigadaData bd = new BrigadaData();
             
             boolean estado = jRBEstadoBi.isSelected();
            int ver= bd.verificar(nombreBrigada, tipo);
-           JOptionPane.showMessageDialog(this, ver);
            if(ver==1){
               JOptionPane.showMessageDialog(null, "Ya existe una brigada con estos datos.");
            }else{
