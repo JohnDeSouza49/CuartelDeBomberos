@@ -183,8 +183,7 @@ public class BrigadaData {
 
         return br;
     }
- public void brigadaLibre(Brigada b) {
-        int codigo = b.getCodigoBrigada();
+ public void brigadaLibre(int codigo ) {
         String sql = "UPDATE brigada SET libre=1 WHERE codigoBrigada=?";
         PreparedStatement ps;
         try {

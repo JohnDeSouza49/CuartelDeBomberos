@@ -212,17 +212,14 @@ public class ConsultarSiniestro extends javax.swing.JInternalFrame {
                 codigoBrigada = (int) jTSiniestro.getValueAt(fila, 5);
                 siniestro = new Siniestro(codigoSiniestro, tipo, fechaSiniestro, fechaResolucion, puntuacion, codigoBrigada);
                 sd.actualizarSiniestro(siniestro);
+                 BrigadaData bd = new BrigadaData();
+                bd.brigadaLibre(codigoBrigada);
                 cambiosRealizados = true;
+                 
                 }
                }
             }
-         
-    
-
-
-            BrigadaData bd = new BrigadaData();
-            Brigada selec = bd.buscarBrigada(codigoBrigada);
-            bd.brigadaLibre(selec);
+        
             if (cambiosRealizados) {
 
                 JOptionPane.showMessageDialog(null, "Datos actualizados con éxito");
