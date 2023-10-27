@@ -289,7 +289,7 @@ public class SiniestroData {
 
         int filasAfectadas = ps.executeUpdate();
         if(filasAfectadas==1){
-         JOptionPane.showMessageDialog(null, "Datos actualizados con exito");
+        
         }
     } catch (SQLException ex) {
         
@@ -300,21 +300,3 @@ public class SiniestroData {
 
 
 
-
-/*String sql = "SELECT * FROM bombero";
-            PreparedStatement ps = con.prepareStatement(sql);
-            ResultSet rs = ps.executeQuery();
-            while (rs.next()) {
-                b = new Bombero();
-                b.setIdBombero(rs.getInt("idBombero"));
-                b.setDni(rs.getInt("dni"));
-                b.setNombreApellido(rs.getString("NombreApellido"));
-                b.setFechaNac(rs.getDate("fechaNac").toLocalDate());
-                b.setCelular(rs.getInt("celular"));
-                b.setCodigoBrigada(rs.getInt("codigoBrigada"));
-                b.setEstado(rs.getBoolean("estado"));
-                b.setGrupoSanguineo(rs.getString("GrupoSanguineo"));
-                b.setCodigoCuartel(rs.getInt("codigoCuartel"));
-                bomberos.add(b);
-            }
-            ps.close();*/

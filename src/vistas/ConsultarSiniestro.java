@@ -9,6 +9,7 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
+import javax.management.Query;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -191,34 +192,51 @@ public class ConsultarSiniestro extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jBBuscarSiniestroActionPerformed
 
     private void jBGuardarCambiosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBGuardarCambiosActionPerformed
-     
-    try{    
-    int filas = jTSiniestro.getRowCount();
+
+        try {
+            int filas = jTSiniestro.getRowCount();
+
+            int codigoBrigada = 0;
+            boolean cambiosRealizados = false;
+            for (int fila = 0; fila < filas; fila++) {
+                Siniestro siniestro = null;
+                int codigoSiniestro = (int) jTSiniestro.getValueAt(fila, 0);
+                String tipo = (String) jTSiniestro.getValueAt(fila, 1);
+                String lc = jTSiniestro.getValueAt(fila, 2).toString();
+               if ( jTSiniestro.getValueAt(fila, 3)!= null) {
+                String lc2 =  jTSiniestro.getValueAt(fila, 3).toString();
+                LocalDate fechaSiniestro = LocalDate.parse(lc, DateTimeFormatter.ISO_DATE);
+                LocalDate fechaResolucion = LocalDate.parse(lc2, DateTimeFormatter.ISO_DATE);
+                int puntuacion = Integer.parseInt(jTSiniestro.getValueAt(fila, 4).toString());
+                if (puntuacion != 0) {
+                codigoBrigada = (int) jTSiniestro.getValueAt(fila, 5);
+                siniestro = new Siniestro(codigoSiniestro, tipo, fechaSiniestro, fechaResolucion, puntuacion, codigoBrigada);
+                sd.actualizarSiniestro(siniestro);
+                cambiosRealizados = true;
+                }
+               }
+            }
+         
     
-    int codigoBrigada=0;
-    for (int fila = 0; fila < filas; fila++) {
-        Siniestro siniestro=null;
-        int codigoSiniestro = (int) jTSiniestro.getValueAt(fila, 0);
-        String tipo = (String) jTSiniestro.getValueAt(fila, 1);
-        String lc= jTSiniestro.getValueAt(fila, 2).toString();
-        String lc2= jTSiniestro.getValueAt(fila, 3).toString();
-        LocalDate fechaSiniestro= LocalDate.parse(lc, DateTimeFormatter.ISO_DATE);
-        LocalDate fechaResolucion =  LocalDate.parse(lc2, DateTimeFormatter.ISO_DATE);
-        int puntuacion = Integer.parseInt(jTSiniestro.getValueAt(fila, 4).toString());
-        codigoBrigada = (int) jTSiniestro.getValueAt(fila, 5);
-        siniestro = new Siniestro(codigoSiniestro, tipo, fechaSiniestro, fechaResolucion, puntuacion, codigoBrigada);
-         sd.actualizarSiniestro(siniestro);
-         break;
-    }  
-    
-        BrigadaData bd= new BrigadaData();
-        Brigada selec= bd.buscarBrigada(codigoBrigada);
-        bd.brigadaLibre(selec);
-       
-    }catch(NullPointerException npe){
-        JOptionPane.showMessageDialog(null, "No se han ingresado cambios");
-    }  
-        
+
+
+            BrigadaData bd = new BrigadaData();
+            Brigada selec = bd.buscarBrigada(codigoBrigada);
+            bd.brigadaLibre(selec);
+            if (cambiosRealizados) {
+
+                JOptionPane.showMessageDialog(null, "Datos actualizados con éxito");
+            } else {
+                JOptionPane.showMessageDialog(null, "No se han ingresado cambios");
+            }
+
+        } catch (Exception ex) {
+           
+            JOptionPane.showMessageDialog(null, "Error: " );
+
+        }
+
+
     }//GEN-LAST:event_jBGuardarCambiosActionPerformed
 
 
