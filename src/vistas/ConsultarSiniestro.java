@@ -71,6 +71,7 @@ public class ConsultarSiniestro extends javax.swing.JInternalFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        jTSiniestro.setRowHeight(22);
         jScrollPane1.setViewportView(jTSiniestro);
 
         jBBuscarSiniestro.setText("ULTIMAS 24 HORAS");
