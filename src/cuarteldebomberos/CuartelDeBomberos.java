@@ -34,8 +34,8 @@ public class CuartelDeBomberos {
         //System.out.println(bd.listarBomberosxCuartel(2));
         //System.out.println(bd.listarBomberoPorCuartelYBrigada(1, 1));
         //bd.guardarBombero(bob);
-        BrigadaData bd= new BrigadaData();
-        System.out.println(bd.verificar("Beta", "incendios en viviendas e industrias"));
+       //BrigadaData bd= new BrigadaData();
+       //System.out.println(bd.verificar("Beta", "incendios en viviendas e industrias"));
         //bd.guardarBrigada(nueva);
         // System.out.println(bd.brigadaslibresxCuartel(1));
         // System.out.println(bd.brigadasAsignadas());
@@ -58,8 +58,11 @@ public class CuartelDeBomberos {
         // sd.guardarSiniestro(siniestro);
         //CuartelData cD = new CuartelData();
         //System.out.println(cD.mostrarTodosCuarteles());  
-        // SiniestroData sd= new SiniestroData();
+        SiniestroData sd= new SiniestroData();
+        Siniestro s = new Siniestro ("incendios en viviendas e industrias", LocalDate.of(2023,10,31),7,-2, "fuego" ,1);
+        sd.guardarSiniestro(s);
         // Siniestro a= new Siniestro("Incendios", LocalDate.MIN, 5, 2);
         //System.out.println(sd.AsignarBrigada(a));
     }
 }
+//"INSERT INTO siniestro (tipo, fechaSiniestro, coordenadaX, coordenadaY, detalles,  codigoBrigada)
